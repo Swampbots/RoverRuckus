@@ -1,7 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+@TeleOp(name = "Rover Test", group = "Testing")
 public class RoverTest extends OpMode {
 
     RoverHardware hardware = new RoverHardware();
@@ -28,6 +30,7 @@ public class RoverTest extends OpMode {
         telemetry.addLine("Left Drive motors: left stick");
         telemetry.addLine("Right Drive Motors: right stick");
         telemetry.addLine("Latch Servo: right trigger");
+
         telemetry.update();
     }
 }
