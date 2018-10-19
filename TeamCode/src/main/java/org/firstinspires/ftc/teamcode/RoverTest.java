@@ -11,6 +11,23 @@ public class RoverTest extends OpMode {
     }
 
     public void loop() {
+        hardware.setLeftPower   (gamepad1.left_stick_y);
+        hardware.setRightPower  (gamepad1.right_stick_y);
 
+        hardware.latch.setPosition(gamepad1.right_trigger);
+
+
+
+
+        telemetry.addData("Left Stick Y", gamepad1.left_stick_y);
+        telemetry.addData("Right Stick Y", gamepad1.right_stick_y);
+        telemetry.addLine();
+        telemetry.addData("Latch Position", hardware.latch.getPosition());
+        telemetry.addLine();
+        telemetry.addLine("Controls:");
+        telemetry.addLine("Left Drive motors: left stick");
+        telemetry.addLine("Right Drive Motors: right stick");
+        telemetry.addLine("Latch Servo: right trigger");
+        telemetry.update();
     }
 }
