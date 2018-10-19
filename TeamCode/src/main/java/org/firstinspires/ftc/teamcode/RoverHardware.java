@@ -88,4 +88,24 @@ public class RoverHardware {
         frontRight  .setPower(power);
         rearRight   .setPower(power);
     }
+
+    public void resetDriveEncoders() {
+        frontLeft.setMode   (DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rearLeft.setMode    (DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        frontRight.setMode  (DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rearRight.setMode   (DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        frontLeft.setMode   (DcMotor.RunMode.RUN_USING_ENCODER);
+        rearLeft.setMode    (DcMotor.RunMode.RUN_USING_ENCODER);
+        frontRight.setMode  (DcMotor.RunMode.RUN_USING_ENCODER);
+        rearRight.setMode   (DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+
+    public void resetPivotEncoders() {
+        frontPivot.setMode   (DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rearPivot.setMode    (DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        frontPivot.setMode   (DcMotor.RunMode.RUN_USING_ENCODER);
+        rearPivot.setMode    (DcMotor.RunMode.RUN_USING_ENCODER);
+    }
 }
