@@ -50,7 +50,17 @@ public class RoverHardware {
 
         // Initialize servos
         latch   = hwMap.servo.get("latch");
-
     }
 
+
+
+    public void setLeftPower(double power) {
+        frontLeft   .setPower(power);
+        rearLeft    .setPower(power);
+    }
+
+    public void setRightPower(double power) {
+        frontRight  .setPower(power);
+        rearRight   .setPower(power);
+    }
 }
