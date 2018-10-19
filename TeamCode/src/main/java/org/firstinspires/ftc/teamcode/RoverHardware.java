@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -36,8 +37,8 @@ public class RoverHardware {
 
     // Motors
     public DcMotor frontLeft;
-    public DcMotor frontRight;
     public DcMotor rearLeft;
+    public DcMotor frontRight;
     public DcMotor rearRight;
 
     public DcMotor rearPivot;
@@ -56,12 +57,19 @@ public class RoverHardware {
 
         // Initialize motors
         frontLeft   = hwMap.dcMotor.get("fl_drive");
-        frontRight  = hwMap.dcMotor.get("fr_drive");
         rearLeft    = hwMap.dcMotor.get("rl_drive");
+        frontRight  = hwMap.dcMotor.get("fr_drive");
         rearRight   = hwMap.dcMotor.get("rr_drive");
+
 
         rearPivot   = hwMap.dcMotor.get("rear_pivot");
         frontPivot  = hwMap.dcMotor.get("front_pivot");
+
+
+        frontLeft.setDirection  (DcMotorSimple.Direction.FORWARD);
+        rearLeft.setDirection   (DcMotorSimple.Direction.FORWARD);
+        frontRight.setDirection (DcMotorSimple.Direction.REVERSE);
+        rearRight.setDirection  (DcMotorSimple.Direction.REVERSE);
 
 
 
