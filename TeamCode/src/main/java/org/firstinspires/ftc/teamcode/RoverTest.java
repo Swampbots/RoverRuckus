@@ -22,10 +22,13 @@ public class RoverTest extends OpMode {
         hardware.latch.setPosition(gamepad1.right_trigger);
 
 
-        telemetry.addData("Rear left encoder", hardware.rearLeft.getCurrentPosition());
-        telemetry.addData("Rear right encoder", hardware.rearRight.getCurrentPosition());
-        telemetry.addData("Front left encoder", hardware.frontLeft.getCurrentPosition());
-        telemetry.addData("Front right encoder", hardware.frontRight.getCurrentPosition());
+        telemetry.addData("Rear left encoder",      hardware.rearLeft.getCurrentPosition());
+        telemetry.addData("Rear right encoder",     hardware.rearRight.getCurrentPosition());
+        telemetry.addData("Front left encoder",     hardware.frontLeft.getCurrentPosition());
+        telemetry.addData("Front right encoder",    hardware.frontRight.getCurrentPosition());
+        telemetry.addLine();
+        telemetry.addData("Front pivot encoder",    hardware.frontPivot.getCurrentPosition());
+        telemetry.addData("Rear pivot encoder",     hardware.rearPivot.getCurrentPosition());
         telemetry.addLine();
         telemetry.update();
     }
