@@ -23,7 +23,7 @@ public class RoverHardware {
 
     // Encoder variables (REV Core Hex Motors)
     public static final double COUNTS_PER_REV_CORE  = 288.0;
-    public static final double GEAR_REDUCTION_CORE  = 4.16; // 4.16 rotations of the motor shaft is 1 rotation of the drive pivot
+    public static final double GEAR_REDUCTION_CORE  = 1.0; // No reduction on drive motors currently
     public static final double COUNTS_PER_INCH_CORE = (COUNTS_PER_REV_CORE * GEAR_REDUCTION_CORE) / WHEEL_CIRCUMFERENCE; // To be confirmed
 
     // Encoder variables (REV HD Hex Motors)
