@@ -44,6 +44,8 @@ public class RoverHardware {
     public DcMotor rearPivot;
     public DcMotor frontPivot;
 
+    public DcMotor winch;
+
 
 
     // Servos
@@ -65,11 +67,20 @@ public class RoverHardware {
         rearPivot   = hwMap.dcMotor.get("rear_pivot");
         frontPivot  = hwMap.dcMotor.get("front_pivot");
 
+        winch       = hwMap.dcMotor.get("winch");
 
+
+
+        // Set motor directions
         frontLeft.setDirection  (DcMotorSimple.Direction.FORWARD);
         rearLeft.setDirection   (DcMotorSimple.Direction.FORWARD);
         frontRight.setDirection (DcMotorSimple.Direction.REVERSE);
         rearRight.setDirection  (DcMotorSimple.Direction.REVERSE);
+
+        rearPivot.setDirection  (DcMotorSimple.Direction.FORWARD);
+        frontPivot.setDirection (DcMotorSimple.Direction.FORWARD);
+
+        winch.setDirection      (DcMotorSimple.Direction.FORWARD);
 
 
 
