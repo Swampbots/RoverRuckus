@@ -26,8 +26,8 @@ public class RoverTest extends OpMode {
         else                        hardware.winch.setPower(0);
 
         // Motor encoder controls
-        if(gamepad1.a)  hardware.resetDriveEncoders();
-        if(gamepad1.b)  hardware.resetPivotEncoders();
+        if(gamepad2.a)  hardware.resetDriveEncoders();
+        if(gamepad2.b)  hardware.resetPivotEncoders();
 
 
         // Servo controls
