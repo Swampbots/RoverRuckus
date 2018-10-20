@@ -89,13 +89,13 @@ public class RoverHardware {
         frontRight.setZeroPowerBehavior (DcMotor.ZeroPowerBehavior.FLOAT);
         rearRight.setZeroPowerBehavior  (DcMotor.ZeroPowerBehavior.FLOAT);
 
-        rearPivot.setZeroPowerBehavior  (DcMotor.ZeroPowerBehavior.FLOAT);
-        frontPivot.setZeroPowerBehavior (DcMotor.ZeroPowerBehavior.FLOAT);
+        rearPivot.setZeroPowerBehavior  (DcMotor.ZeroPowerBehavior.BRAKE);
+        frontPivot.setZeroPowerBehavior (DcMotor.ZeroPowerBehavior.BRAKE);
 
-        winch.setZeroPowerBehavior      (DcMotor.ZeroPowerBehavior.FLOAT);
+        winch.setZeroPowerBehavior      (DcMotor.ZeroPowerBehavior.BRAKE);
 
 
-        
+
 
         // Initialize servos
         latch   = hwMap.servo.get("latch");
