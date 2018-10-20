@@ -83,6 +83,19 @@ public class RoverHardware {
         winch.setDirection      (DcMotorSimple.Direction.FORWARD);
 
 
+        // Set motor zero-power behaviors
+        frontLeft.setZeroPowerBehavior  (DcMotor.ZeroPowerBehavior.FLOAT);
+        rearLeft.setZeroPowerBehavior   (DcMotor.ZeroPowerBehavior.FLOAT);
+        frontRight.setZeroPowerBehavior (DcMotor.ZeroPowerBehavior.FLOAT);
+        rearRight.setZeroPowerBehavior  (DcMotor.ZeroPowerBehavior.FLOAT);
+
+        rearPivot.setZeroPowerBehavior  (DcMotor.ZeroPowerBehavior.FLOAT);
+        frontPivot.setZeroPowerBehavior (DcMotor.ZeroPowerBehavior.FLOAT);
+
+        winch.setZeroPowerBehavior      (DcMotor.ZeroPowerBehavior.FLOAT);
+
+
+        
 
         // Initialize servos
         latch   = hwMap.servo.get("latch");
