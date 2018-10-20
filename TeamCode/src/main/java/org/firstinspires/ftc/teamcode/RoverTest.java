@@ -21,8 +21,8 @@ public class RoverTest extends OpMode {
         hardware.rearPivot.setPower (gamepad2.left_stick_y);
         hardware.frontPivot.setPower(gamepad2.right_stick_y);
 
-        if(gamepad1.dpad_up)        hardware.winch.setPower(0.5);
-        else if(gamepad1.dpad_down) hardware.winch.setPower(-0.5);
+        if(gamepad1.dpad_up)        hardware.winch.setPower(1.0);
+        else if(gamepad1.dpad_down) hardware.winch.setPower(-1.0);
         else                        hardware.winch.setPower(0);
 
         // Motor encoder controls
@@ -35,6 +35,7 @@ public class RoverTest extends OpMode {
 
 
         // Telemetry
+        telemetry.addData("Winch power", hardware.winch.getPower());
         telemetry.addData("Rear left encoder",      hardware.rearLeft.getCurrentPosition());
         telemetry.addData("Rear right encoder",     hardware.rearRight.getCurrentPosition());
         telemetry.addData("Front left encoder",     hardware.frontLeft.getCurrentPosition());
