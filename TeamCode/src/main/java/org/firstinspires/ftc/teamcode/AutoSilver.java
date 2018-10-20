@@ -9,7 +9,7 @@ public class AutoSilver extends LinearOpMode {
 
     RoverHardware hardware = new RoverHardware();
 
-    public final int WINCH_COUNTS = 5000;
+    public final int WINCH_COUNTS = 7000;
     public final double WINCH_SPEED = -0.5;
 
     public final double DEPLOY_SPEED = 0.5;
@@ -51,7 +51,7 @@ public class AutoSilver extends LinearOpMode {
         telemetry.update();
         sleep(1000);
 
-        deployWheels(0.6);
+        deployWheels(DEPLOY_SPEED);
 
 
         // STEP 3
@@ -70,14 +70,15 @@ public class AutoSilver extends LinearOpMode {
 //        sleep(1000);
 //
 //        driveToPosition(DRIVE_COUNTS, DRIVE_SPEED);
-//
+
+
+        // FINISHED
 
         while(opModeIsActive()) {
             telemetry.addData("Latch position", hardware.latch.getPosition());
             telemetry.addData("Winch counts", WINCH_COUNTS);
             telemetry.addData("Drive counts", DRIVE_COUNTS);
-            telemetry.addLine():
-            telemetry.addData("");
+            telemetry.update();
         }
     }
 
