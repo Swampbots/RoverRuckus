@@ -88,7 +88,7 @@ public class AutoSilver extends LinearOpMode {
         motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motor.setPower(speed);
 
-        while(opModeIsActive() && hardware.winch.isBusy()) {
+        while(opModeIsActive() && motor.isBusy()) {
             telemetry.addLine("Deploying to " + motor.getTargetPosition());
             telemetry.addData("Winch position", motor.getCurrentPosition());
             telemetry.update();
