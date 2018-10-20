@@ -102,6 +102,10 @@ public class RoverHardware {
         winch.setZeroPowerBehavior      (DcMotor.ZeroPowerBehavior.BRAKE);
 
 
+        // Reset all encoders
+        resetMotorEncoders();
+
+
 
 
         // Initialize servos
@@ -138,5 +142,10 @@ public class RoverHardware {
 
         frontPivot.setMode   (DcMotor.RunMode.RUN_USING_ENCODER);
         rearPivot.setMode    (DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+
+    public void resetMotorEncoders() {
+        resetPivotEncoders();
+        resetDriveEncoders();
     }
 }
