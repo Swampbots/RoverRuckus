@@ -36,6 +36,9 @@ public class RoverTest extends OpMode {
 //        } else hardware.mineral.setPower(0);
 
         if(gamepad2.a) setPivots(0, 0.6);
+        if(gamepad2.b) setPivots(-1050, 0.6);
+        if(gamepad2.x) setPivots(-2000, 0.6);
+        if(gamepad2.y) setPivots(-2500, 0.6);
 
 
 
