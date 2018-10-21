@@ -156,4 +156,18 @@ public class RoverHardware {
         resetPivotEncoders();
         resetDriveEncoders();
     }
+    
+    public void stopAllMotors() {
+        frontLeft.setPower  (0);
+        rearLeft.setPower   (0);
+        frontRight.setPower (0);
+        rearRight.setPower  (0);
+
+        rearPivot.setPower  (0);
+        frontPivot.setPower (0);
+
+        winch.setPower      (0);
+
+        mineral.setPower    (0);
+    }
 }
