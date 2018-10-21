@@ -53,6 +53,8 @@ public class RoverHardware {
 
     public DcMotor winch;
 
+    public DcMotor mineral;
+
 
 
     // Servos
@@ -76,6 +78,8 @@ public class RoverHardware {
 
         winch       = hwMap.dcMotor.get("winch");
 
+        mineral     = hwMap.dcMotor.get("mineral");
+
 
 
         // Set motor directions
@@ -89,6 +93,8 @@ public class RoverHardware {
 
         winch.setDirection      (DcMotorSimple.Direction.FORWARD);
 
+        mineral.setDirection    (DcMotorSimple.Direction.FORWARD);
+
 
         // Set motor zero-power behaviors
         frontLeft.setZeroPowerBehavior  (DcMotor.ZeroPowerBehavior.FLOAT);
@@ -100,6 +106,8 @@ public class RoverHardware {
         frontPivot.setZeroPowerBehavior (DcMotor.ZeroPowerBehavior.BRAKE);
 
         winch.setZeroPowerBehavior      (DcMotor.ZeroPowerBehavior.BRAKE);
+
+        mineral.setZeroPowerBehavior    (DcMotor.ZeroPowerBehavior.BRAKE);
 
 
         // Reset all encoders
