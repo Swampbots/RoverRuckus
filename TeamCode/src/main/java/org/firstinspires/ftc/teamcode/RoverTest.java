@@ -35,6 +35,8 @@ public class RoverTest extends OpMode {
             hardware.mineral.setPower(-0.2);
         } else hardware.mineral.setPower(0);
 
+        if(gamepad2.a) setPivots(0, 0.6);
+
 
 
         // Motor encoder controls
@@ -54,5 +56,48 @@ public class RoverTest extends OpMode {
         telemetry.addData("Rear pivot encoder",     hardware.rearPivot.getCurrentPosition());
         telemetry.addLine();
         telemetry.update();
+    }
+
+    public void setPivots(int targetCounts, double speed) {
+        hardware.stopAllMotors();
+
+        hardware.frontPivot.setTargetPosition(targetCounts);
+        hardware.rearPivot.setTargetPosition(targetCounts);
+
+        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        if(hardware.frontPivot.getCurrentPosition() - targetCounts < 0) {
+            hardware.frontPivot.setPower(speed);
+            hardware.rearPivot.setPower(speed);
+        } else {
+            hardware.frontPivot.setPower(-speed);
+            hardware.rearPivot.setPower(-speed);
+        }
+
+        while (hardware.rearPivot.isBusy()) {
+//            telemetry.addLine("Deploying front to " + hardware.frontPivot.getTargetPosition());
+//            telemetry.addLine("Deploying rear to " + hardware.rearPivot.getTargetPosition());
+//            telemetry.addLine();
+//            telemetry.addData("Front position", hardware.frontPivot.getCurrentPosition());
+//            telemetry.addData("Rear position", hardware.rearPivot.getCurrentPosition());
+//            telemetry.update();
+        }
+
+        hardware.rearPivot.setPower(0);
+        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        while (hardware.frontPivot.isBusy()) {
+//            telemetry.addLine("Deploying front to " + hardware.frontPivot.getTargetPosition());
+//            telemetry.addLine("Deploying rear to " + hardware.rearPivot.getTargetPosition());
+//            telemetry.addLine();
+//            telemetry.addData("Front position", hardware.frontPivot.getCurrentPosition());
+//            telemetry.addData("Rear position", hardware.rearPivot.getCurrentPosition());
+//            telemetry.update();
+        }
+
+        hardware.frontPivot.setPower(0);
+        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
     }
 }
