@@ -29,14 +29,14 @@ public class RoverTest extends OpMode {
         else if(gamepad1.dpad_down) hardware.winch.setPower(-1.0);
         else                        hardware.winch.setPower(0);
 
-        if(hardware.mineral.getCurrentPosition() < MINERAL_TOP && gamepad2.a) {
-            hardware.mineral.setPower(0.2);
-        } else if(hardware.mineral.getCurrentPosition() > MINERAL_BOTTOM && gamepad2.b) {
-            hardware.mineral.setPower(-0.2);
-        } else hardware.mineral.setPower(0);
+//        if(hardware.mineral.getCurrentPosition() < MINERAL_TOP && gamepad2.a) {
+//            hardware.mineral.setPower(0.2);
+//        } else if(hardware.mineral.getCurrentPosition() > MINERAL_BOTTOM && gamepad2.b) {
+//            hardware.mineral.setPower(-0.2);
+//        } else hardware.mineral.setPower(0);
 
         if(gamepad2.a) setPivots(0, 0.6);
-        
+
 
 
         // Servo controls
