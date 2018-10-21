@@ -4,6 +4,13 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_INCH_CORE;
+import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_REV_CORE;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
+
 @TeleOp(name = "Rover Test", group = "Testing")
 public class RoverTest extends OpMode {
 
@@ -35,10 +42,10 @@ public class RoverTest extends OpMode {
 //            hardware.mineral.setPower(-0.2);
 //        } else hardware.mineral.setPower(0);
 
-        if(gamepad2.a) setPivots(0, 0.6);
-        if(gamepad2.b) setPivots(-1050, 0.6);
-        if(gamepad2.x) setPivots(-2000, 0.6);
-        if(gamepad2.y) setPivots(-2500, 0.6);
+        if(gamepad2.a) setPivots(PIV_STOWED,    0.6);
+        if(gamepad2.b) setPivots(PIV_OMNI,      0.6);
+        if(gamepad2.x) setPivots(PIV_KNEEL,     0.6);
+        if(gamepad2.y) setPivots(PIV_STD,       0.6);
 
 
 
