@@ -36,12 +36,7 @@ public class RoverTest extends OpMode {
         } else hardware.mineral.setPower(0);
 
         if(gamepad2.a) setPivots(0, 0.6);
-
-
-
-        // Motor encoder controls
-        if(gamepad2.a)  hardware.resetDriveEncoders();
-        if(gamepad2.b)  hardware.resetPivotEncoders();
+        
 
 
         // Servo controls
