@@ -17,15 +17,15 @@ public class RoverHardware {
 
 
     // Speed button variables
-    public final double SLOW = 0.1;
-    public final double NORMAL = 0.2;
-    public final double FAST = 0.4;
+    public static final double SLOW = 0.1;
+    public static final double NORMAL = 0.2;
+    public static final double FAST = 0.4;
 
     // Pivot encoder positions
-    public final double STOWED      = 0.0;
-    public final double OMNI        = -1050.0;
-    public final double STANDARD    = -2400.0;
-    public final double KNEELING    = -2000.0;
+    public static final double STOWED      = 0.0;
+    public static final double OMNI        = -1050.0;
+    public static final double STANDARD    = -2400.0;
+    public static final double KNEELING    = -2000.0;
 
 
 
