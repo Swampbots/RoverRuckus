@@ -54,12 +54,18 @@ public class RoverTest extends OpMode {
 
 
         // Telemetry
-        telemetry.addData("Front Pivot power", hardware.frontPivot.getPower());
-        telemetry.addData("Rear Pivot power", hardware.rearPivot.getPower());
+        telemetry.addData("fl power", hardware.frontLeft.getPower());
+        telemetry.addData("rl power", hardware.rearLeft.getPower());
+        telemetry.addData("fr power", hardware.frontRight.getPower());
+        telemetry.addData("rr power", hardware.rearRight.getPower());
         telemetry.addLine();
-        telemetry.addData("Front pivot encoder",    hardware.frontPivot.getCurrentPosition());
-        telemetry.addData("Rear pivot encoder",     hardware.rearPivot.getCurrentPosition());
+        telemetry.addData("fl encoder", hardware.frontLeft.getCurrentPosition());
+        telemetry.addData("rl encoder", hardware.rearLeft.getCurrentPosition());
+        telemetry.addData("fr encoder", hardware.frontRight.getCurrentPosition());
+        telemetry.addData("rr encoder", hardware.rearRight.getCurrentPosition());
         telemetry.addLine();
+        telemetry.addData("Counts per rev (Core)", COUNTS_PER_REV_CORE);
+        telemetry.addData("Counts per inch (Core)", COUNTS_PER_INCH_CORE);
         telemetry.update();
     }
 
