@@ -7,13 +7,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @TeleOp(name = "Rover Test", group = "Testing")
 public class RoverTest extends OpMode {
 
-    private final int GP1_A_COOLDOWN = 500;
-    private final int PIVOT_ERROR = 50;
 
-    private double runtimeSnapshot = -GP1_A_COOLDOWN;
 
-    private boolean frontRotForward = true;
-    private boolean rearRotForward = true;
 
     RoverHardware hardware = new RoverHardware();
 
