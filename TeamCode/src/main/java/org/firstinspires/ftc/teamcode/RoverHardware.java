@@ -156,7 +156,7 @@ public class RoverHardware {
         resetPivotEncoders();
         resetDriveEncoders();
     }
-    
+
     public void stopAllMotors() {
         frontLeft.setPower  (0);
         rearLeft.setPower   (0);
