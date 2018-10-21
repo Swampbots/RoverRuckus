@@ -78,6 +78,9 @@ public class AutoSilver extends LinearOpMode {
             telemetry.addData("Latch position", hardware.latch.getPosition());
             telemetry.addData("Winch counts", WINCH_COUNTS);
             telemetry.addData("Drive counts", DRIVE_COUNTS);
+            telemetry.addLine();
+            telemetry.addData("Winch position", hardware.winch.getCurrentPosition());
+            telemetry.addData("fl_drive position", hardware.frontLeft.getCurrentPosition());
             telemetry.update();
         }
     }
