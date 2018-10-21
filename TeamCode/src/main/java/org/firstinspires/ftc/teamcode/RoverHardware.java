@@ -40,7 +40,11 @@ public class RoverHardware {
     public static final double COUNTS_PER_INCH_HD  = (COUNTS_PER_REV_HD * GEAR_REDUCTION_HD) / WHEEL_CIRCUMFERENCE; // To be confirmed
 
 
-
+    // Pivot encoder variables
+    public static final int PIV_STOWED  = 0;
+    public static final int PIV_OMNI    = -1050;
+    public static final int PIV_KNEEL   = -2000;
+    public static final int PIV_STD     = -2500;
 
     // Motors
     public DcMotor frontLeft;
