@@ -111,4 +111,36 @@ public class RoverTest extends OpMode {
         hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
     }
+
+    public void driveToPosition(int target, double speed) {
+        hardware.frontLeft.setTargetPosition    (hardware.frontLeft.getCurrentPosition()    + target);
+        hardware.rearLeft.setTargetPosition     (hardware.rearLeft.getCurrentPosition()     + target);
+        hardware.frontRight.setTargetPosition   (hardware.frontRight.getCurrentPosition()   - target);
+        hardware.rearRight.setTargetPosition    (hardware.rearRight.getCurrentPosition()    - target);
+
+        hardware.frontLeft.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
+        hardware.rearLeft.setMode   (DcMotor.RunMode.RUN_TO_POSITION);
+        hardware.frontRight.setMode (DcMotor.RunMode.RUN_TO_POSITION);
+        hardware.rearRight.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
+
+        hardware.frontLeft.setPower (speed);
+        hardware.rearLeft.setPower  (speed);
+        hardware.frontRight.setPower(speed);
+        hardware.rearRight.setPower (speed);
+
+        while(  hardware.frontLeft  .isBusy() &&
+                hardware.rearLeft   .isBusy() &&
+                hardware.frontRight .isBusy() &&
+                hardware.rearRight  .isBusy());
+
+        hardware.frontLeft  .setPower(0);
+        hardware.rearLeft   .setPower(0);
+        hardware.frontRight .setPower(0);
+        hardware.rearRight  .setPower(0);
+
+        hardware.frontLeft.setMode  (DcMotor.RunMode.RUN_USING_ENCODER);
+        hardware.rearLeft.setMode   (DcMotor.RunMode.RUN_USING_ENCODER);
+        hardware.frontRight.setMode (DcMotor.RunMode.RUN_USING_ENCODER);
+        hardware.rearRight.setMode  (DcMotor.RunMode.RUN_USING_ENCODER);
+    }
 }
