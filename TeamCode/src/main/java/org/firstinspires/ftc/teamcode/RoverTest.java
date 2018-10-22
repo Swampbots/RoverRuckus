@@ -121,8 +121,8 @@ public class RoverTest extends OpMode {
     public void driveToPosition(int target, double speed) {
         hardware.frontLeft.setTargetPosition    (hardware.frontLeft.getCurrentPosition()    + target);
         hardware.rearLeft.setTargetPosition     (hardware.rearLeft.getCurrentPosition()     + target);
-        hardware.frontRight.setTargetPosition   (hardware.frontRight.getCurrentPosition()   - target);
-        hardware.rearRight.setTargetPosition    (hardware.rearRight.getCurrentPosition()    - target);
+        hardware.frontRight.setTargetPosition   (hardware.frontRight.getCurrentPosition()   + target);
+        hardware.rearRight.setTargetPosition    (hardware.rearRight.getCurrentPosition()    + target);
 
         hardware.frontLeft.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
         hardware.rearLeft.setMode   (DcMotor.RunMode.RUN_TO_POSITION);
@@ -131,8 +131,8 @@ public class RoverTest extends OpMode {
 
         hardware.frontLeft.setPower (speed);
         hardware.rearLeft.setPower  (speed);
-        hardware.frontRight.setPower(speed);
-        hardware.rearRight.setPower (speed);
+        hardware.frontRight.setPower(-speed);
+        hardware.rearRight.setPower (-speed);
 
         while(  hardware.frontLeft  .isBusy() &&
                 hardware.rearLeft   .isBusy() &&
