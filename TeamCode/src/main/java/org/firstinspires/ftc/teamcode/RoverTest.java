@@ -26,8 +26,8 @@ public class RoverTest extends OpMode {
     public void loop() {
 
         // Motor controls
-        hardware.setLeftPower   (gamepad1.left_stick_y);
-        hardware.setRightPower  (gamepad1.right_stick_y);
+        hardware.setLeftPower   (-gamepad1.left_stick_y);
+        hardware.setRightPower  (-gamepad1.right_stick_y);
 
         hardware.rearPivot.setPower (gamepad2.left_stick_y);
         hardware.frontPivot.setPower(gamepad2.right_stick_y);
