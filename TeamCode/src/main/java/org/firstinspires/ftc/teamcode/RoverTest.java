@@ -69,6 +69,10 @@ public class RoverTest extends OpMode {
         telemetry.update();
     }
 
+
+    // METHODS
+    
+
     public void setPivots(int targetCounts, double speed) {
         hardware.stopAllMotors();
 
