@@ -174,4 +174,38 @@ public class RoverHardware {
 
         mineral.setPower    (0);
     }
+
+
+
+    public void driveCounts(int target, double speed) {
+        frontLeft.setTargetPosition    (frontLeft.getCurrentPosition()    + target);
+        rearLeft.setTargetPosition     (rearLeft.getCurrentPosition()     + target);
+        frontRight.setTargetPosition   (frontRight.getCurrentPosition()   + target);
+        rearRight.setTargetPosition    (rearRight.getCurrentPosition()    + target);
+
+        frontLeft.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
+        rearLeft.setMode   (DcMotor.RunMode.RUN_TO_POSITION);
+        frontRight.setMode (DcMotor.RunMode.RUN_TO_POSITION);
+        rearRight.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
+
+        frontLeft.setPower (speed);
+        rearLeft.setPower  (speed);
+        frontRight.setPower(-speed);
+        rearRight.setPower (-speed);
+
+        while(  frontLeft  .isBusy() &&
+                rearLeft   .isBusy() &&
+                frontRight .isBusy() &&
+                rearRight  .isBusy());
+
+        frontLeft  .setPower(0);
+        rearLeft   .setPower(0);
+        frontRight .setPower(0);
+        rearRight  .setPower(0);
+
+        frontLeft.setMode  (DcMotor.RunMode.RUN_USING_ENCODER);
+        rearLeft.setMode   (DcMotor.RunMode.RUN_USING_ENCODER);
+        frontRight.setMode (DcMotor.RunMode.RUN_USING_ENCODER);
+        rearRight.setMode  (DcMotor.RunMode.RUN_USING_ENCODER);
+    }
 }
