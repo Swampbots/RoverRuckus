@@ -16,7 +16,7 @@ public class RoverTest extends OpMode {
 
     RoverHardware hardware = new RoverHardware();
 
-    private final double MINERAL_TOP = 0;
+    private final double MINERAL_TOP = 0.0;
     private final double MINERAL_BOTTOM = -650.0;
 
     public void init() {
@@ -36,11 +36,9 @@ public class RoverTest extends OpMode {
         else if(gamepad1.dpad_down) hardware.winch.setPower(-1.0);
         else                        hardware.winch.setPower(0);
 
-//        if(hardware.mineral.getCurrentPosition() < MINERAL_TOP && gamepad2.a) {
-//            hardware.mineral.setPower(0.2);
-//        } else if(hardware.mineral.getCurrentPosition() > MINERAL_BOTTOM && gamepad2.b) {
-//            hardware.mineral.setPower(-0.2);
-//        } else hardware.mineral.setPower(0);
+        if(gamepad2.left_trigger > gamepad2.right_trigger) hardware.mineral.setPower(-gamepad2.left_trigger);
+        else if(gamepad2.left_trigger < gamepad2.right_trigger) hardware.mineral.setPower(gamepad2.right_trigger);
+        else hardware.mineral.setPower(0);
 
         if(gamepad2.a) setPivots(PIV_STOWED,    0.6);
         if(gamepad2.b) setPivots(PIV_OMNI,      0.6);
