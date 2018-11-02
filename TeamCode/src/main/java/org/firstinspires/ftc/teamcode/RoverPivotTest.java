@@ -45,5 +45,17 @@ public class RoverPivotTest extends OpMode {
         }
 
 
+
+        // TELEMETRY
+        telemetry.addData("Front Target",   frontTarget);
+        telemetry.addData("Rear Target",    rearTarget);
+        telemetry.addLine();
+        telemetry.addData("PIV_STOWED", PIV_STOWED);
+        telemetry.addData("PIV_KNEEL",  PIV_KNEEL);
+        telemetry.addData("PIV_STD",    PIV_STD);
+        telemetry.addData("PIV_OMNI",   PIV_OMNI);
+        telemetry.update();
+
+
     }
 }
