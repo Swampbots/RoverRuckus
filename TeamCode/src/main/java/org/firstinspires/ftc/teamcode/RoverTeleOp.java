@@ -8,6 +8,10 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_INCH_CORE;
 import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_REV_CORE;
 import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_OPEN;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD;
 
 @TeleOp(name = "Driver Control", group = "TeleOp")
 public class RoverTeleOp extends OpMode {
@@ -28,7 +32,7 @@ public class RoverTeleOp extends OpMode {
         hardware.setRightPower  (-gamepad1.right_stick_y);
 
         hardware.rearPivot.setPower (gamepad2.left_stick_y);
-        hardware.frontPivot.setPower(-gamepad2.right_stick_y);
+        hardware.frontPivot.setPower(gamepad2.right_stick_y);
 
         if(gamepad1.dpad_up)        hardware.winch.setPower(1.0);
         else if(gamepad1.dpad_down) hardware.winch.setPower(-1.0);
@@ -47,13 +51,14 @@ public class RoverTeleOp extends OpMode {
 
 
         // Servo controls
-        hardware.latch.setPosition(gamepad1.right_trigger);
+        hardware.latch.setPosition(gamepad1.right_trigger * 0.50);
         if(gamepad2.a) hardware.stop.setPosition(STOP_CLOSED);
         else hardware.stop.setPosition(STOP_OPEN);
 
 
         // Telemetry
-        
+        telemetry.addData("Front Pivot", hardware.frontPivot.getCurrentPosition());
+        telemetry.addData("Rear Pivot", hardware.rearPivot.getCurrentPosition());
         telemetry.update();
     }
 
