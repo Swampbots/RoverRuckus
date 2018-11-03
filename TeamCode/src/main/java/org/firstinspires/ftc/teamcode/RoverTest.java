@@ -73,16 +73,16 @@ public class RoverTest extends OpMode {
     // METHODS
 
 
-    public void setPivots(int targetCounts, double speed) {
+    public void setPivots(int[] targets, double speed) {
         hardware.stopAllMotors();
 
-        hardware.frontPivot.setTargetPosition(targetCounts);
-        hardware.rearPivot.setTargetPosition(targetCounts);
+        hardware.frontPivot.setTargetPosition(targets[0]);
+        hardware.rearPivot.setTargetPosition(targets[1]);
 
         hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        if(hardware.frontPivot.getCurrentPosition() - targetCounts < 0) {
+        if(hardware.frontPivot.getCurrentPosition() - targets[0] < 0) {
             hardware.frontPivot.setPower(speed);
             hardware.rearPivot.setPower(speed);
         } else {
