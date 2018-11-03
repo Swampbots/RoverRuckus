@@ -9,8 +9,8 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_REV_CORE;
 import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_OPEN;
 
-@TeleOp(name = "Rover Test", group = "Testing")
-public class RoverTest extends OpMode {
+@TeleOp(name = "Driver Control", group = "TeleOp")
+public class RoverTeleOp extends OpMode {
 
     RoverHardware hardware = new RoverHardware();
 
