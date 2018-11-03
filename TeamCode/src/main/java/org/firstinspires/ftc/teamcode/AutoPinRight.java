@@ -3,9 +3,12 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_RIGHT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
+import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_CLOSED;
 
-@Autonomous(name = "Silver", group = "Autonomous")
-public class AutoSilver extends LinearOpMode {
+@Autonomous(name = "Pin Right", group = "Autonomous")
+public class AutoPinRight extends LinearOpMode {
 
     RoverHardware hardware = new RoverHardware();
 
@@ -14,15 +17,18 @@ public class AutoSilver extends LinearOpMode {
 
     public final double DEPLOY_SPEED = 0.5;
 
-    public final double LATCH_OPEN = 0.6;
-
-    public final int DRIVE_COUNTS = 5000;
+    public final int DEPLOY_COUNTS = 250;
+    public final int DRIVE_COUNTS = 1000;
     public final double DRIVE_SPEED = 1.0;
 
 
     public void runOpMode() {
 
         hardware.init(hardwareMap);
+
+        hardware.latch.setPosition(LATCH_RIGHT);
+        hardware.stop.setPosition(STOP_CLOSED);
+
 
         telemetry.addLine("Hardware initialized");
         telemetry.addLine("Press play to start");
@@ -34,7 +40,8 @@ public class AutoSilver extends LinearOpMode {
         STEP 1: release stop
         STEP 2: deploy wheels
         STEP 3: open latch
-        STEP 4: drive forward to crater
+        STEP 4: drive off of lander
+        STEP 5: drive to crater
          */
 
 
@@ -51,31 +58,49 @@ public class AutoSilver extends LinearOpMode {
         sleep(1000);
 
         deployWheels(DEPLOY_SPEED);
-//
-//
-//        // STEP 3
-//        telemetry.addLine("Step 3");
-//        telemetry.update();
-//        sleep(1000);
-//
-//        hardware.latch.setPosition(LATCH_OPEN);
-//
-//        sleep(2000);
 
 
-//        // STEP 4
-//        telemetry.addLine("Step 4");
-//        telemetry.update();
-//        sleep(1000);
-//
-//        driveToPosition(DRIVE_COUNTS, DRIVE_SPEED);
+        // STEP 3
+        telemetry.addLine("Step 3");
+        telemetry.update();
+        sleep(1000);
+
+        hardware.latch.setPosition(LATCH_OPEN);
+        sleep(500);
+        hardware.latch.setPosition(LATCH_RIGHT);
+        sleep(500);
+        hardware.latch.setPosition(LATCH_OPEN);
+        sleep(500);
+        hardware.latch.setPosition(LATCH_RIGHT);
+        sleep(500);
+        hardware.latch.setPosition(LATCH_OPEN);
+
+        sleep(2000);
+
+
+        // STEP 4
+        telemetry.addLine("Step 4");
+        telemetry.update();
+        sleep(1000);
+
+        driveToPosition(DEPLOY_COUNTS, DRIVE_SPEED);
+
+
+        // STEP 5
+        telemetry.addLine("Step 5");
+        telemetry.update();
+        sleep(1000);
+
+        driveToPosition(DRIVE_COUNTS, DRIVE_SPEED);
+
+
+
 
 
         // FINISHED
 
         while(opModeIsActive()) {
             telemetry.addData("Latch position", hardware.latch.getPosition());
-            telemetry.addData("Winch counts", WINCH_COUNTS);
             telemetry.addData("Drive counts", DRIVE_COUNTS);
             telemetry.addLine();
             telemetry.addData("Winch position", hardware.winch.getCurrentPosition());
@@ -141,8 +166,8 @@ public class AutoSilver extends LinearOpMode {
     public void driveToPosition(int target, double speed) {
         hardware.frontLeft.setTargetPosition    (hardware.frontLeft.getCurrentPosition()    + target);
         hardware.rearLeft.setTargetPosition     (hardware.rearLeft.getCurrentPosition()     + target);
-        hardware.frontRight.setTargetPosition   (hardware.frontRight.getCurrentPosition()   - target);
-        hardware.rearRight.setTargetPosition    (hardware.rearRight.getCurrentPosition()    - target);
+        hardware.frontRight.setTargetPosition   (hardware.frontRight.getCurrentPosition()   + target);
+        hardware.rearRight.setTargetPosition    (hardware.rearRight.getCurrentPosition()    + target);
 
         hardware.frontLeft.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
         hardware.rearLeft.setMode   (DcMotor.RunMode.RUN_TO_POSITION);
