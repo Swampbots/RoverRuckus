@@ -78,7 +78,7 @@ public class RoverHardware {
 
     // Servos
     public Servo latch;
-    public Servo drop;
+    public Servo stop;
 
 
 
@@ -138,7 +138,7 @@ public class RoverHardware {
 
         // Initialize servos
         latch   = hwMap.servo.get("latch");
-        drop    = hwMap.servo.get("drop");
+        stop = hwMap.servo.get("stop");
     }
 
 

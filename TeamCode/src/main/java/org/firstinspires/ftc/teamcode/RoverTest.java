@@ -6,10 +6,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_INCH_CORE;
 import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_REV_CORE;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
 
 @TeleOp(name = "Rover Test", group = "Testing")
 public class RoverTest extends OpMode {
@@ -51,8 +47,8 @@ public class RoverTest extends OpMode {
 
         // Servo controls
         hardware.latch.setPosition(gamepad1.right_trigger);
-        if(gamepad2.a) hardware.drop.setPosition(1.0);
-        else hardware.drop.setPosition(0.7);
+        if(gamepad2.a) hardware.stop.setPosition(1.0);
+        else hardware.stop.setPosition(0.7);
 
 
         // Telemetry
