@@ -58,6 +58,9 @@ public class RoverHardware {
     public static final int[] PIV_KNEEL     = {PIV_KNEEL_FRONT, PIV_KNEEL_REAR};
     public static final int[] PIV_STD       = {PIV_STD_FRONT, PIV_STD_REAR};
 
+
+
+
     // Motors
     public DcMotor frontLeft;
     public DcMotor rearLeft;
@@ -75,6 +78,7 @@ public class RoverHardware {
 
     // Servos
     public Servo latch;
+    public Servo drop;
 
 
 
@@ -134,6 +138,7 @@ public class RoverHardware {
 
         // Initialize servos
         latch   = hwMap.servo.get("latch");
+        drop    = hwMap.servo.get("drop");
     }
 
 
