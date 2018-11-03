@@ -32,7 +32,7 @@ public class AutoSilver extends LinearOpMode {
         waitForStart();
         /*
         STEP 1: release stop
-        STEP 2: raise wheels
+        STEP 2: deploy wheels
         STEP 3: open latch
         STEP 4: drive forward to crater
          */
@@ -45,12 +45,12 @@ public class AutoSilver extends LinearOpMode {
 
         hardware.stop.setPosition(hardware.STOP_OPEN);
 
-//        // STEP 2
-//        telemetry.addLine("Step 2");
-//        telemetry.update();
-//        sleep(1000);
-//
-//        deployWheels(DEPLOY_SPEED);
+        // STEP 2
+        telemetry.addLine("Step 2");
+        telemetry.update();
+        sleep(1000);
+
+        deployWheels(DEPLOY_SPEED);
 //
 //
 //        // STEP 3
@@ -102,8 +102,8 @@ public class AutoSilver extends LinearOpMode {
     }
 
     public void deployWheels(double speed) {
-        hardware.frontPivot.setTargetPosition(-2400);
-        hardware.rearPivot.setTargetPosition(-1050);
+        hardware.frontPivot.setTargetPosition(-2300);
+        hardware.rearPivot.setTargetPosition(-1100);
 
         hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
