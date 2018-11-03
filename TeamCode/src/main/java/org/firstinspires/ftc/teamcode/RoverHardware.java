@@ -41,16 +41,16 @@ public class RoverHardware {
 
 
     // Rear pivot encoder variables
-    public static final int PIV_STOWED_REAR  = 0;        // Always start at 0
-    public static final int PIV_OMNI_REAR    = -COUNTS_PER_DEGREE_HD_REAR;
-    public static final int PIV_KNEEL_REAR   = -2000;
-    public static final int PIV_STD_REAR     = -2500;
+    public static final int PIV_STOWED_REAR  = -COUNTS_PER_DEGREE_HD_REAR;          // Always start at 0
+    public static final int PIV_OMNI_REAR    = -COUNTS_PER_DEGREE_HD_REAR * 90;     // 90 degrees out from start
+    public static final int PIV_KNEEL_REAR   = -COUNTS_PER_DEGREE_HD_REAR * 135;    // 135 for both wheels on the ground
+    public static final int PIV_STD_REAR     = -COUNTS_PER_DEGREE_HD_REAR * 180;    // 180 for standard wheel on the ground
 
-    // Rear pivot encoder variables (negative values are out)
-    public static final int PIV_STOWED_FRONT  = -COUNTS_PER_DEGREE_HD_REAR;         // Always start at 0
-    public static final int PIV_OMNI_FRONT    = -COUNTS_PER_DEGREE_HD_FRONT * 90.0; // 90 degrees
-    public static final int PIV_KNEEL_FRONT   = -2000;
-    public static final int PIV_STD_FRONT     = -2500;
+    // Rear pivot encoder variables
+    public static final int PIV_STOWED_FRONT  = -COUNTS_PER_DEGREE_HD_FRONT;        // Always start at 0
+    public static final int PIV_OMNI_FRONT    = -COUNTS_PER_DEGREE_HD_FRONT * 90;   // 90 degrees out from start
+    public static final int PIV_KNEEL_FRONT   = -COUNTS_PER_DEGREE_HD_FRONT * 135;  // 135 for both wheels on the ground
+    public static final int PIV_STD_FRONT     = -COUNTS_PER_DEGREE_HD_FRONT * 180;  // 180 for standard wheel on the ground
 
     // Motors
     public DcMotor frontLeft;
