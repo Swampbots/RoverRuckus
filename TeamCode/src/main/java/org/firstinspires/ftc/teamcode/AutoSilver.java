@@ -31,7 +31,7 @@ public class AutoSilver extends LinearOpMode {
 
         waitForStart();
         /*
-        STEP 1: lower winch
+        STEP 1: release stop
         STEP 2: raise wheels
         STEP 3: open latch
         STEP 4: drive forward to crater
@@ -43,8 +43,7 @@ public class AutoSilver extends LinearOpMode {
         telemetry.update();
         sleep(1000);
 
-        runToPosition(hardware.winch, hardware.winch.getCurrentPosition() + WINCH_COUNTS, WINCH_SPEED);
-
+        hardware.stop.setPosition(0.7);
 
         // STEP 2
         telemetry.addLine("Step 2");
