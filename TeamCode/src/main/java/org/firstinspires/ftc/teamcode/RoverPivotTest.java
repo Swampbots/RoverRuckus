@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_DEGREE_HD_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_DEGREE_HD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD;
@@ -54,15 +56,15 @@ public class RoverPivotTest extends OpMode {
             rearTarget = PIV_OMNI[1];
         }
 
-        // Set pivot targets
-        hardware.frontPivot.setTargetPosition(frontTarget);
-        hardware.rearPivot.setTargetPosition(rearTarget);
-
-        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        hardware.frontPivot.setPower(PIV_SPEED);
-        hardware.rearPivot.setPower(PIV_SPEED);
+//        // Set pivot targets
+//        hardware.frontPivot.setTargetPosition(frontTarget);
+//        hardware.rearPivot.setTargetPosition(rearTarget);
+//
+//        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//
+//        hardware.frontPivot.setPower(PIV_SPEED);
+//        hardware.rearPivot.setPower(PIV_SPEED);
 
 
 
@@ -71,12 +73,20 @@ public class RoverPivotTest extends OpMode {
         telemetry.addData("Front Target",   frontTarget);
         telemetry.addData("Rear Target",    rearTarget);
         telemetry.addLine();
-        telemetry.addData("PIV_STOWED", PIV_STOWED);
-        telemetry.addData("PIV_KNEEL",  PIV_KNEEL);
-        telemetry.addData("PIV_STD",    PIV_STD);
-        telemetry.addData("PIV_OMNI",   PIV_OMNI);
+        telemetry.addData("PIV_STOWED_FRONT",   PIV_STOWED[0]);
+        telemetry.addData("PIV_STOWED_REAR",    PIV_STOWED[1]);
+        telemetry.addLine();
+        telemetry.addData("PIV_KNEEL_FRONT",    PIV_KNEEL[0]);
+        telemetry.addData("PIV_KNEEL_REAR",     PIV_KNEEL[1]);
+        telemetry.addLine();
+        telemetry.addData("PIV_STD_FRONT",      PIV_STD[0]);
+        telemetry.addData("PIV_STD_REAR",       PIV_STD[1]);
+        telemetry.addLine();
+        telemetry.addData("PIV_OMNI_FRONT",     PIV_OMNI[0]);
+        telemetry.addData("PIV_OMNI_REAR",      PIV_OMNI[1]);
+        telemetry.addLine();
+        telemetry.addData("COUNTS_PER_DEGREE_HD_FRONT", COUNTS_PER_DEGREE_HD_FRONT);
+        telemetry.addData("COUNTS_PER_DEGREE_HD_REAR",  COUNTS_PER_DEGREE_HD_REAR);
         telemetry.update();
-
-
     }
 }
