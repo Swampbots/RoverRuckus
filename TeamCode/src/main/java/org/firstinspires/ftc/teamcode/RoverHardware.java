@@ -38,9 +38,13 @@ public class RoverHardware {
     public static final int     COUNTS_PER_REV_HD   = 1120;
 
     public static final double  GEAR_REDUCTION_HD_REAR      = 4.16; // 4.16 rotations of the rear motor shaft is 1 rotation of the rear pivot
-    public static final int     COUNTS_PER_INCH_HD_REAR     = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_REAR) / WHEEL_CIRCUMFERENCE);
     public static final double  GEAR_REDUCTION_HD_FRONT     = 4.46; // 4.46 rotations of the front motor shaft is 1 rotation of the front pivot
+
+    public static final int     COUNTS_PER_INCH_HD_REAR     = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_REAR) / WHEEL_CIRCUMFERENCE);
     public static final int     COUNTS_PER_INCH_HD_FRONT    = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_FRONT) / WHEEL_CIRCUMFERENCE);
+
+    public static final double  COUNTS_PER_DEGREE_HD_REAR    = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_REAR) / 360);
+    public static final double  COUNTS_PER_DEGREE_HD_FRONT   = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_FRONT) / 360);
 
 
     // Pivot encoder variables
