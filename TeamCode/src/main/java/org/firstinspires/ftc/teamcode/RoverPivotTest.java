@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL;
@@ -18,6 +19,7 @@ public class RoverPivotTest extends OpMode {
     private int frontTarget = PIV_STOWED[0];
     private int rearTarget = PIV_STOWED[1];
 
+    private final double PIV_SPEED = 0.4;
 
 
     public void init() {
@@ -55,6 +57,12 @@ public class RoverPivotTest extends OpMode {
         // Set pivot targets
         hardware.frontPivot.setTargetPosition(frontTarget);
         hardware.rearPivot.setTargetPosition(rearTarget);
+
+        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        hardware.frontPivot.setPower(PIV_SPEED);
+        hardware.rearPivot.setPower(PIV_SPEED);
 
 
 
