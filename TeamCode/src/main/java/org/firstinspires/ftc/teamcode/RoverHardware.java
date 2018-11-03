@@ -40,11 +40,17 @@ public class RoverHardware {
     public static final double  COUNTS_PER_DEGREE_HD_FRONT   = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_FRONT) / 360);
 
 
-    // Pivot encoder variables
-    public static final int PIV_STOWED  = 0;
-    public static final int PIV_OMNI    = -1050;
-    public static final int PIV_KNEEL   = -2000;
-    public static final int PIV_STD     = -2500;
+    // Rear pivot encoder variables
+    public static final int PIV_STOWED_REAR  = 0;        // Always start at 0
+    public static final int PIV_OMNI_REAR    = -COUNTS_PER_DEGREE_HD_REAR;
+    public static final int PIV_KNEEL_REAR   = -2000;
+    public static final int PIV_STD_REAR     = -2500;
+
+    // Rear pivot encoder variables (negative values are out)
+    public static final int PIV_STOWED_FRONT  = -COUNTS_PER_DEGREE_HD_REAR;         // Always start at 0
+    public static final int PIV_OMNI_FRONT    = -COUNTS_PER_DEGREE_HD_FRONT * 90.0; // 90 degrees
+    public static final int PIV_KNEEL_FRONT   = -2000;
+    public static final int PIV_STD_FRONT     = -2500;
 
     // Motors
     public DcMotor frontLeft;
