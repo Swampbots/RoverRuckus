@@ -21,13 +21,6 @@ public class RoverHardware {
     public static final double NORMAL = 0.2;
     public static final double FAST = 0.4;
 
-    // Pivot encoder positions
-    public static final double STOWED      = 0.0;
-    public static final double OMNI        = -1050.0;
-    public static final double STANDARD    = -2400.0;
-    public static final double KNEELING    = -2000.0;
-
-
 
     // Encoder variables (REV Core Hex Motors)
     public static final int     COUNTS_PER_REV_CORE  = 288;
