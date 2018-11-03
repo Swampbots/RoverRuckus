@@ -13,8 +13,8 @@ public class RoverPivotTest extends OpMode {
 
     RoverHardware hardware = new RoverHardware();
 
-    private int frontTarget = 0;
-    private int rearTarget = 0;
+    private int frontTarget = PIV_STOWED;
+    private int rearTarget = PIV_STOWED;
 
     public void init() {
         hardware.init(hardwareMap);
@@ -22,14 +22,16 @@ public class RoverPivotTest extends OpMode {
 
 
     public void loop() {
-        // Drive Motors
+
+        // Set drive motor powers
         hardware.setLeftPower   (-gamepad1.left_stick_y);
         hardware.setRightPower  (-gamepad1.right_stick_y);
 
-        // Wheel subassembly pivots
+        // Set wheel pivot powers
         hardware.rearPivot.setPower (gamepad2.left_stick_y);
         hardware.frontPivot.setPower(gamepad2.right_stick_y);
 
+        // Handle pivot targets
         if(gamepad1.a) {
             frontTarget = PIV_STOWED;
             rearTarget = PIV_STOWED;
@@ -44,6 +46,11 @@ public class RoverPivotTest extends OpMode {
             rearTarget = PIV_OMNI;
         }
 
+        // Set pivot targets
+        hardware.frontPivot.setTargetPosition(frontTarget);
+        hardware.rearPivot.setTargetPosition(rearTarget);
+
+        
 
 
         // TELEMETRY
