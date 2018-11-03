@@ -40,10 +40,10 @@ public class RoverTest extends OpMode {
         else if(gamepad2.left_trigger < gamepad2.right_trigger) hardware.mineral.setPower(gamepad2.right_trigger);
         else hardware.mineral.setPower(0);
 
-        if(gamepad2.a) setPivots(PIV_STOWED,    0.6);
-        if(gamepad2.b) setPivots(PIV_OMNI,      0.6);
-        if(gamepad2.x) setPivots(PIV_KNEEL,     0.6);
-        if(gamepad2.y) setPivots(PIV_STD,       0.6);
+//        if(gamepad2.a) setPivots(PIV_STOWED,    0.6);
+//        if(gamepad2.b) setPivots(PIV_OMNI,      0.6);
+//        if(gamepad2.x) setPivots(PIV_KNEEL,     0.6);
+//        if(gamepad2.y) setPivots(PIV_STD,       0.6);
 
         if(gamepad1.dpad_left) hardware.driveCounts(COUNTS_PER_INCH_CORE * 6, 0.6); // 6 inches at 60% power
 
@@ -51,6 +51,8 @@ public class RoverTest extends OpMode {
 
         // Servo controls
         hardware.latch.setPosition(gamepad1.right_trigger);
+        if(gamepad2.a) hardware.drop.setPosition(1.0);
+        else hardware.drop.setPosition(0.7);
 
 
         // Telemetry
