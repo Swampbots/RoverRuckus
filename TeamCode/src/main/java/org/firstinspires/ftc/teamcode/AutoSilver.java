@@ -43,7 +43,7 @@ public class AutoSilver extends LinearOpMode {
         telemetry.update();
         sleep(1000);
 
-        hardware.stop.setPosition(0.7);
+        hardware.stop.setPosition(hardware.STOP_OPEN);
 
         // STEP 2
         telemetry.addLine("Step 2");
