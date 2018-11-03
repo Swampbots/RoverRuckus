@@ -28,7 +28,7 @@ public class RoverTest extends OpMode {
         hardware.setRightPower  (-gamepad1.right_stick_y);
 
         hardware.rearPivot.setPower (gamepad2.left_stick_y);
-        hardware.frontPivot.setPower(gamepad2.right_stick_y);
+        hardware.frontPivot.setPower(-gamepad2.right_stick_y);
 
         if(gamepad1.dpad_up)        hardware.winch.setPower(1.0);
         else if(gamepad1.dpad_down) hardware.winch.setPower(-1.0);
