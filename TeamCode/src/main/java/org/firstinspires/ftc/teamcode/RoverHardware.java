@@ -60,6 +60,12 @@ public class RoverHardware {
 
 
 
+    // Servo position variables
+    public static final double STOP_OPEN    = 0.7;
+    public static final double STOP_CLOSED  = 1.0;
+
+
+
 
     // Motors
     public DcMotor frontLeft;
