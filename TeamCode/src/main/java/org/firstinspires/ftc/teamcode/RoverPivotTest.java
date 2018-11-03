@@ -27,6 +27,8 @@ public class RoverPivotTest extends OpMode {
         hardware.setLeftPower   (-gamepad1.left_stick_y);
         hardware.setRightPower  (-gamepad1.right_stick_y);
 
+
+
         // Set wheel pivot powers
         hardware.rearPivot.setPower (gamepad2.left_stick_y);
         hardware.frontPivot.setPower(gamepad2.right_stick_y);
@@ -50,7 +52,7 @@ public class RoverPivotTest extends OpMode {
         hardware.frontPivot.setTargetPosition(frontTarget);
         hardware.rearPivot.setTargetPosition(rearTarget);
 
-        
+
 
 
         // TELEMETRY
