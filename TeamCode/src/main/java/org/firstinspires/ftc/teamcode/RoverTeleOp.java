@@ -43,7 +43,6 @@ public class RoverTeleOp extends OpMode {
 //        if(gamepad2.x) setPivots(PIV_KNEEL,     0.6);
 //        if(gamepad2.y) setPivots(PIV_STD,       0.6);
 
-        if(gamepad1.dpad_left) hardware.driveCounts(COUNTS_PER_INCH_CORE * 6, 0.6); // 6 inches at 60% power
 
 
 
