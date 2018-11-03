@@ -53,11 +53,6 @@ public class RoverTeleOp extends OpMode {
 
 
         // Telemetry
-        telemetry.addData("fl power", hardware.frontLeft.getPower());
-        telemetry.addData("rl power", hardware.rearLeft.getPower());
-        telemetry.addData("fr power", hardware.frontRight.getPower());
-        telemetry.addData("rr power", hardware.rearRight.getPower());
-        telemetry.addLine();
         telemetry.addData("fl encoder", hardware.frontLeft.getCurrentPosition());
         telemetry.addData("rl encoder", hardware.rearLeft.getCurrentPosition());
         telemetry.addData("fr encoder", hardware.frontRight.getCurrentPosition());
