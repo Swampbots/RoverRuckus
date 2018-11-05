@@ -55,15 +55,17 @@ public class RoverPivotTest extends OpMode {
             rearTarget = PIV_OMNI[1];
         }
 
-//        // Set pivot targets
-//        hardware.frontPivot.setTargetPosition(frontTarget);
-//        hardware.rearPivot.setTargetPosition(rearTarget);
-//
-//        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//
-//        hardware.frontPivot.setPower(PIV_SPEED);
-//        hardware.rearPivot.setPower(PIV_SPEED);
+        // Set pivot targets
+        hardware.frontPivot.setTargetPosition(frontTarget);
+        hardware.rearPivot.setTargetPosition(rearTarget);
+
+        // Set run mode
+        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        // Set speed
+        hardware.frontPivot.setPower(PIV_SPEED);
+        hardware.rearPivot.setPower(PIV_SPEED);
 
 
 
