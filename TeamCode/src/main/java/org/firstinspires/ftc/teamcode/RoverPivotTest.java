@@ -49,10 +49,10 @@ public class RoverPivotTest extends OpMode {
             rearTarget = PIV_KNEEL[1];
         } else if(gamepad1.x) {
             frontTarget = PIV_OMNI[0];
-            rearTarget = PIV_STD[1];
+            rearTarget = PIV_OMNI[1];
         } else if(gamepad1.y) {
             frontTarget = PIV_STD[0];
-            rearTarget = PIV_OMNI[1];
+            rearTarget = PIV_STD[1];
         }
 
         // Set pivot targets
