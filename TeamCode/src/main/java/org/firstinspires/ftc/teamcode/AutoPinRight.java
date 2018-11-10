@@ -100,11 +100,11 @@ public class AutoPinRight extends LinearOpMode {
         // FINISHED
 
         while(opModeIsActive()) {
-            telemetry.addData("Latch position", hardware.latch.getPosition());
-            telemetry.addData("Drive counts", DRIVE_COUNTS);
+            telemetry.addData("Front pivot target", hardware.frontPivot.getTargetPosition());
+            telemetry.addData("Rear pivot target", hardware.rearPivot.getTargetPosition());
             telemetry.addLine();
-            telemetry.addData("Winch position", hardware.winch.getCurrentPosition());
-            telemetry.addData("fl_drive position", hardware.frontLeft.getCurrentPosition());
+            telemetry.addData("Front pivot position", hardware.frontPivot.getCurrentPosition());
+            telemetry.addData("Rear pivot position", hardware.rearPivot.getCurrentPosition());
             telemetry.update();
         }
     }
