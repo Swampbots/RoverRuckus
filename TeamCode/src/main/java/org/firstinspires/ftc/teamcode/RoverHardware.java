@@ -41,17 +41,20 @@ public class RoverHardware {
 
 
 
+    public static final int PIV_DEGREE_OFFSET = 10;
+
+
     // Rear pivot position variables
-    public static final int PIV_STOWED_REAR  = 0;                                   // Always start at 0
-    public static final int PIV_OMNI_REAR    = -COUNTS_PER_DEGREE_HD_REAR * 90;     // 90 degrees out from start
-    public static final int PIV_KNEEL_REAR   = -COUNTS_PER_DEGREE_HD_REAR * 135;    // 135 for both wheels on the ground
-    public static final int PIV_STD_REAR     = -COUNTS_PER_DEGREE_HD_REAR * 180;    // 180 for standard wheel on the ground
+    public static final int PIV_STOWED_REAR  = 0;                                                           // Always start at 0
+    public static final int PIV_OMNI_REAR    = -COUNTS_PER_DEGREE_HD_REAR * (90 + PIV_DEGREE_OFFSET);       // 90 degrees out from start
+    public static final int PIV_KNEEL_REAR   = -COUNTS_PER_DEGREE_HD_REAR * (135 + PIV_DEGREE_OFFSET);      // 135 for both wheels on the ground
+    public static final int PIV_STD_REAR     = -COUNTS_PER_DEGREE_HD_REAR * (180 + PIV_DEGREE_OFFSET);      // 180 for standard wheel on the ground
 
     // Front pivot position variables
-    public static final int PIV_STOWED_FRONT  = 0;                                  // Always start at 0
-    public static final int PIV_OMNI_FRONT    = -COUNTS_PER_DEGREE_HD_FRONT * 90;   // 90 degrees out from start
-    public static final int PIV_KNEEL_FRONT   = -COUNTS_PER_DEGREE_HD_FRONT * 135;  // 135 for both wheels on the ground
-    public static final int PIV_STD_FRONT     = -COUNTS_PER_DEGREE_HD_FRONT * 180;  // 180 for standard wheel on the ground
+    public static final int PIV_STOWED_FRONT  = 0;                                                          // Always start at 0
+    public static final int PIV_OMNI_FRONT    = -COUNTS_PER_DEGREE_HD_FRONT * (90 + PIV_DEGREE_OFFSET);     // 90 degrees out from start
+    public static final int PIV_KNEEL_FRONT   = -COUNTS_PER_DEGREE_HD_FRONT * (135 + PIV_DEGREE_OFFSET);    // 135 for both wheels on the ground
+    public static final int PIV_STD_FRONT     = -COUNTS_PER_DEGREE_HD_FRONT * (180 + PIV_DEGREE_OFFSET);    // 180 for standard wheel on the ground
 
     // Pivot state variables
     public static final int[] PIV_STOWED    = {PIV_STOWED_FRONT, PIV_STOWED_REAR};
