@@ -127,8 +127,8 @@ public class AutoPinRight extends LinearOpMode {
     }
 
     public void deployWheels(double speed) {
-        hardware.frontPivot.setTargetPosition(-2300);
-        hardware.rearPivot.setTargetPosition(-1100);
+        hardware.frontPivot.setTargetPosition(hardware.PIV_KNEEL_FRONT);
+        hardware.rearPivot.setTargetPosition(hardware.PIV_OMNI_REAR);
 
         hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
