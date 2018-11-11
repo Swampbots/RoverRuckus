@@ -36,8 +36,8 @@ public class RoverHardware {
     public static final int     COUNTS_PER_INCH_HD_REAR     = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_REAR) / WHEEL_CIRCUMFERENCE);
     public static final int     COUNTS_PER_INCH_HD_FRONT    = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_FRONT) / WHEEL_CIRCUMFERENCE);
 
-    public static final int     COUNTS_PER_DEGREE_HD_REAR   = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_REAR) / 360);
-    public static final int     COUNTS_PER_DEGREE_HD_FRONT  = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_FRONT) / 360);
+    public static final int     COUNTS_PER_DEGREE_HD_REAR   = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_REAR) / 480);
+    public static final int     COUNTS_PER_DEGREE_HD_FRONT  = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_FRONT) / 480);
 
 
 
