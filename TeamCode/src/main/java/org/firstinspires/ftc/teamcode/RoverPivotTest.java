@@ -22,6 +22,8 @@ public class RoverPivotTest extends OpMode {
 
     private final double PIV_SPEED = 0.4;
 
+    private final int GAMEPAD_SENSITIVITY = 5;
+
 
     public void init() {
         hardware.init(hardwareMap);
@@ -55,8 +57,8 @@ public class RoverPivotTest extends OpMode {
             rearTarget = PIV_STD[1];
         }
 
-        frontTarget += gamepad2.left_stick_y;
-        rearTarget += gamepad2.right_stick_y;
+        frontTarget += (gamepad2.left_stick_y * GAMEPAD_SENSITIVITY);
+        rearTarget += (gamepad2.right_stick_y * GAMEPAD_SENSITIVITY);
 
         // Set pivot targets
         hardware.frontPivot.setTargetPosition(frontTarget);
