@@ -22,7 +22,7 @@ public class RoverPivotTest extends OpMode {
 
     private final double PIV_SPEED = 0.4;
 
-    private final int GAMEPAD_SENSITIVITY = 5;
+    private final int GAMEPAD_SENSITIVITY = 35;
 
 
     public void init() {
