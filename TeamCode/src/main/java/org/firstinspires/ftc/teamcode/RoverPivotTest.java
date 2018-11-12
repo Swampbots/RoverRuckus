@@ -55,6 +55,9 @@ public class RoverPivotTest extends OpMode {
             rearTarget = PIV_STD[1];
         }
 
+        frontTarget += gamepad2.left_stick_y;
+        rearTarget += gamepad2.right_stick_y;
+
         // Set pivot targets
         hardware.frontPivot.setTargetPosition(frontTarget);
         hardware.rearPivot.setTargetPosition(rearTarget);
