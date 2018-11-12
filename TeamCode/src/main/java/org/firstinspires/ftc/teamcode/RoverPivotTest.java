@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_DEGREE_HD_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_DEGREE_HD_REAR;
+import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD;
@@ -71,6 +72,11 @@ public class RoverPivotTest extends OpMode {
         // Set speed
         hardware.frontPivot.setPower(PIV_SPEED);
         hardware.rearPivot.setPower(PIV_SPEED);
+
+
+
+        // Latch position
+        hardware.latch.setPosition(gamepad1.right_trigger * LATCH_OPEN);
 
 
 
