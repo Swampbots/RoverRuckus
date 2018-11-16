@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_DEGREE_HD_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_DEGREE_HD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD;
@@ -56,6 +57,9 @@ public class RoverPivotTest extends OpMode {
         } else if(gamepad1.y) {
             frontTarget = PIV_STD[0];
             rearTarget = PIV_STD[1];
+        } else if(gamepad1.dpad_left) {
+            frontTarget = PIV_MINE[0];
+            rearTarget = PIV_MINE[1];
         }
 
         frontTarget += (gamepad2.left_stick_y * GAMEPAD_SENSITIVITY);
