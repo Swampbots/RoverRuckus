@@ -15,7 +15,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_CLOSED;
 
 
-@Autonomous(name = "Pin Left", group = "Autonomous")
+@Autonomous(name = "Silver [Pin Left]", group = "Autonomous")
 public class AutoPinLeft extends LinearOpMode {
 
     RoverHardware hardware = new RoverHardware();
