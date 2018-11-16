@@ -50,5 +50,45 @@ public class AutoGold extends LinearOpMode {
         STEP 5: deposit marker
          */
 
+        // STEP 1
+        telemetry.addLine("Step 1");
+        telemetry.update();
+        sleep(1000);
+
+        hardware.stop.setPosition(hardware.STOP_OPEN);
+
+        // STEP 2
+        telemetry.addLine("Step 2");
+        telemetry.update();
+        sleep(1000);
+
+        deployWheels(DEPLOY_SPEED);
+
+
+        // STEP 3
+        telemetry.addLine("Step 3");
+        telemetry.update();
+        sleep(1000);
+
+        hardware.latch.setPosition(LATCH_OPEN);
+        sleep(500);
+        hardware.latch.setPosition(LATCH_LEFT);
+        sleep(500);
+        hardware.latch.setPosition(LATCH_OPEN);
+        sleep(500);
+        hardware.latch.setPosition(LATCH_LEFT);
+        sleep(500);
+        hardware.latch.setPosition(LATCH_OPEN);
+
+        sleep(2000);
+
+
+        // STEP 4
+        telemetry.addLine("Step 4");
+        telemetry.update();
+        sleep(1000);
+
+        driveToPosition(DEPLOY_COUNTS, DRIVE_SPEED);
+
     }
 }
