@@ -56,7 +56,8 @@ public class RoverTeleOp extends OpMode {
 
 
         // Pivot motor controls
-// Handle pivot targets
+
+        // Handle pivot targets
         if(gamepad1.a) {
             frontTarget = PIV_STOWED[0];
             rearTarget = PIV_STOWED[1];
@@ -86,7 +87,7 @@ public class RoverTeleOp extends OpMode {
         hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         // Set speed
-        if(gamepad2.right_stick_y < 0.05) {
+        if(Math.abs(gamepad2.right_stick_y) < 0.05) {
             hardware.frontPivot.setPower(PIV_SPEED_FRONT);
         } else {
             hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -94,7 +95,7 @@ public class RoverTeleOp extends OpMode {
             hardware.frontPivot.setTargetPosition(hardware.frontPivot.getCurrentPosition());
         }
 
-        if(gamepad2.left_stick_y < 0.05) {
+        if(Math.abs(gamepad2.left_stick_y) < 0.05) {
             hardware.rearPivot.setPower(PIV_SPEED_REAR);
         } else {
             hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
