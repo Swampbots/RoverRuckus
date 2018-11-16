@@ -30,7 +30,7 @@ public class RoverHardware {
     // Encoder variables (REV HD Hex Motors)
     public static final int     COUNTS_PER_REV_HD   = 1120;
 
-    public static final double  GEAR_REDUCTION_HD_REAR      = (28.0 / 10.0) * (26.0 / 10.0); // 10-t (output shaft) -> 28-t (transfer shaft) -- 10-t (same shaft) -> 26-t (pivot shaft)
+    public static final double  GEAR_REDUCTION_HD_REAR      = (28.0 / 10.0) * (26.0 / 15.0); // 10-t (output shaft) -> 28-t (transfer shaft) -- 15-t (same shaft) -> 26-t (pivot shaft)
     public static final double  GEAR_REDUCTION_HD_FRONT     = (28.0 / 10.0) * (26.0 / 10.0); // 10-t (output shaft) -> 28-t (transfer shaft) -- 10-t (same shaft) -> 26-t (pivot shaft)
 
     public static final int     COUNTS_PER_INCH_HD_REAR     = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_REAR) / WHEEL_CIRCUMFERENCE);
