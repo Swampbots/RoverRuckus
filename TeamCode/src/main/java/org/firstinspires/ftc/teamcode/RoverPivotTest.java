@@ -32,9 +32,9 @@ public class RoverPivotTest extends OpMode {
 
 
 
-    private final int PIV_TARGET_ERROR = 20;
-    private boolean targetReachedFront = false;
-    private boolean targetReachedRear = false;
+//    private final int PIV_TARGET_ERROR = 20;
+//    private boolean targetReachedFront = false;
+//    private boolean targetReachedRear = false;
 
 
     public void init() {
@@ -89,8 +89,8 @@ public class RoverPivotTest extends OpMode {
 
 
         // Check to see if the pivot target was reached (within error)
-        targetReachedFront = Math.abs(hardware.frontPivot.getCurrentPosition() - frontTarget) < PIV_TARGET_ERROR;
-        targetReachedRear = Math.abs(hardware.rearPivot.getCurrentPosition() - rearTarget) < PIV_TARGET_ERROR;
+//        targetReachedFront = Math.abs(hardware.frontPivot.getCurrentPosition() - frontTarget) < PIV_TARGET_ERROR;
+//        targetReachedRear = Math.abs(hardware.rearPivot.getCurrentPosition() - rearTarget) < PIV_TARGET_ERROR;
 
 
         // END TARGET CONTROLS
@@ -110,8 +110,8 @@ public class RoverPivotTest extends OpMode {
         telemetry.addData("Front Target",   frontTarget);
         telemetry.addData("Rear Target",    rearTarget);
         telemetry.addLine();
-        telemetry.addData("Front target reached", targetReachedFront);
-        telemetry.addData("Rear target reached", targetReachedRear);
+//        telemetry.addData("Front target reached", targetReachedFront);
+//        telemetry.addData("Rear target reached", targetReachedRear);
         telemetry.update();
     }
 
