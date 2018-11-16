@@ -78,10 +78,6 @@ public class RoverTeleOp extends OpMode {
         frontTarget += (gamepad2.left_stick_y * GAMEPAD_SENSITIVITY);
         rearTarget += (gamepad2.right_stick_y * GAMEPAD_SENSITIVITY * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT));
 
-        // Set pivot targets
-        hardware.frontPivot.setTargetPosition(frontTarget);
-        hardware.rearPivot.setTargetPosition(rearTarget);
-
 
         // Set target, run mode, and speed
         if(Math.abs(gamepad2.right_stick_y) < 0.05) {
@@ -90,7 +86,7 @@ public class RoverTeleOp extends OpMode {
         } else {
             hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             hardware.frontPivot.setPower(gamepad2.right_stick_y);
-            hardware.frontPivot.setTargetPosition(hardware.frontPivot.getCurrentPosition());
+            frontTarget = hardware.frontPivot.getCurrentPosition();
         }
 
         if(Math.abs(gamepad2.left_stick_y) < 0.05) {
@@ -99,8 +95,12 @@ public class RoverTeleOp extends OpMode {
         } else {
             hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             hardware.rearPivot.setPower(gamepad2.left_stick_y);
-            hardware.rearPivot.setTargetPosition(hardware.rearPivot.getCurrentPosition());
+            frontTarget = hardware.rearPivot.getCurrentPosition();
         }
+
+        // Set pivot targets
+        hardware.frontPivot.setTargetPosition(frontTarget);
+        hardware.rearPivot.setTargetPosition(rearTarget);
 
 
 
