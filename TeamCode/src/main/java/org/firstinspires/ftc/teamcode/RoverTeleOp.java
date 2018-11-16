@@ -59,11 +59,11 @@ public class RoverTeleOp extends OpMode {
 
         // Handle pivot targets
         if(gamepad2.a) {
-            frontTarget = PIV_STOWED[0];
-            rearTarget = PIV_STOWED[1];
-        } else if(gamepad2.b) {
             frontTarget = PIV_KNEEL[0];
             rearTarget = PIV_KNEEL[1];
+        } else if(gamepad2.b) {
+            frontTarget = PIV_STOWED[0];
+            rearTarget = PIV_STOWED[1];
         } else if(gamepad2.x) {
             frontTarget = PIV_OMNI[0];
             rearTarget = PIV_OMNI[1];
