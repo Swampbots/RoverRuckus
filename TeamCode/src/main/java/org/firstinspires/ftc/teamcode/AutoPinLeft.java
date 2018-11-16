@@ -6,6 +6,11 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_LEFT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_RIGHT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_REAR;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_CLOSED;
 
 
@@ -127,8 +132,8 @@ public class AutoPinLeft extends LinearOpMode {
     }
 
     public void deployWheels(double speed) {
-        hardware.frontPivot.setTargetPosition(-2300);
-        hardware.rearPivot.setTargetPosition(-1100);
+        hardware.frontPivot.setTargetPosition(PIV_STD_FRONT);
+        hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
 
         hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
