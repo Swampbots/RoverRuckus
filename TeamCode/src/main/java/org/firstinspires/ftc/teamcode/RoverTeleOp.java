@@ -36,7 +36,7 @@ public class RoverTeleOp extends OpMode {
 
 
 
-    
+
 
     public void init() {
         hardware.init(hardwareMap);
@@ -74,7 +74,7 @@ public class RoverTeleOp extends OpMode {
         }
 
         frontTarget += (gamepad2.left_stick_y * GAMEPAD_SENSITIVITY);
-        rearTarget += (gamepad2.right_stick_y * GAMEPAD_SENSITIVITY* (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT));
+        rearTarget += (gamepad2.right_stick_y * GAMEPAD_SENSITIVITY * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT));
 
         // Set pivot targets
         hardware.frontPivot.setTargetPosition(frontTarget);
