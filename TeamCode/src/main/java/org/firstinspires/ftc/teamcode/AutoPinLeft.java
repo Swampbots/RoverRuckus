@@ -137,29 +137,29 @@ public class AutoPinLeft extends LinearOpMode {
         hardware.rearPivot.setPower(speed);
 
 
-        while (opModeIsActive() && hardware.rearPivot.isBusy()) {
-            telemetry.addLine("Deploying front to " + hardware.frontPivot.getTargetPosition());
-            telemetry.addLine("Deploying rear to " + hardware.rearPivot.getTargetPosition());
-            telemetry.addLine();
-            telemetry.addData("Front position", hardware.frontPivot.getCurrentPosition());
-            telemetry.addData("Rear position", hardware.rearPivot.getCurrentPosition());
-            telemetry.update();
-        }
-
-        hardware.rearPivot.setPower(0);
-        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        while (opModeIsActive() && hardware.frontPivot.isBusy()) {
-            telemetry.addLine("Deploying front to " + hardware.frontPivot.getTargetPosition());
-            telemetry.addLine("Deploying rear to " + hardware.rearPivot.getTargetPosition());
-            telemetry.addLine();
-            telemetry.addData("Front position", hardware.frontPivot.getCurrentPosition());
-            telemetry.addData("Rear position", hardware.rearPivot.getCurrentPosition());
-            telemetry.update();
-        }
-
-        hardware.frontPivot.setPower(0);
-        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        while (opModeIsActive() && hardware.rearPivot.isBusy()) {
+//            telemetry.addLine("Deploying front to " + hardware.frontPivot.getTargetPosition());
+//            telemetry.addLine("Deploying rear to " + hardware.rearPivot.getTargetPosition());
+//            telemetry.addLine();
+//            telemetry.addData("Front position", hardware.frontPivot.getCurrentPosition());
+//            telemetry.addData("Rear position", hardware.rearPivot.getCurrentPosition());
+//            telemetry.update();
+//        }
+//
+//        hardware.rearPivot.setPower(0);
+//        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//
+//        while (opModeIsActive() && hardware.frontPivot.isBusy()) {
+//            telemetry.addLine("Deploying front to " + hardware.frontPivot.getTargetPosition());
+//            telemetry.addLine("Deploying rear to " + hardware.rearPivot.getTargetPosition());
+//            telemetry.addLine();
+//            telemetry.addData("Front position", hardware.frontPivot.getCurrentPosition());
+//            telemetry.addData("Rear position", hardware.rearPivot.getCurrentPosition());
+//            telemetry.update();
+//        }
+//
+//        hardware.frontPivot.setPower(0);
+//        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
     }
 
