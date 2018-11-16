@@ -32,7 +32,7 @@ public class RoverPivotTest extends OpMode {
 
 
 
-    private final int PIV_TARGET_ERROR = 10;
+    private final int PIV_TARGET_ERROR = 20;
     private boolean targetReachedFront = false;
     private boolean targetReachedRear = false;
 
