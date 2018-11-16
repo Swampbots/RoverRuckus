@@ -31,6 +31,12 @@ public class RoverPivotTest extends OpMode {
     private final int GAMEPAD_SENSITIVITY = 25;
 
 
+
+    private final int PIV_TARGET_ERROR = 10;
+    private boolean targetReachedFront = false;
+    private boolean targetReachedRear = false;
+
+
     public void init() {
         hardware.init(hardwareMap);
     }
@@ -82,6 +88,11 @@ public class RoverPivotTest extends OpMode {
         hardware.rearPivot.setPower(PIV_SPEED_REAR);
 
 
+        // Check to see if the pivot target was reached (within error)
+        targetReachedFront = Math.abs(hardware.frontPivot.getCurrentPosition() - frontTarget) < PIV_TARGET_ERROR;
+        targetReachedRear = Math.abs(hardware.rearPivot.getCurrentPosition() - rearTarget) < PIV_TARGET_ERROR;
+
+
         // END TARGET CONTROLS
 
 
@@ -95,13 +106,10 @@ public class RoverPivotTest extends OpMode {
 
 
 
-
         // TELEMETRY
         telemetry.addData("Front Target",   frontTarget);
         telemetry.addData("Rear Target",    rearTarget);
         telemetry.update();
     }
-
-
 
 }
