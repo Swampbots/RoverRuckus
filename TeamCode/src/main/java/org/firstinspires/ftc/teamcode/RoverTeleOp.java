@@ -86,8 +86,21 @@ public class RoverTeleOp extends OpMode {
         hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         // Set speed
-        hardware.frontPivot.setPower(PIV_SPEED_FRONT);
-        hardware.rearPivot.setPower(PIV_SPEED_REAR);
+        if(gamepad2.right_stick_y < 0.05) {
+            hardware.frontPivot.setPower(PIV_SPEED_FRONT);
+        } else {
+            hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            hardware.frontPivot.setPower(gamepad2.right_stick_y);
+            hardware.frontPivot.setTargetPosition(hardware.frontPivot.getCurrentPosition());
+        }
+
+        if(gamepad2.left_stick_y < 0.05) {
+            hardware.rearPivot.setPower(PIV_SPEED_REAR);
+        } else {
+            hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            hardware.rearPivot.setPower(gamepad2.left_stick_y);
+            hardware.rearPivot.setTargetPosition(hardware.rearPivot.getCurrentPosition());
+        }
 
 
 
