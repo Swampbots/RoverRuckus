@@ -27,27 +27,32 @@ public class RoverTeleOp extends OpMode {
 
     public void loop() {
 
-        // Motor controls
+        // Drive motor controls
         hardware.setLeftPower   (-gamepad1.left_stick_y);
         hardware.setRightPower  (-gamepad1.right_stick_y);
 
-        hardware.rearPivot.setPower (gamepad2.left_stick_y);
-        hardware.frontPivot.setPower(gamepad2.right_stick_y);
-
+        // Snorfler motors controls
         if(gamepad2.left_trigger > gamepad2.right_trigger) hardware.mineral.setPower(-gamepad2.left_trigger);
         else if(gamepad2.left_trigger < gamepad2.right_trigger) hardware.mineral.setPower(gamepad2.right_trigger);
         else hardware.mineral.setPower(0);
 
+
+        // Pivot motor controls
 //        if(gamepad2.a) setPivots(PIV_STOWED,    0.6);
 //        if(gamepad2.b) setPivots(PIV_OMNI,      0.6);
 //        if(gamepad2.x) setPivots(PIV_KNEEL,     0.6);
 //        if(gamepad2.y) setPivots(PIV_STD,       0.6);
 
+        hardware.rearPivot.setPower (gamepad2.left_stick_y);
+        hardware.frontPivot.setPower(gamepad2.right_stick_y);
 
 
 
-        // Servo controls
+
+        // Latch servo controls
         hardware.latch.setPosition(gamepad1.right_trigger * hardware.LATCH_OPEN);   // This will scale with the latch settings
+
+        // Stop servo controls
         if(gamepad2.a) hardware.stop.setPosition(STOP_CLOSED);
         else hardware.stop.setPosition(STOP_OPEN);
 
