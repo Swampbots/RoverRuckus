@@ -49,7 +49,7 @@ public class RoverHardware {
     public static final int PIV_OMNI_REAR   = -COUNTS_PER_DEGREE_HD_REAR * (90 + PIV_DEGREE_OFFSET);        // 90 degrees out from start
     public static final int PIV_KNEEL_REAR  = -COUNTS_PER_DEGREE_HD_REAR * (135 + PIV_DEGREE_OFFSET);       // 135 for both wheels on the ground
     public static final int PIV_STD_REAR    = -COUNTS_PER_DEGREE_HD_REAR * (180 + PIV_DEGREE_OFFSET);       // 180 for standard wheel on the ground
-    public static final int PIV_MINE_REAR   = -1400;                                                        // Exact degrees TBD
+    public static final int PIV_MINE_REAR   = -1450;                                                        // Exact degrees TBD
 
     // Front pivot position variables
     public static final int PIV_STOWED_FRONT    = 0;                                                        // Always start at 0
