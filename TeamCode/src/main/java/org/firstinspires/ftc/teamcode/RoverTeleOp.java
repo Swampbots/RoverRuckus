@@ -94,10 +94,6 @@ public class RoverTeleOp extends OpMode {
         // Latch servo controls
         hardware.latch.setPosition(gamepad1.right_trigger * hardware.LATCH_OPEN);   // This will scale with the latch settings
 
-        // Stop servo controls
-        if(gamepad2.a) hardware.stop.setPosition(STOP_CLOSED);
-        else hardware.stop.setPosition(STOP_OPEN);
-
 
         // Telemetry
         telemetry.addData("Front Pivot", hardware.frontPivot.getCurrentPosition());
