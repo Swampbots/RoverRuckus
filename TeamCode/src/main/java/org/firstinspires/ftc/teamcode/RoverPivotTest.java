@@ -78,6 +78,13 @@ public class RoverPivotTest extends OpMode {
         hardware.rearPivot.setPower(PIV_SPEED);
 
 
+        // END TARGET CONTROLS
+
+
+        // Snorfler
+        if(gamepad1.left_trigger > gamepad1.right_trigger) hardware.mineral.setPower(-gamepad1.left_trigger);
+        else if(gamepad1.left_trigger < gamepad1.right_trigger) hardware.mineral.setPower(gamepad1.right_trigger);
+        else hardware.mineral.setPower(0);
 
         // Latch position
         hardware.latch.setPosition(gamepad1.right_trigger * LATCH_OPEN);
