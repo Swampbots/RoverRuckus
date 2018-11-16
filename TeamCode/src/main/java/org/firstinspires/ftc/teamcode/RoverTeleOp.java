@@ -8,6 +8,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_INCH_CORE;
 import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_REV_CORE;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_REAR;
+import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE;
 import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_OPEN;
@@ -92,7 +93,7 @@ public class RoverTeleOp extends OpMode {
 
 
         // Latch servo controls
-        hardware.latch.setPosition(gamepad1.right_trigger * hardware.LATCH_OPEN);   // This will scale with the latch settings
+        hardware.latch.setPosition(gamepad1.right_trigger * LATCH_OPEN);   // This will scale with the latch settings
 
 
         // Telemetry
