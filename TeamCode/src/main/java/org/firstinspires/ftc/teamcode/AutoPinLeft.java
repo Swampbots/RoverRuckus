@@ -95,13 +95,16 @@ public class AutoPinLeft extends LinearOpMode {
         driveToPosition(DEPLOY_COUNTS, DRIVE_SPEED);
 
 
-        // CHANGE TO MINING STATE
-        telemetry.addLine("Step 4.5 (Mining");
+        // CHANGE TO MINING STATE AND ACTIVATE SNORFLER
+        telemetry.addLine("Step 4.5 (Mining)");
         telemetry.update();
         sleep(1000);
 
         hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
         hardware.rearPivot.setTargetPosition(PIV_MINE_REAR);
+
+        hardware.mineral.setPower(1.0);
+
 
 
         // STEP 5
