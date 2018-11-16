@@ -47,7 +47,8 @@ public class AutoPinLeft extends LinearOpMode {
         STEP 1: release stop
         STEP 2: deploy wheels
         STEP 3: open latch
-        STEP 4: drive forward to crater
+        STEP 4: drive away from lander
+        STEP 5: drive forward to crater
          */
 
 
