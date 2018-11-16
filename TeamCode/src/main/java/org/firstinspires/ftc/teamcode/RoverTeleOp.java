@@ -92,7 +92,7 @@ public class RoverTeleOp extends OpMode {
         } else {
             hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             hardware.rearPivot.setPower(gamepad2.left_stick_y);
-            frontTarget = hardware.rearPivot.getCurrentPosition();
+            rearTarget = hardware.rearPivot.getCurrentPosition();
         }
 
         // Set pivot targets
