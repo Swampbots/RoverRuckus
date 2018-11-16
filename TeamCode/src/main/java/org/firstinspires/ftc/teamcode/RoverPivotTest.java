@@ -109,6 +109,9 @@ public class RoverPivotTest extends OpMode {
         // TELEMETRY
         telemetry.addData("Front Target",   frontTarget);
         telemetry.addData("Rear Target",    rearTarget);
+        telemetry.addLine();
+        telemetry.addData("Front target reached", targetReachedFront);
+        telemetry.addData("Rear target reached", targetReachedRear);
         telemetry.update();
     }
 
