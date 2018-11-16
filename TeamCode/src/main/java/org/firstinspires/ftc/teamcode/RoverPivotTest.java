@@ -24,11 +24,11 @@ public class RoverPivotTest extends OpMode {
     private int frontTarget = PIV_STOWED[0];
     private int rearTarget = PIV_STOWED[1];
 
-    private final double PIV_SPEED_BASE = 0.8;
+    private final double PIV_SPEED_BASE = 0.7;
     private final double PIV_SPEED_FRONT = PIV_SPEED_BASE;
-    private final double PIV_SPEED_REAR = PIV_SPEED_FRONT * (GEAR_REDUCTION_HD_FRONT / GEAR_REDUCTION_HD_REAR);
+    private final double PIV_SPEED_REAR = PIV_SPEED_FRONT * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT);
 
-    private final int GAMEPAD_SENSITIVITY = 25;
+    private final int GAMEPAD_SENSITIVITY = 20;
 
 
 
