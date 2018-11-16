@@ -58,19 +58,19 @@ public class RoverTeleOp extends OpMode {
         // Pivot motor controls
 
         // Handle pivot targets
-        if(gamepad1.a) {
+        if(gamepad2.a) {
             frontTarget = PIV_STOWED[0];
             rearTarget = PIV_STOWED[1];
-        } else if(gamepad1.b) {
+        } else if(gamepad2.b) {
             frontTarget = PIV_KNEEL[0];
             rearTarget = PIV_KNEEL[1];
-        } else if(gamepad1.x) {
+        } else if(gamepad2.x) {
             frontTarget = PIV_OMNI[0];
             rearTarget = PIV_OMNI[1];
-        } else if(gamepad1.y) {
+        } else if(gamepad2.y) {
             frontTarget = PIV_STD[0];
             rearTarget = PIV_STD[1];
-        } else if(gamepad1.dpad_left) {
+        } else if(gamepad2.dpad_left) {
             frontTarget = PIV_MINE[0];
             rearTarget = PIV_MINE[1];
         }
