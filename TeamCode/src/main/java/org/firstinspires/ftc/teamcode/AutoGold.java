@@ -98,8 +98,6 @@ public class AutoGold extends LinearOpMode {
         hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
         hardware.rearPivot.setTargetPosition(PIV_MINE_REAR);
 
-        hardware.mineral.setPower(1.0);
-
 
         // STEP 5
         telemetry.addLine("Step 5");
@@ -107,6 +105,8 @@ public class AutoGold extends LinearOpMode {
         sleep(1000);
 
         driveToPosition(DRIVE_COUNTS, DRIVE_SPEED);
+
+        hardware.mineral.setPower(-1.0);
 
 
 
