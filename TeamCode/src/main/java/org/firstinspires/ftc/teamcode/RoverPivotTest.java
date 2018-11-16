@@ -7,6 +7,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_DEGREE_HD_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_DEGREE_HD_REAR;
+import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
@@ -22,7 +24,9 @@ public class RoverPivotTest extends OpMode {
     private int frontTarget = PIV_STOWED[0];
     private int rearTarget = PIV_STOWED[1];
 
-    private final double PIV_SPEED = 0.4;
+    private final double PIV_SPEED_BASE = 0.8;
+    private final double PIV_SPEED_FRONT = PIV_SPEED_BASE / GEAR_REDUCTION_HD_FRONT;
+    private final double PIV_SPEED_REAR = PIV_SPEED_BASE / GEAR_REDUCTION_HD_REAR;
 
     private final int GAMEPAD_SENSITIVITY = 35;
 
@@ -74,8 +78,8 @@ public class RoverPivotTest extends OpMode {
         hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         // Set speed
-        hardware.frontPivot.setPower(PIV_SPEED);
-        hardware.rearPivot.setPower(PIV_SPEED);
+        hardware.frontPivot.setPower(PIV_SPEED_FRONT);
+        hardware.rearPivot.setPower(PIV_SPEED_REAR);
 
 
         // END TARGET CONTROLS
