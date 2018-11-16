@@ -20,9 +20,6 @@ public class AutoPinLeft extends LinearOpMode {
 
     RoverHardware hardware = new RoverHardware();
 
-    public final int WINCH_COUNTS = 7000;
-    public final double WINCH_SPEED = -0.5;
-
     public final double DEPLOY_SPEED = 0.5;
 
     public final int DEPLOY_COUNTS = 250;
