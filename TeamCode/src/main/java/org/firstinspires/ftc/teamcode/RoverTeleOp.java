@@ -34,10 +34,6 @@ public class RoverTeleOp extends OpMode {
         hardware.rearPivot.setPower (gamepad2.left_stick_y);
         hardware.frontPivot.setPower(gamepad2.right_stick_y);
 
-        if(gamepad1.dpad_up)        hardware.winch.setPower(1.0);
-        else if(gamepad1.dpad_down) hardware.winch.setPower(-1.0);
-        else                        hardware.winch.setPower(0);
-
         if(gamepad2.left_trigger > gamepad2.right_trigger) hardware.mineral.setPower(-gamepad2.left_trigger);
         else if(gamepad2.left_trigger < gamepad2.right_trigger) hardware.mineral.setPower(gamepad2.right_trigger);
         else hardware.mineral.setPower(0);
