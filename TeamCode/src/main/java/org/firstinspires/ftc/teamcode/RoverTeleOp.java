@@ -75,9 +75,6 @@ public class RoverTeleOp extends OpMode {
             rearTarget = PIV_MINE[1];
         }
 
-        frontTarget += (gamepad2.left_stick_y * GAMEPAD_SENSITIVITY);
-        rearTarget += (gamepad2.right_stick_y * GAMEPAD_SENSITIVITY * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT));
-
 
         // Set target, run mode, and speed
         if(Math.abs(gamepad2.right_stick_y) < 0.05) {
