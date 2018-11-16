@@ -36,7 +36,8 @@ public class RoverTeleOp extends OpMode {
     private final int GAMEPAD_SENSITIVITY = 20;
 
 
-
+    private final double PIV_SPEED_SCALER_FRONT = 0.75;
+    private final double PIV_SPEED_SCALER_REAR = PIV_SPEED_SCALER_FRONT * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT);
 
 
     public void init() {
@@ -82,7 +83,7 @@ public class RoverTeleOp extends OpMode {
             hardware.frontPivot.setPower(PIV_SPEED_FRONT);
         } else {
             hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            hardware.frontPivot.setPower(gamepad2.right_stick_y);
+            hardware.frontPivot.setPower(gamepad2.right_stick_y * PIV_SPEED_SCALER_FRONT);
             frontTarget = hardware.frontPivot.getCurrentPosition();
         }
 
@@ -91,7 +92,7 @@ public class RoverTeleOp extends OpMode {
             hardware.rearPivot.setPower(PIV_SPEED_REAR);
         } else {
             hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            hardware.rearPivot.setPower(gamepad2.left_stick_y);
+            hardware.rearPivot.setPower(gamepad2.left_stick_y * PIV_SPEED_SCALER_REAR);
             rearTarget = hardware.rearPivot.getCurrentPosition();
         }
 
