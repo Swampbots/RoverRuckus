@@ -66,10 +66,10 @@ public class RoverTeleOp extends OpMode {
             frontTarget = PIV_STOWED[0];
             rearTarget = PIV_STOWED[1];
         } else if(gamepad2.x) {
-            frontTarget = PIV_OMNI[0];
+            frontTarget = PIV_STD[0];
             rearTarget = PIV_OMNI[1];
         } else if(gamepad2.y) {
-            frontTarget = PIV_STD[0];
+            frontTarget = PIV_OMNI[0];
             rearTarget = PIV_STD[1];
         } else if(gamepad2.dpad_left) {
             frontTarget = PIV_MINE[0];
@@ -99,6 +99,9 @@ public class RoverTeleOp extends OpMode {
         // Set pivot targets
         hardware.frontPivot.setTargetPosition(frontTarget);
         hardware.rearPivot.setTargetPosition(rearTarget);
+
+
+        
 
 
 
