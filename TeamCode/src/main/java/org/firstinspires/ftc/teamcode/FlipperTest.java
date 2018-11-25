@@ -12,6 +12,8 @@ public class FlipperTest extends OpMode {
     RoverHardware hardware = new RoverHardware();
 
     private final double FLIPPER_SPEED_BASE = 0.5;
+    private final double FLIPPER_SPEED_SCALER = 0.6;
+
 
     private final int COUNTS_PER_REV_HD_20 = COUNTS_PER_REV_HD / 2; // Converting from a 40:1 motor to a 20:1
     private final double GEAR_REDUCTION_FLIPPER = 1.0; // 1:1 gear ratio
@@ -26,10 +28,18 @@ public class FlipperTest extends OpMode {
 
     public void loop() {
 
-        // Set the motor power (using the snorfler motor lol)
+        // Set the flipper power (using the snorfler motor lol)
         hardware.mineral.setPower(gamepad1.left_stick_y * FLIPPER_SPEED_BASE);
 
-        
+        // Handle flipper target, run mode, and speed
+        if(Math.abs(gamepad2.right_stick_y) < 0.05) {
+            hardware.mineral.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            hardware.mineral.setPower(FLIPPER_SPEED_BASE);
+        } else {
+            hardware.mineral.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            hardware.mineral.setPower(gamepad2.right_stick_y * FLIPPER_SPEED_SCALER);
+            flipperTarget = hardware.mineral.getCurrentPosition();
+        }
 
 
     }
