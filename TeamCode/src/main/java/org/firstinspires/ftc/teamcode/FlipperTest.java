@@ -26,6 +26,11 @@ public class FlipperTest extends OpMode {
 
     public void loop() {
 
+        // Set the motor power (using the snorfler motor lol)
+        hardware.mineral.setPower(gamepad1.left_stick_y * FLIPPER_SPEED_BASE);
+
         
+
+
     }
 }
