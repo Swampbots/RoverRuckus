@@ -77,7 +77,7 @@ public class RoverTeleOp extends OpMode {
         }
 
 
-        // Set target, run mode, and speed
+        // Set pivot target, run mode, and speed
         if(Math.abs(gamepad2.right_stick_y) < 0.05) {
             hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             hardware.frontPivot.setPower(PIV_SPEED_FRONT);
