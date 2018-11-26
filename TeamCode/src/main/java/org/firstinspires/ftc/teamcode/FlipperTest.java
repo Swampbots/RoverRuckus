@@ -11,7 +11,7 @@ public class FlipperTest extends OpMode {
 
     RoverHardware hardware = new RoverHardware();
 
-    private final double FLIPPER_SPEED_BASE = 0.5;
+    private final double FLIPPER_SPEED_BASE = 0.05;
     private final double FLIPPER_SPEED_SCALER = 0.6;
 
 
@@ -34,13 +34,15 @@ public class FlipperTest extends OpMode {
         if(gamepad1.a) flipperTarget = 0;
         if(gamepad1.y) flipperTarget = COUNTS_PER_DEGREE_REV_HD_20 * 180;
 
+        hardware.mineral.setTargetPosition(flipperTarget);
+
         // Handle flipper target, run mode, and speed
-        if(Math.abs(gamepad2.right_stick_y) < 0.05) {
+        if(Math.abs(gamepad1.right_stick_y) < 0.05) {
             hardware.mineral.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             hardware.mineral.setPower(FLIPPER_SPEED_BASE);
         } else {
             hardware.mineral.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            hardware.mineral.setPower(gamepad2.right_stick_y * FLIPPER_SPEED_SCALER);
+            hardware.mineral.setPower(gamepad1.right_stick_y * FLIPPER_SPEED_SCALER);
             flipperTarget = hardware.mineral.getCurrentPosition();
         }
 
