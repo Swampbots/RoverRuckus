@@ -27,10 +27,6 @@ public class FlipperTest extends OpMode {
     }
 
     public void loop() {
-
-        // Set the flipper power (using the snorfler motor lol)
-        hardware.mineral.setPower(gamepad1.left_stick_y * FLIPPER_SPEED_BASE);
-
         if(gamepad1.a) flipperTarget = 0;
         if(gamepad1.y) flipperTarget = COUNTS_PER_DEGREE_REV_HD_20 * 180;
 
@@ -42,7 +38,7 @@ public class FlipperTest extends OpMode {
             hardware.mineral.setPower(FLIPPER_SPEED_BASE);
         } else {
             hardware.mineral.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            hardware.mineral.setPower(gamepad1.right_stick_y * FLIPPER_SPEED_SCALER);
+            hardware.mineral.setPower(gamepad1.left_stick_y * FLIPPER_SPEED_BASE);
             flipperTarget = hardware.mineral.getCurrentPosition();
         }
 
