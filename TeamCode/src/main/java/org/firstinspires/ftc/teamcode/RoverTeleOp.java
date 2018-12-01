@@ -25,6 +25,9 @@ public class RoverTeleOp extends OpMode {
     private final double MINERAL_TOP = 0.0;
     private final double MINERAL_BOTTOM = -650.0;
 
+    private final int FLIPPER_FLIP = -500;
+    private final int FLIPPER_LOAD = 0;
+
 
     private int frontTarget = PIV_STOWED[0];
     private int rearTarget = PIV_STOWED[1];
@@ -57,11 +60,13 @@ public class RoverTeleOp extends OpMode {
 
 
         // Flipper controls
+        hardware.winch.setPower(0.6);
+        hardware.winch.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         if(gamepad2.dpad_up) {
-            hardware.winch.setPower(0.5);
+            hardware.winch.setTargetPosition(FLIPPER_FLIP);
         } else if(gamepad2.dpad_down) {
-            hardware.winch.setPower(-0.5);
-        } else hardware.winch.setPower(0.0);
+            hardware.winch.setTargetPosition(FLIPPER_LOAD);
+        }
 
 
 
@@ -121,9 +126,11 @@ public class RoverTeleOp extends OpMode {
 
 
 
-
         // Latch servo controls
         hardware.latch.setPosition(gamepad1.right_trigger * LATCH_OPEN);   // This will scale with the latch settings
+
+
+
 
 
         // Telemetry
