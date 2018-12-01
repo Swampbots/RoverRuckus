@@ -58,9 +58,9 @@ public class RoverTeleOp extends OpMode {
 
         // Flipper controls
         if(gamepad2.dpad_up) {
-            hardware.winch.setPower(0.25);
+            hardware.winch.setPower(0.5);
         } else if(gamepad2.dpad_down) {
-            hardware.winch.setPower(-0.25);
+            hardware.winch.setPower(-0.5);
         } else hardware.winch.setPower(0.0);
 
 
