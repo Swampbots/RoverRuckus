@@ -60,13 +60,15 @@ public class RoverTeleOp extends OpMode {
 
 
         // Flipper controls
-        hardware.winch.setPower(0.6);
-        hardware.winch.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        if(gamepad2.dpad_up) {
-            hardware.winch.setTargetPosition(FLIPPER_FLIP);
-        } else if(gamepad2.dpad_down) {
-            hardware.winch.setTargetPosition(FLIPPER_LOAD);
-        }
+
+
+        if(gamepad2.dpad_left &&
+                hardware.winch.getCurrentPosition() < FLIPPER_FLIP) {
+            hardware.winch.setPower(gamepad2.left_trigger);
+        } else if(gamepad2.dpad_left &&
+                hardware.winch.getCurrentPosition() > FLIPPER_LOAD) {
+            hardware.winch.setPower(-gamepad2.right_trigger);
+        } else hardware.winch.setPower(0.0);
 
 
 
@@ -137,9 +139,13 @@ public class RoverTeleOp extends OpMode {
         telemetry.addData("Front Pivot", hardware.frontPivot.getCurrentPosition());
         telemetry.addData("Rear Pivot", hardware.rearPivot.getCurrentPosition());
         telemetry.addLine();
-        telemetry.addData("Flipper position", hardware.winch.getCurrentPosition());
+        telemetry.addData("Flipper Position", hardware.winch.getCurrentPosition());
         telemetry.update();
     }
+
+
+
+
 
 
     // METHODS
