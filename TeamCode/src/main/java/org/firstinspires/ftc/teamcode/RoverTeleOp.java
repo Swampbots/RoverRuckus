@@ -157,50 +157,50 @@ public class RoverTeleOp extends OpMode {
 
 
 
-    // METHODS
-
-
-    public void setPivots(int[] targets, double speed) {
-        hardware.stopAllMotors();
-
-        hardware.frontPivot.setTargetPosition(targets[0]);
-        hardware.rearPivot.setTargetPosition(targets[1]);
-
-        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        if(hardware.frontPivot.getCurrentPosition() - targets[0] < 0) {
-            hardware.frontPivot.setPower(speed);
-            hardware.rearPivot.setPower(speed);
-        } else {
-            hardware.frontPivot.setPower(-speed);
-            hardware.rearPivot.setPower(-speed);
-        }
-
-        while (hardware.rearPivot.isBusy()) {
-            telemetry.addLine("Deploying front to " + hardware.frontPivot.getTargetPosition());
-            telemetry.addLine("Deploying rear to " + hardware.rearPivot.getTargetPosition());
-            telemetry.addLine();
-            telemetry.addData("Front position", hardware.frontPivot.getCurrentPosition());
-            telemetry.addData("Rear position", hardware.rearPivot.getCurrentPosition());
-            telemetry.update();
-        }
-
-        hardware.rearPivot.setPower(0);
-        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        while (hardware.frontPivot.isBusy()) {
-            telemetry.addLine("Deploying front to " + hardware.frontPivot.getTargetPosition());
-            telemetry.addLine("Deploying rear to " + hardware.rearPivot.getTargetPosition());
-            telemetry.addLine();
-            telemetry.addData("Front position", hardware.frontPivot.getCurrentPosition());
-            telemetry.addData("Rear position", hardware.rearPivot.getCurrentPosition());
-            telemetry.update();
-        }
-
-        hardware.frontPivot.setPower(0);
-        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-    }
+//    // METHODS
+//
+//
+//    public void setPivots(int[] targets, double speed) {
+//        hardware.stopAllMotors();
+//
+//        hardware.frontPivot.setTargetPosition(targets[0]);
+//        hardware.rearPivot.setTargetPosition(targets[1]);
+//
+//        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//
+//        if(hardware.frontPivot.getCurrentPosition() - targets[0] < 0) {
+//            hardware.frontPivot.setPower(speed);
+//            hardware.rearPivot.setPower(speed);
+//        } else {
+//            hardware.frontPivot.setPower(-speed);
+//            hardware.rearPivot.setPower(-speed);
+//        }
+//
+//        while (hardware.rearPivot.isBusy()) {
+//            telemetry.addLine("Deploying front to " + hardware.frontPivot.getTargetPosition());
+//            telemetry.addLine("Deploying rear to " + hardware.rearPivot.getTargetPosition());
+//            telemetry.addLine();
+//            telemetry.addData("Front position", hardware.frontPivot.getCurrentPosition());
+//            telemetry.addData("Rear position", hardware.rearPivot.getCurrentPosition());
+//            telemetry.update();
+//        }
+//
+//        hardware.rearPivot.setPower(0);
+//        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//
+//        while (hardware.frontPivot.isBusy()) {
+//            telemetry.addLine("Deploying front to " + hardware.frontPivot.getTargetPosition());
+//            telemetry.addLine("Deploying rear to " + hardware.rearPivot.getTargetPosition());
+//            telemetry.addLine();
+//            telemetry.addData("Front position", hardware.frontPivot.getCurrentPosition());
+//            telemetry.addData("Rear position", hardware.rearPivot.getCurrentPosition());
+//            telemetry.update();
+//        }
+//
+//        hardware.frontPivot.setPower(0);
+//        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//
+//    }
 
 }
