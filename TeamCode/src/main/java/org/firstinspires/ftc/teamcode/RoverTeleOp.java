@@ -148,7 +148,7 @@ public class RoverTeleOp extends OpMode {
         telemetry.addLine();
         telemetry.addData("Flipper Position", hardware.winch.getCurrentPosition());
         telemetry.addLine();
-        telemetry.addData("Flipper Scalar", flipperScalar);
+//        telemetry.addData("Flipper Scalar", flipperScalar);
         telemetry.update();
     }
 
