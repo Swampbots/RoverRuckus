@@ -39,6 +39,8 @@ public class RoverHardware {
     public static final int     COUNTS_PER_DEGREE_HD_REAR   = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_REAR) / 360);
     public static final int     COUNTS_PER_DEGREE_HD_FRONT  = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_FRONT) / 360);
 
+    public static final int     COUNTS_PER_DEGREE_HD_FLIPPER = (int)(COUNTS_PER_REV_HD / 360);
+
 
 
     public static final int PIV_DEGREE_OFFSET = 10;
@@ -64,6 +66,15 @@ public class RoverHardware {
     public static final int[] PIV_KNEEL     = {PIV_KNEEL_FRONT, PIV_KNEEL_REAR};
     public static final int[] PIV_STD       = {PIV_STD_FRONT, PIV_STD_REAR};
     public static final int[] PIV_MINE      = {PIV_MINE_FRONT, PIV_MINE_REAR};
+
+
+
+
+    // Flipper state variables
+    public static final int FLIPPER_STOW = 0;
+    public static final int FLIPPER_LOAD = COUNTS_PER_DEGREE_HD_FLIPPER * 35;
+    public static final int FLIPPER_FLIP = COUNTS_PER_DEGREE_HD_FLIPPER * 90;
+    public static final int FLIPPER_CLAIM = COUNTS_PER_DEGREE_HD_FLIPPER * 110;
 
 
 
