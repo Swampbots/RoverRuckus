@@ -27,21 +27,34 @@ public class FlipperTest extends OpMode {
     }
 
     public void loop() {
-        if(gamepad1.a) flipperTarget = 0;
-        if(gamepad1.y) flipperTarget = COUNTS_PER_DEGREE_REV_HD_20 * 180;
+//        if(gamepad1.a) flipperTarget = 0;
+//        if(gamepad1.y) flipperTarget = COUNTS_PER_DEGREE_REV_HD_20 * 180;
+//
+//        hardware.mineral.setTargetPosition(flipperTarget);
+//
+//        // Handle flipper target, run mode, and speed
+//        if(Math.abs(gamepad1.right_stick_y) < 0.05) {
+//            hardware.mineral.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//            hardware.mineral.setPower(FLIPPER_SPEED_BASE);
+//        } else {
+//            hardware.mineral.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//            hardware.mineral.setPower(gamepad1.left_stick_y * FLIPPER_SPEED_BASE);
+//            flipperTarget = hardware.mineral.getCurrentPosition();
+//        }
 
-        hardware.mineral.setTargetPosition(flipperTarget);
+        double flipperScalar = 0.6;
 
-        // Handle flipper target, run mode, and speed
-        if(Math.abs(gamepad1.right_stick_y) < 0.05) {
-            hardware.mineral.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            hardware.mineral.setPower(FLIPPER_SPEED_BASE);
-        } else {
-            hardware.mineral.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            hardware.mineral.setPower(gamepad1.left_stick_y * FLIPPER_SPEED_BASE);
-            flipperTarget = hardware.mineral.getCurrentPosition();
-        }
+        if(gamepad2.a) flipperScalar = 1.0;
+        else if(gamepad2.b) flipperScalar = 0.4;
+        else if(gamepad2.x) flipperScalar = 0.6;
+        else if(gamepad2.y) flipperScalar = 0.8;
+
+        hardware.winch.setPower(gamepad2.left_stick_y * flipperScalar);
+        hardware.mineral.setPower(gamepad2.right_stick_y);
 
 
+        telemetry.addData("Launcher Position", hardware.winch.getCurrentPosition());
+        telemetry.addData("Flipper Scalar", flipperScalar);
+        telemetry.update();
     }
 }
