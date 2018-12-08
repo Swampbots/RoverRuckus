@@ -99,6 +99,9 @@ public class RoverHardware {
     public Servo latch;
     public Servo stop;
 
+    public Servo lifter;
+    public Servo ramp;
+
 
 
     public void init(HardwareMap ahwMap) {
@@ -158,6 +161,9 @@ public class RoverHardware {
         // Initialize servos
         latch   = hwMap.servo.get("latch");
         stop = hwMap.servo.get("stop");
+
+        lifter = hwMap.servo.get("lifter");
+        ramp = hwMap.servo.get("ramp");
     }
 
 
