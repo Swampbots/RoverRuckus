@@ -59,45 +59,45 @@ public class RoverTeleOp extends OpMode {
         else hardware.mineral.setPower(0);
 
 
-        // Flipper controls
-        double flipperScalar = 0.2;
-
-        if(gamepad2.left_bumper && gamepad2.a) flipperScalar = 0.2;
-        else if(gamepad2.left_bumper && gamepad2.b) flipperScalar = 0.4;
-        else if(gamepad2.left_bumper && gamepad2.x) flipperScalar = 0.6;
-        else if(gamepad2.left_bumper && gamepad2.y) flipperScalar = 0.8;
-
-
-
-        if(gamepad2.dpad_left &&
-                hardware.winch.getCurrentPosition() < FLIPPER_FLIP) {
-            hardware.winch.setPower(gamepad2.left_trigger * flipperScalar);
-        } else if(gamepad2.dpad_left &&
-                hardware.winch.getCurrentPosition() > FLIPPER_LOAD) {
-            hardware.winch.setPower(-gamepad2.right_trigger * flipperScalar);
-        } else hardware.winch.setPower(0.0);
+//        // Flipper controls
+//        double flipperScalar = 0.2;
+//
+//        if(gamepad2.left_bumper && gamepad2.a) flipperScalar = 0.2;
+//        else if(gamepad2.left_bumper && gamepad2.b) flipperScalar = 0.4;
+//        else if(gamepad2.left_bumper && gamepad2.x) flipperScalar = 0.6;
+//        else if(gamepad2.left_bumper && gamepad2.y) flipperScalar = 0.8;
+//
+//
+//
+//        if(gamepad2.dpad_left &&
+//                hardware.winch.getCurrentPosition() < FLIPPER_FLIP) {
+//            hardware.winch.setPower(gamepad2.left_trigger * flipperScalar);
+//        } else if(gamepad2.dpad_left &&
+//                hardware.winch.getCurrentPosition() > FLIPPER_LOAD) {
+//            hardware.winch.setPower(-gamepad2.right_trigger * flipperScalar);
+//        } else hardware.winch.setPower(0.0);
 
 
 
         // Pivot motor controls
 
-        // Handle pivot targets
-        if(gamepad2.a) {
-            frontTarget = PIV_KNEEL[0];
-            rearTarget = PIV_KNEEL[1];
-        } else if(gamepad2.b) {
-            frontTarget = PIV_STOWED[0];
-            rearTarget = PIV_STOWED[1];
-        } else if(gamepad2.x) {
-            frontTarget = PIV_STD[0];
-            rearTarget = PIV_OMNI[1];
-        } else if(gamepad2.y) {
-            frontTarget = PIV_OMNI[0];
-            rearTarget = PIV_STD[1];
-        } else if(gamepad2.dpad_left) {
-            frontTarget = PIV_MINE[0];
-            rearTarget = PIV_MINE[1];
-        }
+//        // Handle pivot targets
+//        if(gamepad2.a) {
+//            frontTarget = PIV_KNEEL[0];
+//            rearTarget = PIV_KNEEL[1];
+//        } else if(gamepad2.b) {
+//            frontTarget = PIV_STOWED[0];
+//            rearTarget = PIV_STOWED[1];
+//        } else if(gamepad2.x) {
+//            frontTarget = PIV_STD[0];
+//            rearTarget = PIV_OMNI[1];
+//        } else if(gamepad2.y) {
+//            frontTarget = PIV_OMNI[0];
+//            rearTarget = PIV_STD[1];
+//        } else if(gamepad2.dpad_left) {
+//            frontTarget = PIV_MINE[0];
+//            rearTarget = PIV_MINE[1];
+//        }
 
 
         // Set pivot target, run mode, and speed
