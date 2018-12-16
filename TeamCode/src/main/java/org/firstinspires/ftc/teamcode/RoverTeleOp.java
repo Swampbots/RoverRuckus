@@ -106,7 +106,7 @@ public class RoverTeleOp extends OpMode {
             hardware.frontPivot.setPower(PIV_SPEED_FRONT);
         } else {
             hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            hardware.frontPivot.setPower(gamepad2.right_stick_y * PIV_SPEED_SCALER_FRONT);
+            hardware.frontPivot.setPower(-gamepad2.right_stick_y * PIV_SPEED_SCALER_FRONT);
             frontTarget = hardware.frontPivot.getCurrentPosition();
         }
 
@@ -115,7 +115,7 @@ public class RoverTeleOp extends OpMode {
             hardware.rearPivot.setPower(PIV_SPEED_REAR);
         } else {
             hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            hardware.rearPivot.setPower(gamepad2.left_stick_y * PIV_SPEED_SCALER_REAR);
+            hardware.rearPivot.setPower(-gamepad2.left_stick_y * PIV_SPEED_SCALER_REAR);
             rearTarget = hardware.rearPivot.getCurrentPosition();
         }
 
@@ -123,7 +123,7 @@ public class RoverTeleOp extends OpMode {
         hardware.frontPivot.setTargetPosition(frontTarget);
         hardware.rearPivot.setTargetPosition(rearTarget);
 
-
+        
         // Encoder reset controls
         if(gamepad2.left_bumper && gamepad2.dpad_right) {
             hardware.frontPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
