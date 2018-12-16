@@ -7,6 +7,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_LEFT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_RIGHT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI_REAR;
@@ -90,13 +91,16 @@ public class AutoGold extends LinearOpMode {
 
         driveToPosition(DEPLOY_COUNTS, DRIVE_SPEED);
 
-        // CHANGE TO MINING STATE AND ACTIVATE SNORFLER
-        telemetry.addLine("Step 4.5 (Mining)");
-        telemetry.update();
-        sleep(1000);
 
-        hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
-        hardware.rearPivot.setTargetPosition(PIV_MINE_REAR);
+        hardware.ramp.setPosition(1.0);
+
+//        // CHANGE TO MINING STATE AND ACTIVATE SNORFLER
+//        telemetry.addLine("Step 4.5 (Mining)");
+//        telemetry.update();
+//        sleep(1000);
+//
+//        hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+//        hardware.rearPivot.setTargetPosition(PIV_MINE_REAR);
 
 
         // STEP 5
