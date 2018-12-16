@@ -153,8 +153,8 @@ public class AutoGold extends LinearOpMode {
     }
 
     public void deployWheels(double speed) {
-        hardware.frontPivot.setTargetPosition(PIV_STD_FRONT);
-        hardware.rearPivot.setTargetPosition(PIV_OMNI_REAR);
+        hardware.frontPivot.setTargetPosition(PIV_KNEEL_FRONT);
+        hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
 
         hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
