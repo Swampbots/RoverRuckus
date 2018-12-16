@@ -165,8 +165,8 @@ public class RoverHardware {
         frontRight.setDirection (DcMotorSimple.Direction.FORWARD);
         rearRight.setDirection  (DcMotorSimple.Direction.FORWARD);
 
-        rearPivot.setDirection  (DcMotorSimple.Direction.FORWARD);
-        frontPivot.setDirection (DcMotorSimple.Direction.FORWARD);
+        rearPivot.setDirection  (DcMotorSimple.Direction.REVERSE);
+        frontPivot.setDirection (DcMotorSimple.Direction.REVERSE);
 
         winch.setDirection      (DcMotorSimple.Direction.FORWARD);
 
