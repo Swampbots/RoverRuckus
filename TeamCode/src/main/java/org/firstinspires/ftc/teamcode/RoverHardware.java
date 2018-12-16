@@ -90,6 +90,16 @@ public class RoverHardware {
     public static final int FLIPPER_FLIP = -COUNTS_PER_DEGREE_HD_FLIPPER * 90;
     public static final int FLIPPER_CLAIM = -COUNTS_PER_DEGREE_HD_FLIPPER * 110;
 
+    public void nextFlipper() {
+        if(winch.getCurrentPosition() == FLIPPER_STOW) winch.setTargetPosition(FLIPPER_LOAD);
+        else if(winch.getCurrentPosition() == FLIPPER_LOAD) winch.setTargetPosition(FLIPPER_FLIP);
+    }
+
+    public void prevFlipper() {
+        if(winch.getCurrentPosition() == FLIPPER_FLIP) winch.setTargetPosition(FLIPPER_LOAD);
+        else if(winch.getCurrentPosition() == FLIPPER_LOAD) winch.setTargetPosition(FLIPPER_STOW);
+    }
+
 
 
 
