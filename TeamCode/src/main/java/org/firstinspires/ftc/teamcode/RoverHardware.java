@@ -109,7 +109,7 @@ public class RoverHardware {
 
     public static final double LATCH_LEFT   = 0.0;
     public static final double LATCH_RIGHT  = 1.0;
-    public static final double LATCH_OPEN   = 0.5;
+    public static final double LATCH_OPEN   = 0.6;
 
 
 
