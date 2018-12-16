@@ -199,6 +199,8 @@ public class RoverHardware {
 
         lifter = hwMap.servo.get("lifter");
         ramp = hwMap.servo.get("ramp");
+
+        ramp.setPosition(0.0);
     }
 
 
