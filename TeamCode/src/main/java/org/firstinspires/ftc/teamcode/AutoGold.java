@@ -110,7 +110,9 @@ public class AutoGold extends LinearOpMode {
 
         driveToPosition(DRIVE_COUNTS, DRIVE_SPEED);
 
-        hardware.mineral.setPower(-1.0);
+        hardware.winch.setPower(-0.9);
+        sleep(250);
+        hardware.winch.setPower(0.0);
 
 
 
