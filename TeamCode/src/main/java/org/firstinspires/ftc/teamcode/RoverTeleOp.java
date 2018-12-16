@@ -123,7 +123,16 @@ public class RoverTeleOp extends OpMode {
         hardware.frontPivot.setTargetPosition(frontTarget);
         hardware.rearPivot.setTargetPosition(rearTarget);
 
-        
+
+        // Flipper controls
+//        if(gamepad2.left_bumper) hardware.nextFlipper();
+//        else if(gamepad2.right_bumper) hardware.prevFlipper();
+//        hardware.winch.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        hardware.winch.setPower(0.9);
+        if(gamepad2.left_bumper) hardware.winch.setPower(0.5);
+        else if(gamepad2.right_bumper) hardware.winch.setPower(-0.9);
+        else hardware.winch.setPower(0.0);
+
         // Encoder reset controls
         if(gamepad2.left_bumper && gamepad2.dpad_right) {
             hardware.frontPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
