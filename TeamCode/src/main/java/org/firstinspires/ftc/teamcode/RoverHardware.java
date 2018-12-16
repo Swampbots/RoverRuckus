@@ -86,13 +86,13 @@ public class RoverHardware {
     // Flipper state variables
 
     public static final int FLIPPER_STOW = 0;
-    public static final int FLIPPER_LOAD = COUNTS_PER_DEGREE_HD_FLIPPER * 35;
-    public static final int FLIPPER_FLIP = COUNTS_PER_DEGREE_HD_FLIPPER * 90;
-    public static final int FLIPPER_CLAIM = COUNTS_PER_DEGREE_HD_FLIPPER * 110;
+    public static final int FLIPPER_LOAD = -COUNTS_PER_DEGREE_HD_FLIPPER * 35;
+    public static final int FLIPPER_FLIP = -COUNTS_PER_DEGREE_HD_FLIPPER * 90;
+    public static final int FLIPPER_CLAIM = -COUNTS_PER_DEGREE_HD_FLIPPER * 110;
 
 
 
-    
+
     // Servo position variables
     public static final double STOP_OPEN    = 0.7;
     public static final double STOP_CLOSED  = 1.0;
