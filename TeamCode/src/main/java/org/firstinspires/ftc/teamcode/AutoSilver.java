@@ -7,6 +7,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_LEFT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_RIGHT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI_REAR;
@@ -16,7 +17,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_CLOSED;
 
 
 @Autonomous(name = "Silver [Pin Left]", group = "Autonomous")
-public class AutoPinLeft extends LinearOpMode {
+public class AutoSilver extends LinearOpMode {
 
     RoverHardware hardware = new RoverHardware();
 
@@ -93,15 +94,19 @@ public class AutoPinLeft extends LinearOpMode {
         driveToPosition(DEPLOY_COUNTS, DRIVE_SPEED);
 
 
-        // CHANGE TO MINING STATE AND ACTIVATE SNORFLER
-        telemetry.addLine("Step 4.5 (Mining)");
-        telemetry.update();
-        sleep(1000);
 
-        hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
-        hardware.rearPivot.setTargetPosition(PIV_MINE_REAR);
+        hardware.ramp.setPosition(1.0);
 
-        hardware.mineral.setPower(1.0);
+
+//        // CHANGE TO MINING STATE AND ACTIVATE SNORFLER
+//        telemetry.addLine("Step 4.5 (Mining)");
+//        telemetry.update();
+//        sleep(1000);
+//
+//        hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+//        hardware.rearPivot.setTargetPosition(PIV_MINE_REAR);
+//
+//        hardware.mineral.setPower(1.0);
 
 
 
@@ -148,8 +153,8 @@ public class AutoPinLeft extends LinearOpMode {
     }
 
     public void deployWheels(double speed) {
-        hardware.frontPivot.setTargetPosition(PIV_STD_FRONT);
-        hardware.rearPivot.setTargetPosition(PIV_OMNI_REAR);
+        hardware.frontPivot.setTargetPosition(PIV_KNEEL_FRONT);
+        hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
 
         hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
