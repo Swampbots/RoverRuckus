@@ -10,7 +10,7 @@ import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
 
 import java.util.List;
-//@Disabled
+@Disabled
 @Autonomous(name = "Gold Contour Pipeline Test", group = "Testing")
 public class GoldContourPipelineTest extends LinearOpMode {
 
