@@ -4,18 +4,10 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_INCH_CORE;
-import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_REV_CORE;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE;
-import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_CLOSED;
-import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD;
 
 @TeleOp(name = "Driver Control", group = "TeleOp")
 public class RoverTeleOp extends OpMode {
@@ -54,9 +46,9 @@ public class RoverTeleOp extends OpMode {
         hardware.setRightPower  (-gamepad1.right_stick_y);
 
         // Snorfler motors controls
-        if(gamepad2.left_trigger > gamepad2.right_trigger) hardware.mineral.setPower(-gamepad2.left_trigger);
-        else if(gamepad2.left_trigger < gamepad2.right_trigger) hardware.mineral.setPower(gamepad2.right_trigger);
-        else hardware.mineral.setPower(0);
+        if(gamepad2.left_trigger > gamepad2.right_trigger) hardware.flipper.setPower(-gamepad2.left_trigger);
+        else if(gamepad2.left_trigger < gamepad2.right_trigger) hardware.flipper.setPower(gamepad2.right_trigger);
+        else hardware.flipper.setPower(0);
 
 
 //        // Flipper controls
@@ -70,12 +62,12 @@ public class RoverTeleOp extends OpMode {
 //
 //
 //        if(gamepad2.dpad_left &&
-//                hardware.winch.getCurrentPosition() < FLIPPER_FLIP) {
-//            hardware.winch.setPower(gamepad2.left_trigger * flipperScalar);
+//                hardware.snorfler.getCurrentPosition() < FLIPPER_FLIP) {
+//            hardware.snorfler.setPower(gamepad2.left_trigger * flipperScalar);
 //        } else if(gamepad2.dpad_left &&
-//                hardware.winch.getCurrentPosition() > FLIPPER_LOAD) {
-//            hardware.winch.setPower(-gamepad2.right_trigger * flipperScalar);
-//        } else hardware.winch.setPower(0.0);
+//                hardware.snorfler.getCurrentPosition() > FLIPPER_LOAD) {
+//            hardware.snorfler.setPower(-gamepad2.right_trigger * flipperScalar);
+//        } else hardware.snorfler.setPower(0.0);
 
 
 
@@ -127,11 +119,11 @@ public class RoverTeleOp extends OpMode {
         // Flipper controls
 //        if(gamepad2.left_bumper) hardware.nextFlipper();
 //        else if(gamepad2.right_bumper) hardware.prevFlipper();
-//        hardware.winch.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//        hardware.winch.setPower(0.9);
-        if(gamepad2.left_bumper) hardware.winch.setPower(0.5);
-        else if(gamepad2.right_bumper) hardware.winch.setPower(-0.9);
-        else hardware.winch.setPower(0.0);
+//        hardware.snorfler.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        hardware.snorfler.setPower(0.9);
+        if(gamepad2.left_bumper) hardware.snorfler.setPower(0.5);
+        else if(gamepad2.right_bumper) hardware.snorfler.setPower(-0.9);
+        else hardware.snorfler.setPower(0.0);
 
         // Encoder reset controls
         if(gamepad2.left_bumper && gamepad2.dpad_right) {
@@ -160,7 +152,7 @@ public class RoverTeleOp extends OpMode {
         telemetry.addData("Front Pivot", hardware.frontPivot.getCurrentPosition());
         telemetry.addData("Rear Pivot", hardware.rearPivot.getCurrentPosition());
         telemetry.addLine();
-        telemetry.addData("Flipper Position", hardware.winch.getCurrentPosition());
+        telemetry.addData("Flipper Position", hardware.snorfler.getCurrentPosition());
         telemetry.addLine();
 //        telemetry.addData("Flipper Scalar", flipperScalar);
         telemetry.update();

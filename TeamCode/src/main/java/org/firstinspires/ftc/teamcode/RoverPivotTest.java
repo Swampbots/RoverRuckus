@@ -5,8 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_DEGREE_HD_FRONT;
-import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_DEGREE_HD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
@@ -98,9 +96,9 @@ public class RoverPivotTest extends OpMode {
 
 
         // Snorfler
-        if(gamepad1.left_trigger > gamepad1.right_trigger) hardware.mineral.setPower(-gamepad1.left_trigger);
-        else if(gamepad1.left_trigger < gamepad1.right_trigger) hardware.mineral.setPower(gamepad1.right_trigger);
-        else hardware.mineral.setPower(0);
+        if(gamepad1.left_trigger > gamepad1.right_trigger) hardware.flipper.setPower(-gamepad1.left_trigger);
+        else if(gamepad1.left_trigger < gamepad1.right_trigger) hardware.flipper.setPower(gamepad1.right_trigger);
+        else hardware.flipper.setPower(0);
 
         // Latch position
         hardware.latch.setPosition(gamepad1.right_trigger * LATCH_OPEN);

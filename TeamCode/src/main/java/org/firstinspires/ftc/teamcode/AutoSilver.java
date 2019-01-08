@@ -5,13 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_LEFT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
-import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_RIGHT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_FRONT;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_REAR;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_FRONT;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_REAR;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI_REAR;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_CLOSED;
 
@@ -106,7 +100,7 @@ public class AutoSilver extends LinearOpMode {
 //        hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
 //        hardware.rearPivot.setTargetPosition(PIV_MINE_REAR);
 //
-//        hardware.mineral.setPower(1.0);
+//        hardware.flipper.setPower(1.0);
 
 
 
@@ -124,7 +118,7 @@ public class AutoSilver extends LinearOpMode {
             telemetry.addData("Latch position", hardware.latch.getPosition());
             telemetry.addData("Drive counts", DRIVE_COUNTS);
             telemetry.addLine();
-            telemetry.addData("Winch position", hardware.winch.getCurrentPosition());
+            telemetry.addData("Winch position", hardware.snorfler.getCurrentPosition());
             telemetry.addData("fl_drive position", hardware.frontLeft.getCurrentPosition());
             telemetry.update();
         }

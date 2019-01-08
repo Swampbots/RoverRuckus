@@ -91,13 +91,13 @@ public class RoverHardware {
     public static final int FLIPPER_CLAIM = -COUNTS_PER_DEGREE_HD_FLIPPER * 110;
 
     public void nextFlipper() {
-        if(winch.getCurrentPosition() == FLIPPER_STOW) winch.setTargetPosition(FLIPPER_LOAD);
-        else if(winch.getCurrentPosition() == FLIPPER_LOAD) winch.setTargetPosition(FLIPPER_FLIP);
+        if(snorfler.getCurrentPosition() == FLIPPER_STOW) snorfler.setTargetPosition(FLIPPER_LOAD);
+        else if(snorfler.getCurrentPosition() == FLIPPER_LOAD) snorfler.setTargetPosition(FLIPPER_FLIP);
     }
 
     public void prevFlipper() {
-        if(winch.getCurrentPosition() == FLIPPER_FLIP) winch.setTargetPosition(FLIPPER_LOAD);
-        else if(winch.getCurrentPosition() == FLIPPER_LOAD) winch.setTargetPosition(FLIPPER_STOW);
+        if(snorfler.getCurrentPosition() == FLIPPER_FLIP) snorfler.setTargetPosition(FLIPPER_LOAD);
+        else if(snorfler.getCurrentPosition() == FLIPPER_LOAD) snorfler.setTargetPosition(FLIPPER_STOW);
     }
 
 
@@ -124,9 +124,9 @@ public class RoverHardware {
     public DcMotor rearPivot;
     public DcMotor frontPivot;
 
-    public DcMotor winch;
+    public DcMotor snorfler;
 
-    public DcMotor mineral;
+    public DcMotor flipper;
 
 
 
@@ -153,9 +153,9 @@ public class RoverHardware {
         rearPivot   = hwMap.dcMotor.get("rear_pivot");
         frontPivot  = hwMap.dcMotor.get("front_pivot");
 
-        winch       = hwMap.dcMotor.get("winch");
+        snorfler = hwMap.dcMotor.get("snorfler");
 
-        mineral     = hwMap.dcMotor.get("mineral");
+        flipper = hwMap.dcMotor.get("flipper");
 
 
 
@@ -168,9 +168,9 @@ public class RoverHardware {
         rearPivot.setDirection  (DcMotorSimple.Direction.REVERSE);
         frontPivot.setDirection (DcMotorSimple.Direction.REVERSE);
 
-        winch.setDirection      (DcMotorSimple.Direction.FORWARD);
+        snorfler.setDirection      (DcMotorSimple.Direction.FORWARD);
 
-        mineral.setDirection    (DcMotorSimple.Direction.FORWARD);
+        flipper.setDirection    (DcMotorSimple.Direction.FORWARD);
 
 
         // Set motor zero-power behaviors
@@ -182,9 +182,9 @@ public class RoverHardware {
         rearPivot.setZeroPowerBehavior  (DcMotor.ZeroPowerBehavior.BRAKE);
         frontPivot.setZeroPowerBehavior (DcMotor.ZeroPowerBehavior.BRAKE);
 
-        winch.setZeroPowerBehavior      (DcMotor.ZeroPowerBehavior.BRAKE);
+        snorfler.setZeroPowerBehavior      (DcMotor.ZeroPowerBehavior.BRAKE);
 
-        mineral.setZeroPowerBehavior    (DcMotor.ZeroPowerBehavior.BRAKE);
+        flipper.setZeroPowerBehavior    (DcMotor.ZeroPowerBehavior.BRAKE);
 
 
         // Reset all encoders
@@ -239,8 +239,8 @@ public class RoverHardware {
         resetPivotEncoders();
         resetDriveEncoders();
 
-        winch.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        winch.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        snorfler.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        snorfler.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
     public void stopAllMotors() {
@@ -252,9 +252,9 @@ public class RoverHardware {
         rearPivot.setPower  (0);
         frontPivot.setPower (0);
 
-        winch.setPower      (0);
+        snorfler.setPower      (0);
 
-        mineral.setPower    (0);
+        flipper.setPower    (0);
     }
 
 
