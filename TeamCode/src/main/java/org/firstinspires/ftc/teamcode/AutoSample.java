@@ -228,7 +228,6 @@ public class AutoSample extends OpMode {
                         Rect boundingRect = Imgproc.boundingRect(contours.get(i));
                         contourHeightMid = (boundingRect.y + boundingRect.height) / 2;
 
-
                         if(contourHeightMid < CTR_LEFT)         leftTally ++;
                         else if(contourHeightMid < CTR_RIGHT)   centerTally ++;
                         else                                    rightTally ++;
@@ -264,12 +263,23 @@ public class AutoSample extends OpMode {
 
     private String highestTally(int left, int center, int right) {
         int highest;
-
         highest = (left > center ? left : center);
         highest = (highest > right ? highest : right);
 
-        if(highest == left)         return "Left";
-        else if(highest == center)  return "Center";
-        else                        return "Right";
+        if(highest == left)         goldPlacement = GoldPlacement.LEFT;
+        else if(highest == center)  goldPlacement = GoldPlacement.CENTER;
+        else                        goldPlacement = GoldPlacement.RIGHT;
+
+        switch(goldPlacement) {
+            case LEFT:
+                return "Left";
+            case CENTER:
+                return "Center";
+            case RIGHT:
+                return "Right";
+
+            default:
+                return "Right";
+        }
     }
 }
