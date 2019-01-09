@@ -4,6 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.corningrobotics.enderbots.endercv.CameraViewDisplay;
+import org.opencv.core.MatOfPoint;
+
+import java.util.List;
 
 @Autonomous(name = "Sample", group = "Testing")
 public class AutoSample extends OpMode {
@@ -190,6 +193,23 @@ public class AutoSample extends OpMode {
         vision.setHsvHue(hsvHue);
         vision.setHsvSat(hsvSat);
         vision.setHsvVal(hsvVal);
+
+        // Contours from last frame
+        List<MatOfPoint> contours = vision.findContoursOutput();
+
+        // Average height of a contour
+        int contourHeightMid;
+
+        // Enum storing decision on gold placement
+        ContourPlacement contourPlacement;
+
+        // Tally of contourPlacements for all visible contours this cycle
+        // (Set all to 0 so they start over each cycle)
+        int leftTally = 0;
+        int centerTally = 0;
+        int rightTally = 0;
+
+
 
 
 
