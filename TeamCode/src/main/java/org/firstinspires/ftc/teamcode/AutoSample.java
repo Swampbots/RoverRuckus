@@ -57,7 +57,7 @@ public class AutoSample extends OpMode {
     public final double TRIGGER_THRESHOLD = 0.7;
 
     // Enum storing decision on gold placement
-    ContourPlacement contourPlacement;
+    GoldPlacement goldPlacement;
 
 
 
@@ -230,15 +230,15 @@ public class AutoSample extends OpMode {
 
 
                         if(contourHeightMid < CTR_LEFT) {
-                            contourPlacement = ContourPlacement.LEFT;
+                            goldPlacement = GoldPlacement.LEFT;
                             leftTally ++;
                         }
                         else if(contourHeightMid < CTR_RIGHT) {
-                            contourPlacement = ContourPlacement.CENTER;
+                            goldPlacement = GoldPlacement.CENTER;
                             centerTally ++;
                         }
                         else {
-                            contourPlacement = ContourPlacement.RIGHT;
+                            goldPlacement = GoldPlacement.RIGHT;
                             rightTally ++;
                         }
                     }
