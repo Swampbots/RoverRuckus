@@ -56,6 +56,8 @@ public class AutoSample extends OpMode {
     // Variable for thresholding LT and RT inputs, e.g. if(gamepad1.left_trigger > TRIGGER_THRESHOLD)
     public final double TRIGGER_THRESHOLD = 0.7;
 
+    // Enum storing decision on gold placement
+    ContourPlacement contourPlacement;
 
 
 
@@ -202,9 +204,6 @@ public class AutoSample extends OpMode {
         // Average height of a given contour
         int contourHeightMid;
 
-        // Enum storing decision on gold placement
-        ContourPlacement contourPlacement;
-
         // Tally of contourPlacements for all visible contours this cycle
         // (Set all to 0 so they start over each cycle)
         int leftTally = 0;
@@ -221,12 +220,6 @@ public class AutoSample extends OpMode {
         telemetry.addData("Val min", hsvVal[0]);
         telemetry.addData("Val max", hsvVal[1]);
         telemetry.addLine();
-//            telemetry.addLine();
-//            telemetry.addData("Contour max Y", contourYMax);
-//            telemetry.addData("Contour min Y", contourYMin);
-//            telemetry.addLine();
-//            telemetry.addData("Contour max X", contourXMax);
-//            telemetry.addData("Contour min X", contourXMin);
         telemetry.addLine();
         try {
             if(contours != null) {
