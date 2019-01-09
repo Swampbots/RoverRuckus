@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.corningrobotics.enderbots.endercv.CameraViewDisplay;
 import org.opencv.core.MatOfPoint;
+import org.opencv.core.Rect;
+import org.opencv.imgproc.Imgproc;
 
 import java.util.List;
 
@@ -197,7 +199,7 @@ public class AutoSample extends OpMode {
         // Contours from last frame
         List<MatOfPoint> contours = vision.findContoursOutput();
 
-        // Average height of a contour
+        // Average height of a given contour
         int contourHeightMid;
 
         // Enum storing decision on gold placement
@@ -209,13 +211,81 @@ public class AutoSample extends OpMode {
         int centerTally = 0;
         int rightTally = 0;
 
+        // TELEMETRY
+        telemetry.addData("Hue min", hsvHue[0]);
+        telemetry.addData("Hue max", hsvHue[1]);
+        telemetry.addLine();
+        telemetry.addData("Sat min", hsvSat[0]);
+        telemetry.addData("Sat max", hsvSat[1]);
+        telemetry.addLine();
+        telemetry.addData("Val min", hsvVal[0]);
+        telemetry.addData("Val max", hsvVal[1]);
+        telemetry.addLine();
+//            telemetry.addLine();
+//            telemetry.addData("Contour max Y", contourYMax);
+//            telemetry.addData("Contour min Y", contourYMin);
+//            telemetry.addLine();
+//            telemetry.addData("Contour max X", contourXMax);
+//            telemetry.addData("Contour min X", contourXMin);
+        telemetry.addLine();
+        try {
+            if(contours != null) {
+                if(contours.size() > 0) {
+                    for(int i = 0; i < contours.size(); i++) {
+                        Rect boundingRect = Imgproc.boundingRect(contours.get(i));
+                        contourHeightMid = (boundingRect.y + boundingRect.height) / 2;
 
 
+                        if(contourHeightMid < CTR_LEFT) {
+                            contourPlacement = ContourPlacement.LEFT;
+                            leftTally ++;
+                        }
+                        else if(contourHeightMid < CTR_RIGHT) {
+                            contourPlacement = ContourPlacement.CENTER;
+                            centerTally ++;
+                        }
+                        else {
+                            contourPlacement = ContourPlacement.RIGHT;
+                            rightTally ++;
+                        }
+                    }
+                }
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+            telemetry.addData("Exception", e.getMessage());
+        }
+        telemetry.addData("Left tally", leftTally);
+        telemetry.addData("Center tally", centerTally);
+        telemetry.addData("Right tally", rightTally);
+        telemetry.addLine();
+        telemetry.addData("Most common", highestTally(leftTally, centerTally, rightTally));
 
-
+        telemetry.update();
     }
+
+    public void start() {
+        vision.disable();
+        telemetry.addLine("Vision disabled.");
+        telemetry.update();
+    }
+
 
     public void loop() {
 
+    }
+
+
+
+
+    private String highestTally(int left, int center, int right) {
+        int highest;
+
+        highest = (left > center ? left : center);
+        highest = (highest > right ? highest : right);
+
+        if(highest == left)         return "Left";
+        else if(highest == center)  return "Center";
+        else                        return "Right";
     }
 }
