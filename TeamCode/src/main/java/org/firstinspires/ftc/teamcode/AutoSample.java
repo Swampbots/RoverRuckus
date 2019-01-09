@@ -3,6 +3,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
+import org.corningrobotics.enderbots.endercv.CameraViewDisplay;
+
 @Autonomous(name = "Sample", group = "Testing")
 public class AutoSample extends OpMode {
 
@@ -56,7 +58,16 @@ public class AutoSample extends OpMode {
 
 
     public void init(){
+        // OpenCV pipeline
+        vision = new GoldContourPipeline();
+        vision.init(hardwareMap.appContext, CameraViewDisplay.getInstance(), 1);
+        vision.enable();
 
+        // Hardware
+        hardware.init(hardwareMap);
+
+        telemetry.addLine("Hardware and vision enabled.");
+        telemetry.update();
     }
 
     public void init_loop() {
