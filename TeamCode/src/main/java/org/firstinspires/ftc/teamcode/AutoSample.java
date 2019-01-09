@@ -31,20 +31,7 @@ public class AutoSample extends OpMode {
 
     // Cooldown variables
 
-    ButtonCooldown dpUp     = new ButtonCooldown();
-    ButtonCooldown dpDown   = new ButtonCooldown();
-    ButtonCooldown dpLeft   = new ButtonCooldown();
-    ButtonCooldown dpRight  = new ButtonCooldown();
-
-    ButtonCooldown a    = new ButtonCooldown();
-    ButtonCooldown b    = new ButtonCooldown();
-    ButtonCooldown x    = new ButtonCooldown();
-    ButtonCooldown y    = new ButtonCooldown();
-
-    ButtonCooldown lb   = new ButtonCooldown();
-    ButtonCooldown rb   = new ButtonCooldown();
-    ButtonCooldown lt   = new ButtonCooldown();
-    ButtonCooldown rt   = new ButtonCooldown();
+    GamepadCooldowns cooldowns = new GamepadCooldowns();
 
 
     private final double CTR_MAX_Y = 192.0;
@@ -102,91 +89,91 @@ public class AutoSample extends OpMode {
         double runtime = getRuntime();
 
         // HUE MINIMUM
-        if(gamepad1.dpad_down && dpDown.ready(runtime)) {
+        if(gamepad1.dpad_down && cooldowns.dpDown.ready(runtime)) {
             if (hsvHue[0] > HSV_MIN)   hsvHue[0] -= THRESHOLD_STEP;
             else                        hsvHue[0] = HSV_MIN;
-            dpDown.updateSnapshot(runtime);
+            cooldowns.dpDown.updateSnapshot(runtime);
         }
 
-        if(gamepad1.dpad_up && dpUp.ready(runtime)) {
+        if(gamepad1.dpad_up && cooldowns.dpUp.ready(runtime)) {
             if(hsvHue[0] < hsvHue[1])  hsvHue[0] += THRESHOLD_STEP;
             else                        hsvHue[0] = hsvHue[1];
-            dpUp.updateSnapshot(runtime);
+            cooldowns.dpUp.updateSnapshot(runtime);
         }
 
 
         // HUE MAXIMUM
-        if(gamepad1.y && y.ready(runtime)) {
+        if(gamepad1.y && cooldowns.y.ready(runtime)) {
             if (hsvHue[1] < HSV_MAX)   hsvHue[1] += THRESHOLD_STEP;
             else                        hsvHue[1] = HSV_MAX;
-            y.updateSnapshot(runtime);
+            cooldowns.y.updateSnapshot(runtime);
         }
 
-        if(gamepad1.a && a.ready(runtime)) {
+        if(gamepad1.a && cooldowns.a.ready(runtime)) {
             if(hsvHue[1] > hsvHue[0])  hsvHue[1] -= THRESHOLD_STEP;
             else                        hsvHue[1] = hsvHue[0];
-            a.updateSnapshot(runtime);
+            cooldowns.a.updateSnapshot(runtime);
         }
 
 
 
 
         // SAT MINIMUM
-        if(gamepad1.dpad_left && dpLeft.ready(runtime)) {
+        if(gamepad1.dpad_left && cooldowns.dpLeft.ready(runtime)) {
             if (hsvSat[0] > HSV_MIN)   hsvSat[0] -= THRESHOLD_STEP;
             else                        hsvSat[0] = HSV_MIN;
-            dpLeft.updateSnapshot(runtime);
+            cooldowns.dpLeft.updateSnapshot(runtime);
         }
 
-        if(gamepad1.dpad_right && dpRight.ready(runtime)) {
+        if(gamepad1.dpad_right && cooldowns.dpRight.ready(runtime)) {
             if(hsvSat[0] < hsvSat[1])  hsvSat[0] += THRESHOLD_STEP;
             else                        hsvSat[0] = hsvSat[1];
-            dpRight.updateSnapshot(runtime);
+            cooldowns.dpRight.updateSnapshot(runtime);
         }
 
 
         // SAT MAXIMUM
-        if(gamepad1.b && b.ready(runtime)) {
+        if(gamepad1.b && cooldowns.b.ready(runtime)) {
             if (hsvSat[1] < HSV_MAX)   hsvSat[1] += THRESHOLD_STEP;
             else                        hsvSat[1] = HSV_MAX;
-            b.updateSnapshot(runtime);
+            cooldowns.b.updateSnapshot(runtime);
         }
 
-        if(gamepad1.x && x.ready(runtime)) {
+        if(gamepad1.x && cooldowns.x.ready(runtime)) {
             if(hsvSat[1] > hsvSat[0])  hsvSat[1] -= THRESHOLD_STEP;
             else                        hsvSat[1] = hsvSat[0];
-            x.updateSnapshot(runtime);
+            cooldowns.x.updateSnapshot(runtime);
         }
 
 
 
 
         // VAL MINIMUM
-        if(gamepad1.left_trigger > TRIGGER_THRESHOLD && lt.ready(runtime)) {
+        if(gamepad1.left_trigger > TRIGGER_THRESHOLD && cooldowns.lt.ready(runtime)) {
             if (hsvVal[0] > HSV_MIN)   hsvVal[0] -= THRESHOLD_STEP;
             else                        hsvVal[0] = HSV_MIN;
-            lt.updateSnapshot(runtime);
+            cooldowns.lt.updateSnapshot(runtime);
         }
 
-        if(gamepad1.left_bumper && lb.ready(runtime)) {
+        if(gamepad1.left_bumper && cooldowns.lb.ready(runtime)) {
             if(hsvVal[0] < hsvVal[1])  hsvVal[0] += THRESHOLD_STEP;
             else                        hsvVal[0] = hsvVal[1];
-            lb.updateSnapshot(runtime);
+            cooldowns.lb.updateSnapshot(runtime);
         }
 
 
 
         // VAL MAXIMUM
-        if(gamepad1.right_trigger > TRIGGER_THRESHOLD && rt.ready(runtime)) {
+        if(gamepad1.right_trigger > TRIGGER_THRESHOLD && cooldowns.rt.ready(runtime)) {
             if (hsvVal[1] > hsvVal[0])  hsvVal[1] -= THRESHOLD_STEP;
             else                        hsvVal[1] = hsvVal[0];
-            rt.updateSnapshot(runtime);
+            cooldowns.rt.updateSnapshot(runtime);
         }
 
-        if(gamepad1.right_bumper && rb.ready(runtime)) {
+        if(gamepad1.right_bumper && cooldowns.rb.ready(runtime)) {
             if(hsvVal[1] < HSV_MAX)     hsvVal[1] += THRESHOLD_STEP;
             else                        hsvVal[1] = HSV_MAX;
-            rb.updateSnapshot(runtime);
+            cooldowns.rb.updateSnapshot(runtime);
         }
 
         //--------------------------------------------------------------------------------------
@@ -250,6 +237,7 @@ public class AutoSample extends OpMode {
     public void start() {
         vision.disable();
         telemetry.addLine("Vision disabled.");
+        telemetry.addData("Gold Placement", goldPlacement.toString());
         telemetry.update();
     }
 
