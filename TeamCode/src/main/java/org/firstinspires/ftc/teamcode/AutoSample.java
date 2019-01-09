@@ -229,18 +229,9 @@ public class AutoSample extends OpMode {
                         contourHeightMid = (boundingRect.y + boundingRect.height) / 2;
 
 
-                        if(contourHeightMid < CTR_LEFT) {
-                            goldPlacement = GoldPlacement.LEFT;
-                            leftTally ++;
-                        }
-                        else if(contourHeightMid < CTR_RIGHT) {
-                            goldPlacement = GoldPlacement.CENTER;
-                            centerTally ++;
-                        }
-                        else {
-                            goldPlacement = GoldPlacement.RIGHT;
-                            rightTally ++;
-                        }
+                        if(contourHeightMid < CTR_LEFT)         leftTally ++;
+                        else if(contourHeightMid < CTR_RIGHT)   centerTally ++;
+                        else                                    rightTally ++;
                     }
                 }
             }
