@@ -1,5 +1,8 @@
 package org.firstinspires.ftc.teamcode;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class GamepadCooldowns {
 
     ButtonCooldown dpUp     = new ButtonCooldown();
@@ -16,4 +19,27 @@ public class GamepadCooldowns {
     ButtonCooldown rb   = new ButtonCooldown();
     ButtonCooldown lt   = new ButtonCooldown();
     ButtonCooldown rt   = new ButtonCooldown();
+
+    List<ButtonCooldown> cooldowns = new LinkedList<>();
+
+    public GamepadCooldowns() {
+        cooldowns.add(dpUp);
+        cooldowns.add(dpDown);
+        cooldowns.add(dpLeft);
+        cooldowns.add(dpRight);
+
+        cooldowns.add(a);
+        cooldowns.add(b);
+        cooldowns.add(x);
+        cooldowns.add(y);
+
+        cooldowns.add(lb);
+        cooldowns.add(rb);
+        cooldowns.add(lt);
+        cooldowns.add(rt);
+    }
+
+
+
+
 }
