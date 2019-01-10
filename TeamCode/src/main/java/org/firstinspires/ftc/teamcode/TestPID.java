@@ -27,6 +27,10 @@ public class TestPID extends LinearOpMode {
 
     RoverHardware hardware = new RoverHardware();
 
+    // Button cooldowns
+    GamepadCooldowns cooldowns = new GamepadCooldowns();
+
+
     @Override
     public void runOpMode() throws InterruptedException {
 
@@ -57,8 +61,32 @@ public class TestPID extends LinearOpMode {
         telemetry.update();
 
         waitForStart();
-        
+
         while(opModeIsActive()) {
+
+            //--------------------------------------------------------------------------------------
+            // START PID COEFFICIENT CONTROLS
+            //--------------------------------------------------------------------------------------
+
+                /*
+                    CONTROLS: (increase, decrease)
+
+                    P: gp1.up,  gp1.down
+                    I: gp1.y,   gp1.a
+                    D: gp1.lb,  gp1.lt
+                */
+
+
+
+
+
+
+
+            //--------------------------------------------------------------------------------------
+            // END PID COEFFICIENT CONTROLS
+            //--------------------------------------------------------------------------------------
+
+
             telemetry.addLine("Finished");
             telemetry.addData("Heading", heading());
             telemetry.update();
