@@ -16,7 +16,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI;
 
 @Disabled
 @TeleOp(name = "Pivot Test", group = "Testing")
-public class RoverPivotTest extends OpMode {
+public class TestPivot extends OpMode {
 
     RoverHardware hardware = new RoverHardware();
 
