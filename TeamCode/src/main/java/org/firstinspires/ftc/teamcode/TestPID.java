@@ -30,6 +30,14 @@ public class TestPID extends LinearOpMode {
     // Button cooldowns
     GamepadCooldowns cooldowns = new GamepadCooldowns();
 
+    // PID coefficients
+    private double kP = 0.0;
+    private double kI = 0.0;
+    private double kD = 0.0;
+
+    private final double K_STEP = 0.005;
+
+
 
     @Override
     public void runOpMode() throws InterruptedException {
