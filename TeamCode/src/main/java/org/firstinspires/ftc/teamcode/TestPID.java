@@ -144,8 +144,22 @@ public class TestPID extends LinearOpMode {
             hardware.pid.setPID(kP, kI, kD);
 
 
+                /*
+                    CONTROLS: (Target heading listed)
 
+                    0:      gp1.y
+                    45:     gp1.b
+                    90:     gp1.x
+                    180:    gp1.a
+                */
 
+            if(gamepad1.y) turnToHeadingPID(0);
+            else if(gamepad1.y) turnToHeadingPID(0);
+            else if(gamepad1.b) turnToHeadingPID(45);
+            else if(gamepad1.x) turnToHeadingPID(90);
+            else if(gamepad1.a) turnToHeadingPID(180);
+
+            
             telemetry.addData("kP", hardware.pid.getP());
             telemetry.addData("kI", hardware.pid.getI());
             telemetry.addData("kD", hardware.pid.getD());
