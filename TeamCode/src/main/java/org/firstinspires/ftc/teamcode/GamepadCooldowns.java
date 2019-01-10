@@ -39,6 +39,12 @@ public class GamepadCooldowns {
         cooldowns.add(rt);
     }
 
+    public void setCooldown(double millis) {
+        for(ButtonCooldown button : cooldowns) {
+            button.setCooldown(millis);
+        }
+    }
+
 
 
 
