@@ -40,9 +40,7 @@ public class GamepadCooldowns {
     }
 
     public void setCooldown(double cooldown) {
-        for(ButtonCooldown button : buttonCooldowns) {
-            button.setCooldown(cooldown);
-        }
+        for(ButtonCooldown button : buttonCooldowns) button.setCooldown(cooldown);
     }
 
 
