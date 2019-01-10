@@ -51,7 +51,7 @@ public class TestPID extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
-        telemetry.addLine("DO NOT PRESS PLAY! Initializing hardware.");
+        telemetry.addLine("Initializing hardware.");
         telemetry.update();
 
         hardware.init(hardwareMap);
@@ -159,7 +159,7 @@ public class TestPID extends LinearOpMode {
             else if(gamepad1.x) turnToHeadingPID(90);
             else if(gamepad1.a) turnToHeadingPID(180);
 
-            
+
             telemetry.addData("kP", hardware.pid.getP());
             telemetry.addData("kI", hardware.pid.getI());
             telemetry.addData("kD", hardware.pid.getD());
