@@ -108,6 +108,9 @@ public class TestPID extends LinearOpMode {
             // END PID COEFFICIENT CONTROLS
             //--------------------------------------------------------------------------------------
 
+            // Set PID coefficients
+            hardware.pid.setPID(kP, kI, kD);
+
 
             telemetry.addData("kP", hardware.pid.getP());
             telemetry.addData("kI", hardware.pid.getI());
