@@ -44,7 +44,7 @@ public class AutoSample extends OpMode {
     public final double TRIGGER_THRESHOLD = 0.7;
 
     // Enum storing decision on gold placement
-    GoldPlacement goldPlacement;
+    _GoldPlacement goldPlacement;
 
 
 
@@ -252,9 +252,9 @@ public class AutoSample extends OpMode {
         highest = (left > center ? left : center);
         highest = (highest > right ? highest : right);
 
-        if(highest == left)         goldPlacement = GoldPlacement.LEFT;
-        else if(highest == center)  goldPlacement = GoldPlacement.CENTER;
-        else                        goldPlacement = GoldPlacement.RIGHT;
+        if(highest == left)         goldPlacement = _GoldPlacement.LEFT;
+        else if(highest == center)  goldPlacement = _GoldPlacement.CENTER;
+        else                        goldPlacement = _GoldPlacement.RIGHT;
 
         switch(goldPlacement) {
             case LEFT:

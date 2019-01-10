@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
-public enum GoldPlacement {
+public enum _GoldPlacement {
     // The fields indicate placement of contours in the processed image. The image will be split into three portions.
     LEFT,
     CENTER,

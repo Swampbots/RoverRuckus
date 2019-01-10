@@ -233,7 +233,7 @@ public class GoldContourPipelineTest extends LinearOpMode {
 
             int contourHeightMid;
             int contourWidthMid;
-            GoldPlacement contourPlacement;
+            _GoldPlacement contourPlacement;
 
             // Tally of contourPlacements for all visible contours this cycle
             // (Set all to 0 so they start over each cycle)
@@ -284,15 +284,15 @@ public class GoldContourPipelineTest extends LinearOpMode {
 //                            if(contourXMax == -1 || contourXMax < contourWidthMid) contourXMax = contourWidthMid;   // X, width
 
                             if(contourHeightMid < CTR_LEFT) {
-                                contourPlacement = GoldPlacement.LEFT;
+                                contourPlacement = _GoldPlacement.LEFT;
                                 leftTally ++;
                             }
                             else if(contourHeightMid < CTR_RIGHT) {
-                                contourPlacement = GoldPlacement.CENTER;
+                                contourPlacement = _GoldPlacement.CENTER;
                                 centerTally ++;
                             }
                             else {
-                                contourPlacement = GoldPlacement.RIGHT;
+                                contourPlacement = _GoldPlacement.RIGHT;
                                 rightTally ++;
                             }
 
