@@ -10,7 +10,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.STOP_CLOSED;
 
 
-@Autonomous(name = "Silver [Pin Left]", group = "Autonomous")
+@Autonomous(name = "Silver", group = "Autonomous")
 public class AutoSilver extends LinearOpMode {
 
     RoverHardware hardware = new RoverHardware();
