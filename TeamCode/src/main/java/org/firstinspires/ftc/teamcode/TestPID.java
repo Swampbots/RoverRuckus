@@ -90,9 +90,9 @@ public class TestPID extends LinearOpMode {
                 /*
                     CONTROLS: (increase, decrease)
 
-                    P: gp1.up,  gp1.down
-                    I: gp1.y,   gp1.a
-                    D: gp1.lb,  gp1.lt
+                    P: gp1.up,      gp1.down
+                    I: gp1.right,   gp1.left
+                    D: gp1.lb,      gp1.lt
                 */
 
             runtime = getRuntime();
@@ -112,15 +112,15 @@ public class TestPID extends LinearOpMode {
 
 
             // Integral coefficient-----------------------------------------------------------------
-            if(gamepad1.y && cooldowns.y.ready(runtime)) {
+            if(gamepad1.dpad_right && cooldowns.dpRight.ready(runtime)) {
                 kI += K_STEP;
-                cooldowns.y.updateSnapshot(runtime);
+                cooldowns.dpRight.updateSnapshot(runtime);
             }
 
-            if(gamepad1.a && cooldowns.a.ready(runtime)) {
+            if(gamepad1.dpad_left && cooldowns.dpLeft.ready(runtime)) {
                 if(kI < K_STEP) kI = 0.0;
                 else            kI -= K_STEP;
-                cooldowns.a.updateSnapshot(runtime);
+                cooldowns.dpLeft.updateSnapshot(runtime);
             }
 
 
@@ -136,18 +136,14 @@ public class TestPID extends LinearOpMode {
                 cooldowns.lt.updateSnapshot(runtime);
             }
 
-
-
-
-
-
-
             //--------------------------------------------------------------------------------------
             // END PID COEFFICIENT CONTROLS
             //--------------------------------------------------------------------------------------
 
             // Set PID coefficients
             hardware.pid.setPID(kP, kI, kD);
+
+
 
 
             telemetry.addData("kP", hardware.pid.getP());
