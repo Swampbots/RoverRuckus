@@ -154,7 +154,6 @@ public class TestPID extends LinearOpMode {
                 */
 
             if(gamepad1.y) turnToHeadingPID(0);
-            else if(gamepad1.y) turnToHeadingPID(0);
             else if(gamepad1.b) turnToHeadingPID(45);
             else if(gamepad1.x) turnToHeadingPID(90);
             else if(gamepad1.a) turnToHeadingPID(180);
