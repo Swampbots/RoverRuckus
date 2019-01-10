@@ -84,6 +84,21 @@ public class TestPID extends LinearOpMode {
                     D: gp1.lb,  gp1.lt
                 */
 
+                double runtime = getRuntime();
+
+
+                // Proportional coefficient
+                if(gamepad1.dpad_up && cooldowns.dpUp.ready(runtime)) {
+                    kP += K_STEP;
+                    cooldowns.dpUp.updateSnapshot(runtime);
+                }
+
+                if(gamepad1.dpad_down && cooldowns.dpDown.ready(runtime)) {
+                    kP -= K_STEP;
+                    cooldowns.dpDown.updateSnapshot(runtime);
+                }
+
+
 
 
 
