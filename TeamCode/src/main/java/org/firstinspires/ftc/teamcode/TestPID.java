@@ -37,6 +37,8 @@ public class TestPID extends LinearOpMode {
 
     private final double K_STEP = 0.005;
 
+    private double runtime;
+
 
 
     @Override
@@ -84,7 +86,7 @@ public class TestPID extends LinearOpMode {
                     D: gp1.lb,  gp1.lt
                 */
 
-                double runtime = getRuntime();
+                runtime = getRuntime();
 
 
                 // Proportional coefficient
@@ -97,9 +99,6 @@ public class TestPID extends LinearOpMode {
                     kP -= K_STEP;
                     cooldowns.dpDown.updateSnapshot(runtime);
                 }
-
-
-
 
 
 
