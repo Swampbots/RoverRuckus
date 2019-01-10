@@ -103,7 +103,8 @@ public class TestPID extends LinearOpMode {
             }
 
             if(gamepad1.dpad_down && cooldowns.dpDown.ready(runtime)) {
-                kP -= K_STEP;
+                if(kP < K_STEP) kP = 0.0;
+                else            kP -= K_STEP;
                 cooldowns.dpDown.updateSnapshot(runtime);
             }
 
@@ -115,7 +116,8 @@ public class TestPID extends LinearOpMode {
             }
 
             if(gamepad1.a && cooldowns.a.ready(runtime)) {
-                kI -= K_STEP;
+                if(kI < K_STEP) kI = 0.0;
+                else            kI -= K_STEP;
                 cooldowns.a.updateSnapshot(runtime);
             }
 
@@ -127,7 +129,8 @@ public class TestPID extends LinearOpMode {
             }
 
             if(gamepad1.left_trigger > TRIGGER_THRESHOLD && cooldowns.lt.ready(runtime)) {
-                kD -= K_STEP;
+                if(kD < K_STEP) kD = 0.0;
+                else            kD -= K_STEP;
                 cooldowns.lt.updateSnapshot(runtime);
             }
 
