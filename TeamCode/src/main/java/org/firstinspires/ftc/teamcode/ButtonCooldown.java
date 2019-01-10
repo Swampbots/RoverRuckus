@@ -5,8 +5,8 @@ public class ButtonCooldown {
     private double cooldown = 0.075; // 75 milliseconds
     private double snapshot = 0.0;
 
-    public void updateSnapshot(double runtime) {
-        snapshot = runtime;
+    public void updateSnapshot(double snapshot) {
+        this.snapshot = snapshot;
     }
 
     public boolean ready(double runtime) {
