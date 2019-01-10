@@ -174,6 +174,11 @@ public class TestPID extends LinearOpMode {
 
 
     public void turnToHeadingPID(int target) throws InterruptedException {
+
+        telemetry.addData("Turning to target", target);
+        telemetry.update();
+        sleep(250);
+
         hardware.pid.setSetpoint(target);                                       // Set target final heading relative to current
         hardware.pid.setOutputRange(-hardware.MAX_SPEED, hardware.MAX_SPEED);   // Set maximum motor power
         hardware.pid.setDeadband(hardware.TOLERANCE);                           // Set how far off you can safely be from your target
