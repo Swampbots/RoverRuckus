@@ -56,6 +56,8 @@ public class TestPID extends LinearOpMode {
 
         hardware.init(hardwareMap);
 
+        cooldowns.setCooldown(0.150); // 150 milliseconds
+
         // Set up the IMU
         imu = hardwareMap.get(BNO055IMU.class, "imu");
 
