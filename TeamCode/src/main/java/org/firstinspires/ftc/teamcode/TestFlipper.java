@@ -16,7 +16,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
 
 //@Disabled
 @TeleOp(name = "Flipper Test", group = "Testing")
-public class FlipperTest extends OpMode {
+public class TestFlipper extends OpMode {
 
     RoverHardware hardware = new RoverHardware();
 
