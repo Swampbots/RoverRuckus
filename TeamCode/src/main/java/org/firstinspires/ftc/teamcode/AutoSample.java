@@ -181,9 +181,7 @@ public class AutoSample extends OpMode {
         //--------------------------------------------------------------------------------------
 
         // SET HSV THRESHOLDS
-        vision.setHsvHue(hsvHue);
-        vision.setHsvSat(hsvSat);
-        vision.setHsvVal(hsvVal);
+        vision.setHsvThreshold(hsvHue, hsvSat, hsvVal);
 
         // Contours from last frame
         List<MatOfPoint> contours = vision.findContoursOutput();
