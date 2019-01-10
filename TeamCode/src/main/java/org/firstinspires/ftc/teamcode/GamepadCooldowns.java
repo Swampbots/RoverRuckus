@@ -20,28 +20,27 @@ public class GamepadCooldowns {
     ButtonCooldown lt   = new ButtonCooldown();
     ButtonCooldown rt   = new ButtonCooldown();
 
-    List<ButtonCooldown> cooldowns = new LinkedList<>();
+    List<ButtonCooldown> buttonCooldowns = new LinkedList<>();
 
     public GamepadCooldowns() {
-        cooldowns.add(dpUp);
-        cooldowns.add(dpDown);
-        cooldowns.add(dpLeft);
-        cooldowns.add(dpRight);
+        buttonCooldowns.add(dpUp);
+        buttonCooldowns.add(dpDown);
+        buttonCooldowns.add(dpLeft);
+        buttonCooldowns.add(dpRight);
 
-        cooldowns.add(a);
-        cooldowns.add(b);
-        cooldowns.add(x);
-        cooldowns.add(y);
+        buttonCooldowns.add(a);
+        buttonCooldowns.add(b);
+        buttonCooldowns.add(x);
+        buttonCooldowns.add(y);
 
-        cooldowns.add(lb);
-        cooldowns.add(rb);
-        cooldowns.add(lt);
-        cooldowns.add(rt);
+        buttonCooldowns.add(lb);
+        buttonCooldowns.add(rb);
+        buttonCooldowns.add(lt);
+        buttonCooldowns.add(rt);
     }
 
-        for(ButtonCooldown button : cooldowns) {
-            button.setCooldown(millis);
     public void setCooldown(double cooldown) {
+        for(ButtonCooldown button : buttonCooldowns) {
             button.setCooldown(cooldown);
         }
     }
