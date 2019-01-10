@@ -111,6 +111,14 @@ public class GoldContourPipeline extends OpenCVPipeline {
     //-----------------------------------------------
     // CALIBRATION SETTERS
     //-----------------------------------------------
+
+    public void setHsvThreshold(double[] hue, double[] sat, double[] val) {
+        hsvHue = hue;
+        hsvSat = sat;
+        hsvVal = val;
+    }
+
+
     public void setHsvHue(double[] hue) {
         hsvHue = hue;
     }
