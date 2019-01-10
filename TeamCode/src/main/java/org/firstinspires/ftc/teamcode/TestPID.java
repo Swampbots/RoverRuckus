@@ -30,6 +30,12 @@ public class TestPID extends LinearOpMode {
     // Button cooldowns
     GamepadCooldowns cooldowns = new GamepadCooldowns();
 
+    // Variable for thresholding LT and RT inputs, e.g. if(gamepad1.left_trigger > TRIGGER_THRESHOLD)
+    public final double TRIGGER_THRESHOLD = 0.7;
+
+    // Local runtime snapshot
+    private double runtime;
+
     // PID coefficients
     private double kP = 0.0;
     private double kI = 0.0;
@@ -37,7 +43,8 @@ public class TestPID extends LinearOpMode {
 
     private final double K_STEP = 0.005;
 
-    private double runtime;
+
+
 
 
 
@@ -86,19 +93,45 @@ public class TestPID extends LinearOpMode {
                     D: gp1.lb,  gp1.lt
                 */
 
-                runtime = getRuntime();
+            runtime = getRuntime();
 
 
-                // Proportional coefficient
-                if(gamepad1.dpad_up && cooldowns.dpUp.ready(runtime)) {
-                    kP += K_STEP;
-                    cooldowns.dpUp.updateSnapshot(runtime);
-                }
+            // Proportional coefficient-------------------------------------------------------------
+            if(gamepad1.dpad_up && cooldowns.dpUp.ready(runtime)) {
+                kP += K_STEP;
+                cooldowns.dpUp.updateSnapshot(runtime);
+            }
 
-                if(gamepad1.dpad_down && cooldowns.dpDown.ready(runtime)) {
-                    kP -= K_STEP;
-                    cooldowns.dpDown.updateSnapshot(runtime);
-                }
+            if(gamepad1.dpad_down && cooldowns.dpDown.ready(runtime)) {
+                kP -= K_STEP;
+                cooldowns.dpDown.updateSnapshot(runtime);
+            }
+
+
+            // Integral coefficient-----------------------------------------------------------------
+            if(gamepad1.y && cooldowns.y.ready(runtime)) {
+                kI += K_STEP;
+                cooldowns.y.updateSnapshot(runtime);
+            }
+
+            if(gamepad1.a && cooldowns.a.ready(runtime)) {
+                kI -= K_STEP;
+                cooldowns.a.updateSnapshot(runtime);
+            }
+
+
+            // Derivative coefficient---------------------------------------------------------------
+            if(gamepad1.left_bumper && cooldowns.lb.ready(runtime)) {
+                kD += K_STEP;
+                cooldowns.lb.updateSnapshot(runtime);
+            }
+
+            if(gamepad1.left_trigger > TRIGGER_THRESHOLD && cooldowns.lt.ready(runtime)) {
+                kD -= K_STEP;
+                cooldowns.lt.updateSnapshot(runtime);
+            }
+
+
 
 
 
