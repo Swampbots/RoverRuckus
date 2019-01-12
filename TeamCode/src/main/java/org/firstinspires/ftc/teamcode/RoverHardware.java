@@ -144,6 +144,9 @@ public class RoverHardware {
     public Servo lifter;
     public Servo ramp;
 
+    public Servo lockLeft;
+    public Servo lockRight;
+
 
 
     public void init(HardwareMap ahwMap) {
@@ -206,6 +209,9 @@ public class RoverHardware {
 
         lifter = hwMap.servo.get("lifter");
         ramp = hwMap.servo.get("ramp");
+
+        lockLeft = hwMap.servo.get("lock_left");
+        lockRight = hwMap.servo.get("lock_right");
 
         ramp.setPosition(0.0);
     }
