@@ -16,7 +16,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 //@Disabled
 @Autonomous(name = "PID test", group = "Testing")
-//@Disabled
 public class TestPID extends LinearOpMode {
 
     // IMU object
