@@ -46,9 +46,9 @@ public class RoverTeleOp extends OpMode {
         hardware.setRightPower  (-gamepad1.right_stick_y);
 
         // Snorfler motors controls
-        if(gamepad2.left_trigger > gamepad2.right_trigger) hardware.flipper.setPower(-gamepad2.left_trigger);
-        else if(gamepad2.left_trigger < gamepad2.right_trigger) hardware.flipper.setPower(gamepad2.right_trigger);
-        else hardware.flipper.setPower(0);
+        if(gamepad2.left_trigger > gamepad2.right_trigger) hardware.snorfler.setPower(-gamepad2.left_trigger);
+        else if(gamepad2.left_trigger < gamepad2.right_trigger) hardware.snorfler.setPower(gamepad2.right_trigger);
+        else hardware.snorfler.setPower(0);
 
 
 //        // Flipper controls
