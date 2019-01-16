@@ -221,6 +221,9 @@ public class RoverHardware {
 
 
 
+
+    // Motor methods
+
     public void setLeftPower(double power) {
         frontLeft   .setPower(power);
         rearLeft    .setPower(power);
@@ -268,7 +271,7 @@ public class RoverHardware {
         rearPivot.setPower  (0);
         frontPivot.setPower (0);
 
-        snorfler.setPower      (0);
+        snorfler.setPower   (0);
 
         flipper.setPower    (0);
     }
@@ -305,5 +308,17 @@ public class RoverHardware {
         rearLeft.setMode   (DcMotor.RunMode.RUN_USING_ENCODER);
         frontRight.setMode (DcMotor.RunMode.RUN_USING_ENCODER);
         rearRight.setMode  (DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+
+
+
+
+
+
+    // Servo methods
+
+    public void setLockPosition(double position) {
+        lockLeft.setPosition(position);
+        lockRight.setPosition(position);
     }
 }
