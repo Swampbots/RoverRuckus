@@ -30,8 +30,6 @@ public class TestLock extends OpMode {
 
     public void init() {
         hardware.init(hardwareMap);
-
-        hardware.setLockPosition(0.5);
     }
 
     public void loop() {
