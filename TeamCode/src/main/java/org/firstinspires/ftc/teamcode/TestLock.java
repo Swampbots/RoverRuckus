@@ -38,6 +38,10 @@ public class TestLock extends OpMode {
         if(gamepad2.a)      hardware.setLockPosition(0.0);
         else if(gamepad2.b) hardware.setLockPosition(1.0);
 
+        // Drive motor controls
+        hardware.setLeftPower   (-gamepad1.left_stick_y);
+        hardware.setRightPower  (-gamepad1.right_stick_y);
+
         // Set pivot target, run mode, and speed
         if(Math.abs(gamepad2.right_stick_y) < 0.05) {
             hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
