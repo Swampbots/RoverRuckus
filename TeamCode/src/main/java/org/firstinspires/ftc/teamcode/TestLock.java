@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_REAR;
+import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
 
 //@Disabled
@@ -59,6 +60,10 @@ public class TestLock extends OpMode {
         // Set pivot targets
         hardware.frontPivot.setTargetPosition(frontTarget);
         hardware.rearPivot.setTargetPosition(rearTarget);
+
+
+        // Latch servo controls
+        hardware.latch.setPosition(gamepad1.right_trigger * LATCH_OPEN);   // This will scale with the latch settings
 
 
 
