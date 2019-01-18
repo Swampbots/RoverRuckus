@@ -51,25 +51,6 @@ public class RoverTeleOp extends OpMode {
         else hardware.snorfler.setPower(0);
 
 
-//        // Flipper controls
-//        double flipperScalar = 0.2;
-//
-//        if(gamepad2.left_bumper && gamepad2.a) flipperScalar = 0.2;
-//        else if(gamepad2.left_bumper && gamepad2.b) flipperScalar = 0.4;
-//        else if(gamepad2.left_bumper && gamepad2.x) flipperScalar = 0.6;
-//        else if(gamepad2.left_bumper && gamepad2.y) flipperScalar = 0.8;
-//
-//
-//
-//        if(gamepad2.dpad_left &&
-//                hardware.snorfler.getCurrentPosition() < FLIPPER_FLIP) {
-//            hardware.snorfler.setPower(gamepad2.left_trigger * flipperScalar);
-//        } else if(gamepad2.dpad_left &&
-//                hardware.snorfler.getCurrentPosition() > FLIPPER_LOAD) {
-//            hardware.snorfler.setPower(-gamepad2.right_trigger * flipperScalar);
-//        } else hardware.snorfler.setPower(0.0);
-
-
 
         // Pivot motor controls
 
