@@ -64,6 +64,9 @@ public class TestLock extends OpMode {
 
         telemetry.addData("Left lock position", hardware.lockLeft.getPosition());
         telemetry.addData("Right lock position", hardware.lockRight.getPosition());
+        telemetry.addLine();
+        telemetry.addData("Front pivot", hardware.frontPivot.getCurrentPosition());
+        telemetry.addData("Rear pivot", hardware.rearPivot.getCurrentPosition());
         telemetry.update();
     }
 }
