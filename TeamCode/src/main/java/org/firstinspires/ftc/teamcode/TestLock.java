@@ -26,10 +26,10 @@ public class TestLock extends OpMode {
 
         runtime = getRuntime();
 
-        if(gamepad1.a) hardware.setLockPosition(0.0);
-        else if(gamepad1.b)hardware.setLockPosition(0.25);
-        else if(gamepad1.x) hardware.setLockPosition(0.75);
-        else if(gamepad1.y) hardware.setLockPosition(1.0);
+        if(gamepad1.a)      hardware.setLockPosition(0.0);
+        else if(gamepad1.b) hardware.setLockPosition(1.0);
+
+
 
 
 
