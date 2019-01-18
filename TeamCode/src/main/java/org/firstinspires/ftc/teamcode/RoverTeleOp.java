@@ -121,8 +121,9 @@ public class RoverTeleOp extends OpMode {
         else if(gamepad2.dpad_down) hardware.flipper.setPower(-0.8);
         else hardware.flipper.setPower(0.0);
 
-        if(gamepad2.left_bumper) hardware.snorfler.setPower(0.5);
-        else if(gamepad2.right_bumper) hardware.snorfler.setPower(-0.9);
+        // Snorfler controls
+        if(gamepad2.left_bumper)        hardware.snorfler.setPower(0.5);
+        else if(gamepad2.right_bumper)  hardware.snorfler.setPower(-0.9);
         else hardware.snorfler.setPower(0.0);
 
         // Encoder reset controls
