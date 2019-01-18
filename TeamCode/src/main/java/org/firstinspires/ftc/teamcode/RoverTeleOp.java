@@ -45,11 +45,6 @@ public class RoverTeleOp extends OpMode {
         hardware.setLeftPower   (-gamepad1.left_stick_y);
         hardware.setRightPower  (-gamepad1.right_stick_y);
 
-        // Snorfler motors controls
-        if(gamepad2.left_trigger > gamepad2.right_trigger) hardware.snorfler.setPower(-gamepad2.left_trigger);
-        else if(gamepad2.left_trigger < gamepad2.right_trigger) hardware.snorfler.setPower(gamepad2.right_trigger);
-        else hardware.snorfler.setPower(0);
-
 
 
         // Pivot motor controls
@@ -103,9 +98,9 @@ public class RoverTeleOp extends OpMode {
         else hardware.flipper.setPower(0.0);
 
         // Snorfler controls
-        if(gamepad2.left_bumper)        hardware.snorfler.setPower(0.5);
-        else if(gamepad2.right_bumper)  hardware.snorfler.setPower(-0.9);
-        else hardware.snorfler.setPower(0.0);
+        if(gamepad2.left_trigger > gamepad2.right_trigger) hardware.snorfler.setPower(-gamepad2.left_trigger);
+        else if(gamepad2.left_trigger < gamepad2.right_trigger) hardware.snorfler.setPower(gamepad2.right_trigger);
+        else hardware.snorfler.setPower(0);
 
 //        // Encoder reset controls
 //        if(gamepad2.left_bumper && gamepad2.dpad_right) {
