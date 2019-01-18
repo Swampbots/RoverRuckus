@@ -126,14 +126,14 @@ public class RoverTeleOp extends OpMode {
         else if(gamepad2.right_bumper)  hardware.snorfler.setPower(-0.9);
         else hardware.snorfler.setPower(0.0);
 
-        // Encoder reset controls
-        if(gamepad2.left_bumper && gamepad2.dpad_right) {
-            hardware.frontPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-            hardware.rearPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-            hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        }
+//        // Encoder reset controls
+//        if(gamepad2.left_bumper && gamepad2.dpad_right) {
+//            hardware.frontPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//            hardware.rearPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//
+//            hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//            hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        }
 
 
 
