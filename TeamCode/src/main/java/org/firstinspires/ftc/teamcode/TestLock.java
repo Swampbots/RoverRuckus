@@ -35,8 +35,8 @@ public class TestLock extends OpMode {
 
     public void loop() {
 
-        if(gamepad1.a)      hardware.setLockPosition(0.0);
-        else if(gamepad1.b) hardware.setLockPosition(1.0);
+        if(gamepad2.a)      hardware.setLockPosition(0.0);
+        else if(gamepad2.b) hardware.setLockPosition(1.0);
 
         // Set pivot target, run mode, and speed
         if(Math.abs(gamepad2.right_stick_y) < 0.05) {
@@ -63,7 +63,7 @@ public class TestLock extends OpMode {
 
 
         // Latch servo controls
-        hardware.latch.setPosition(gamepad1.right_trigger * LATCH_OPEN);   // This will scale with the latch settings
+        hardware.latch.setPosition(gamepad2.right_trigger * LATCH_OPEN);   // This will scale with the latch settings
 
 
 
