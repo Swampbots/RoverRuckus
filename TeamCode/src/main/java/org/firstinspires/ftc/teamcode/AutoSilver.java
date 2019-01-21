@@ -20,6 +20,8 @@ public class AutoSilver extends OpMode {
 
     GoldContourPipeline vision = new GoldContourPipeline();
 
+    _GoldPlacement goldPlacement = _GoldPlacement.UNKNOWN;
+
 
     public final double RAMP_STOWED = 0.0;
     public final double LOCK_LOCKED = 0.0;
@@ -207,7 +209,6 @@ public class AutoSilver extends OpMode {
         List<MatOfPoint> contours = vision.findContoursOutput();
 
         int contourHeightMid;
-        _GoldPlacement goldPlacement = _GoldPlacement.UNKNOWN;
 
         // Tally of contourPlacements for all visible contours this cycle
         // (Set all to 0 so they start over each cycle)
