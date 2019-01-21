@@ -250,9 +250,6 @@ public class AutoSilver extends OpMode {
                             contourPlacement = _GoldPlacement.RIGHT;
                             rightTally ++;
                         }
-
-//                            telemetry.addData("Contour" + Integer.toString(i),
-//                                    String.format(Locale.getDefault(), "(%d, %s)", contourHeightMid, contourPlacement.toString()));
                     }
                 }
             }
