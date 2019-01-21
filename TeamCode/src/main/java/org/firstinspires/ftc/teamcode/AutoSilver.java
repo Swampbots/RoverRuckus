@@ -36,6 +36,22 @@ public class AutoSilver extends OpMode {
     private double[] hsvSat = new double[]{200.0,255.0};
     private double[] hsvVal = new double[]{113.0,255.0};
 
+
+    ButtonCooldown dpUp     = new ButtonCooldown();
+    ButtonCooldown dpDown   = new ButtonCooldown();
+    ButtonCooldown dpLeft   = new ButtonCooldown();
+    ButtonCooldown dpRight  = new ButtonCooldown();
+
+    ButtonCooldown a    = new ButtonCooldown();
+    ButtonCooldown b    = new ButtonCooldown();
+    ButtonCooldown x    = new ButtonCooldown();
+    ButtonCooldown y    = new ButtonCooldown();
+
+    ButtonCooldown lb   = new ButtonCooldown();
+    ButtonCooldown rb   = new ButtonCooldown();
+    ButtonCooldown lt   = new ButtonCooldown();
+    ButtonCooldown rt   = new ButtonCooldown();
+
     private final double CTR_MAX_Y = 192.0;
 
     private final double CTR_MIN_Y = 0.0;
