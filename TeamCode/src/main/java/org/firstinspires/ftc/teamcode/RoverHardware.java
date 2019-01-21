@@ -97,7 +97,6 @@ public class RoverHardware {
     public static final int FLIPPER_STOW = 0;
     public static final int FLIPPER_LOAD = -COUNTS_PER_DEGREE_HD_FLIPPER * 35;
     public static final int FLIPPER_FLIP = -COUNTS_PER_DEGREE_HD_FLIPPER * 90;
-    public static final int FLIPPER_CLAIM = -COUNTS_PER_DEGREE_HD_FLIPPER * 110;
 
     public void nextFlipper() {
         if(snorfler.getCurrentPosition() == FLIPPER_STOW) snorfler.setTargetPosition(FLIPPER_LOAD);
