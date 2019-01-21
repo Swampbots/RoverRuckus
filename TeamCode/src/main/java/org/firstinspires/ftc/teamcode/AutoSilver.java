@@ -201,6 +201,72 @@ public class AutoSilver extends OpMode {
         vision.setHsvSat(hsvSat);
         vision.setHsvVal(hsvVal);
 
+
+
+        // Contour array
+        List<MatOfPoint> contours = vision.findContoursOutput();
+
+        int contourHeightMid;
+        _GoldPlacement contourPlacement;
+
+        // Tally of contourPlacements for all visible contours this cycle
+        // (Set all to 0 so they start over each cycle)
+        int leftTally = 0;
+        int centerTally = 0;
+        int rightTally = 0;
+
+        int[] ctrTallies = {leftTally, centerTally, rightTally};
+
+
+
+        // TELEMETRY
+        telemetry.addData("Hue min", hsvHue[0]);
+        telemetry.addData("Hue max", hsvHue[1]);
+        telemetry.addLine();
+        telemetry.addData("Sat min", hsvSat[0]);
+        telemetry.addData("Sat max", hsvSat[1]);
+        telemetry.addLine();
+        telemetry.addData("Val min", hsvVal[0]);
+        telemetry.addData("Val max", hsvVal[1]);
+        telemetry.addLine();
+        telemetry.addLine();
+        try {
+            if(contours != null) {
+                if(contours.size() > 0) {
+                    for(int i = 0; i < contours.size(); i++) {
+                        Rect boundingRect = Imgproc.boundingRect(contours.get(i));
+                        contourHeightMid = (boundingRect.y + boundingRect.height) / 2;
+
+
+                        if(contourHeightMid < CTR_LEFT) {
+                            contourPlacement = _GoldPlacement.LEFT;
+                            leftTally ++;
+                        }
+                        else if(contourHeightMid < CTR_RIGHT) {
+                            contourPlacement = _GoldPlacement.CENTER;
+                            centerTally ++;
+                        }
+                        else {
+                            contourPlacement = _GoldPlacement.RIGHT;
+                            rightTally ++;
+                        }
+
+//                            telemetry.addData("Contour" + Integer.toString(i),
+//                                    String.format(Locale.getDefault(), "(%d, %s)", contourHeightMid, contourPlacement.toString()));
+                    }
+                }
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+            telemetry.addData("Exception", e.getMessage());
+        }
+        telemetry.addData("Left tally", leftTally);
+        telemetry.addData("Center tally", centerTally);
+        telemetry.addData("Right tally", rightTally);
+        telemetry.addLine();
+        telemetry.addData("Most common", highestTally(ctrTallies));
+
+        telemetry.update();
     }
 
     public void start() {
@@ -212,5 +278,14 @@ public class AutoSilver extends OpMode {
     }
 
 
+    private String highestTally(int[] tallies) {
+        int highest;
 
+        highest = (tallies[0] > tallies[1] ? tallies[0] : tallies[1]);
+        highest = (highest > tallies[2] ? highest : tallies[2]);
+
+        if(highest == tallies[0])       return "Left";
+        else if(highest == tallies[1])  return "Center";
+        else                            return "Right";
+    }
 }
