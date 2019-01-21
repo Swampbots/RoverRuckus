@@ -237,20 +237,18 @@ public class AutoSilver extends OpMode {
                         Rect boundingRect = Imgproc.boundingRect(contours.get(i));
                         contourHeightMid = (boundingRect.y + boundingRect.height) / 2;
 
-
                         if(contourHeightMid < CTR_LEFT) {
-                            contourPlacement = _GoldPlacement.LEFT;
                             leftTally ++;
                         }
                         else if(contourHeightMid < CTR_RIGHT) {
-                            contourPlacement = _GoldPlacement.CENTER;
                             centerTally ++;
                         }
                         else {
-                            contourPlacement = _GoldPlacement.RIGHT;
                             rightTally ++;
                         }
                     }
+
+                    contourPlacement = highestTally(ctrTallies);
                 }
             }
         } catch(Exception e) {
@@ -262,6 +260,7 @@ public class AutoSilver extends OpMode {
         telemetry.addData("Right tally", rightTally);
         telemetry.addLine();
         telemetry.addData("Most common", highestTally(ctrTallies));
+
 
         telemetry.update();
     }
@@ -281,14 +280,14 @@ public class AutoSilver extends OpMode {
 
 
 
-    private String highestTally(int[] tallies) {
+    private _GoldPlacement highestTally(int[] tallies) {
         int highest;
 
         highest = (tallies[0] > tallies[1] ? tallies[0] : tallies[1]);
         highest = (highest > tallies[2] ? highest : tallies[2]);
 
-        if(highest == tallies[0])       return "Left";
-        else if(highest == tallies[1])  return "Center";
-        else                            return "Right";
+        if(highest == tallies[0])       return _GoldPlacement.LEFT;
+        else if(highest == tallies[1])  return _GoldPlacement.CENTER;
+        else                            return _GoldPlacement.RIGHT;
     }
 }
