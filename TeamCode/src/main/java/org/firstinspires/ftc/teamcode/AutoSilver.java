@@ -322,8 +322,26 @@ public class AutoSilver extends OpMode {
 
 
     public void start() {
-        telemetry.addLine("I'm going to the " + goldPlacement.toString() + "!");
-        telemetry.update();
+        // Open lock
+        hardware.setLockPosition(LOCK_OPEN);
+
+        // Wait to drop
+        double runtime = getRuntime();
+        while(getRuntime() - runtime < DROP_TIME);
+
+        // Close lock
+        hardware.setLockPosition(LOCK_LOCKED);
+
+        // Deploy the wheels
+        hardware.frontPivot.setTargetPosition(PIV_KNEEL_FRONT);
+        hardware.rearPivot.setTargetPosition(PIV_KNEEL_REAR);
+
+        // Open latch
+        hardware.latch.setPosition(LATCH_OPEN);
+
+        // Drive away from lander
+//        hardware.driveInches(DRIVE_DISTANCE);
+
     }
 
     public void loop() {
