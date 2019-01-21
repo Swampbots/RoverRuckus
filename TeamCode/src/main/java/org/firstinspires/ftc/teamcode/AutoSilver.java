@@ -1,9 +1,16 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.corningrobotics.enderbots.endercv.CameraViewDisplay;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
@@ -28,6 +35,11 @@ public class AutoSilver extends OpMode {
 
     _GoldPlacement goldPlacement = _GoldPlacement.UNKNOWN;
 
+
+    // IMU object
+    BNO055IMU imu;
+
+    Orientation angles;
 
 
     public final int DROP_TIME          = 1500; // Milliseconds
@@ -91,6 +103,7 @@ public class AutoSilver extends OpMode {
         // Hardware and servos
         hardware.init(hardwareMap);
 
+
         hardware.latch.setPosition(LATCH_RIGHT);
         hardware.ramp.setPosition(RAMP_STOWED);
 //        hardware.george.setPosition(GEORGE_STOWED);
@@ -100,6 +113,22 @@ public class AutoSilver extends OpMode {
         // Vision pipeline
         vision.init(hardwareMap.appContext, CameraViewDisplay.getInstance(), 1);
         vision.enable();
+
+
+        // IMU
+        imu = hardwareMap.get(BNO055IMU.class, "imu");
+
+        BNO055IMU.Parameters IMUParameters = new BNO055IMU.Parameters();
+        IMUParameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
+        IMUParameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+        IMUParameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
+        IMUParameters.loggingEnabled      = true;
+        IMUParameters.loggingTag          = "IMU";
+        IMUParameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+
+        imu.initialize(IMUParameters);
+
+        angles   = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
     }
 
     public void init_loop() {
