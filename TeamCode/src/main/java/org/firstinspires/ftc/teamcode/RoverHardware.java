@@ -319,6 +319,14 @@ public class RoverHardware {
         rearRight.setMode  (DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
+    public void driveInches(double inches, double speed) {
+        driveCounts(
+                (int) (inches * COUNTS_PER_INCH_DRIVE_FRONT),
+                (int) (inches * COUNTS_PER_INCH_DRIVE_REAR),
+                speed
+        );
+    }
+
 
 
 
