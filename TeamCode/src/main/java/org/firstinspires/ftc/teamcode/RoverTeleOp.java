@@ -14,12 +14,6 @@ public class RoverTeleOp extends OpMode {
 
     RoverHardware hardware = new RoverHardware();
 
-//    private final double MINERAL_TOP = 0.0;
-//    private final double MINERAL_BOTTOM = -650.0;
-//
-//    private final int FLIPPER_FLIP = -500;
-//    private final int FLIPPER_LOAD = 0;
-
 
     private int frontTarget = PIV_STOWED[0];
     private int rearTarget = PIV_STOWED[1];
