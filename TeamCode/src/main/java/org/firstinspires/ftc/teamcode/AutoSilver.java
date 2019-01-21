@@ -265,7 +265,8 @@ public class AutoSilver extends OpMode {
     }
 
     public void start() {
-
+        telemetry.addLine("I'm going to the " + goldPlacement.toString() + "!");
+        telemetry.update();
     }
 
     public void loop() {
