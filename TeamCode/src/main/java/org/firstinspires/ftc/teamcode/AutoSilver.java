@@ -25,7 +25,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD_REAR;
 
-
+@Disabled
 @Autonomous(name = "Silver", group = "Autonomous")
 public class AutoSilver extends OpMode {
 
