@@ -342,7 +342,69 @@ public class AutoSilver extends OpMode {
         // Drive away from lander
 //        hardware.driveInches(DRIVE_DISTANCE);
 
+        // Turn towards gold sample
+        switch(goldPlacement) {
+            case LEFT:
+                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
+                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+
+                try {
+                    turnToHeadingPID(SAMPLE_LEFT);
+                } catch(InterruptedException e) {
+                    telemetry.addLine("PID turn interrupted");
+                    telemetry.update();
+
+                    stop();
+                }
+
+                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+
+                hardware.snorfler.setPower(-1.0);
+
+                //hardware.driveInches(SAMPLE_DIST);
+
+                break;
+
+            case RIGHT:
+                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
+                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+
+                try {
+                    turnToHeadingPID(SAMPLE_LEFT);
+                } catch(InterruptedException e) {
+                    telemetry.addLine("PID turn interrupted");
+                    telemetry.update();
+
+                    stop();
+                }
+
+                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+
+                hardware.snorfler.setPower(-1.0);
+
+                //hardware.driveInches(SAMPLE_DIST);
+
+                break;
+
+            default:    // Center and unknown are considered default
+                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+
+                hardware.snorfler.setPower(-1.0);
+
+                //hardware.driveInches(SAMPLE_DIST);
+
+                break;
+        }
     }
+
+
+
+
+
+
 
     public void loop() {
 
@@ -365,4 +427,44 @@ public class AutoSilver extends OpMode {
         else if(highest == tallies[1])  return _GoldPlacement.CENTER;
         else                            return _GoldPlacement.RIGHT;
     }
+
+
+
+
+    public void turnToHeadingPID(int target) throws InterruptedException {
+
+        hardware.pid.setSetpoint(target);                                       // Set target final heading relative to current
+        hardware.pid.setOutputRange(-hardware.MAX_SPEED, hardware.MAX_SPEED);   // Set maximum motor power
+        hardware.pid.setDeadband(hardware.TOLERANCE);                           // Set how far off you can safely be from your target
+
+        double error = normalize180(target - heading());
+
+        while (Math.abs(error) < hardware.TOLERANCE) {
+            error = normalize180(target - heading());
+            double power = hardware.pid.calculateGivenError(error);
+
+            hardware.setLeftPower(power);
+            hardware.setRightPower(-power);
+
+            Thread.sleep(1);
+        }
+
+        hardware.setLeftPower(0);
+        hardware.setRightPower(0);
+    }
+
+    public double normalize180(double angle) {
+        while(angle > 180) {
+            angle -= 360;
+        }
+        while(angle <= -180) {
+            angle += 360;
+        }
+        return angle;
+    }
+
+    public double heading() {
+        return imu.getAngularOrientation(AxesReference.EXTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle;
+    }
+
 }
