@@ -27,19 +27,28 @@ public class RoverHardware {
     public static final double  GEAR_REDUCTION_CORE  = 1.0; // No reduction on drive motors currently
     public static final int     COUNTS_PER_INCH_CORE = (int)((COUNTS_PER_REV_CORE * GEAR_REDUCTION_CORE) / WHEEL_CIRCUMFERENCE);
 
-    // Encoder variables (REV HD Hex Motors)
+    // Encoder variables (Pivot motors)
     public static final int     COUNTS_PER_REV_HD   = 1120;
 
     public static final double  GEAR_REDUCTION_HD_REAR      = (24.0 / 16.0) * (26.0 / 15.0); // 16-t (output shaft) -> 24-t (transfer shaft) -- 15-t (same shaft) -> 26-t (pivot shaft)
     public static final double  GEAR_REDUCTION_HD_FRONT     = (24.0 / 16.0) * (26.0 / 15.0); // 16-t (output shaft) -> 24-t (transfer shaft) -- 15-t (same shaft) -> 26-t (pivot shaft)
 
-    public static final int     COUNTS_PER_INCH_HD_REAR     = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_REAR) / WHEEL_CIRCUMFERENCE);
-    public static final int     COUNTS_PER_INCH_HD_FRONT    = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_FRONT) / WHEEL_CIRCUMFERENCE);
 
     public static final int     COUNTS_PER_DEGREE_HD_REAR   = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_REAR) / 360);
     public static final int     COUNTS_PER_DEGREE_HD_FRONT  = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_FRONT) / 360);
 
     public static final int     COUNTS_PER_DEGREE_HD_FLIPPER = (int)(COUNTS_PER_REV_HD / 360);
+
+
+    // Encoder variables (Drive motors)
+    public static final double  GEAR_REDUCTION_DRIVE_REAR = (15.0 / 20.0);
+    public static final double  GEAR_REDUCTION_DRIVE_FRONT = 1.0;
+
+    public static final int     COUNTS_PER_INCH_DRIVE_REAR     = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_DRIVE_REAR) / WHEEL_CIRCUMFERENCE);
+    public static final int     COUNTS_PER_INCH_DRIVE_FRONT    = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_DRIVE_FRONT) / WHEEL_CIRCUMFERENCE);
+
+
+
 
 
 
