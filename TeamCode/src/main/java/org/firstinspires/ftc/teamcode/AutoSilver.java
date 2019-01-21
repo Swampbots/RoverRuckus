@@ -277,6 +277,12 @@ public class AutoSilver extends OpMode {
 
     }
 
+    public void stop() {
+        vision.disable();
+    }
+
+
+
 
     private String highestTally(int[] tallies) {
         int highest;
