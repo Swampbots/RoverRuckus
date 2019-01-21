@@ -398,6 +398,10 @@ public class AutoSilver extends OpMode {
 
                 break;
         }
+
+        // Drive to crater
+        //hardware.driveInches(CRATER_DIST);
+
     }
 
 
