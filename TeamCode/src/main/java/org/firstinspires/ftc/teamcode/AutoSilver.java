@@ -10,7 +10,13 @@ import org.opencv.imgproc.Imgproc;
 
 import java.util.List;
 
+import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_RIGHT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_REAR;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD_REAR;
 
 
 @Autonomous(name = "Silver", group = "Autonomous")
@@ -23,8 +29,24 @@ public class AutoSilver extends OpMode {
     _GoldPlacement goldPlacement = _GoldPlacement.UNKNOWN;
 
 
+
+    public final int DROP_TIME          = 1500; // Milliseconds
+
+    public final double DRIVE_DIST      = 4.0;  // Inches
+    public final double SAMPLE_DIST     = 26.0;  // Inches
+    public final double CRATER_DIST     = 11.5;  // Inches
+
+    public final int SAMPLE_LEFT        = -40;  // Degrees
+    public final int SAMPLE_RIGHT       = 40;  // Degrees
+
+
+
+    // Servo positions
     public final double RAMP_STOWED = 0.0;
+
+    public final double LOCK_OPEN   = 1.0;
     public final double LOCK_LOCKED = 0.0;
+
 
 
 
@@ -263,6 +285,12 @@ public class AutoSilver extends OpMode {
         telemetry.addData("Gold Placement", goldPlacement);
         telemetry.update();
     }
+
+
+
+
+
+
 
     public void start() {
         telemetry.addLine("I'm going to the " + goldPlacement.toString() + "!");
