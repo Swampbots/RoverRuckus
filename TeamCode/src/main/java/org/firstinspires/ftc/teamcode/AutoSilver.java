@@ -207,7 +207,7 @@ public class AutoSilver extends OpMode {
         List<MatOfPoint> contours = vision.findContoursOutput();
 
         int contourHeightMid;
-        _GoldPlacement contourPlacement;
+        _GoldPlacement goldPlacement = _GoldPlacement.UNKNOWN;
 
         // Tally of contourPlacements for all visible contours this cycle
         // (Set all to 0 so they start over each cycle)
@@ -248,7 +248,7 @@ public class AutoSilver extends OpMode {
                         }
                     }
 
-                    contourPlacement = highestTally(ctrTallies);
+                    goldPlacement = highestTally(ctrTallies);
                 }
             }
         } catch(Exception e) {
@@ -259,7 +259,7 @@ public class AutoSilver extends OpMode {
         telemetry.addData("Center tally", centerTally);
         telemetry.addData("Right tally", rightTally);
         telemetry.addLine();
-        telemetry.addData("Most common", highestTally(ctrTallies));
+        telemetry.addData("Gold Placement", goldPlacement);
 
 
         telemetry.update();
