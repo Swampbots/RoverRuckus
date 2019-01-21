@@ -32,9 +32,9 @@ public class AutoSilver extends OpMode {
     private final double HSV_MAX = 255.0;
     private final double HSV_MIN = 0.0;
 
-    private double[] hsvHue = new double[]{106.0,118.0};
-    private double[] hsvSat = new double[]{200.0,255.0};
-    private double[] hsvVal = new double[]{113.0,255.0};
+    private double[] hsvHue = new double[]{106.0, 118.0};
+    private double[] hsvSat = new double[]{0.0, 255.0};
+    private double[] hsvVal = new double[]{0.0, 255.0};
 
 
     ButtonCooldown dpUp     = new ButtonCooldown();
@@ -260,8 +260,6 @@ public class AutoSilver extends OpMode {
         telemetry.addData("Right tally", rightTally);
         telemetry.addLine();
         telemetry.addData("Gold Placement", goldPlacement);
-
-
         telemetry.update();
     }
 
