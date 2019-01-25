@@ -302,17 +302,27 @@ public class AutoSilver extends OpMode {
                             rightTally ++;
                         }
                     }
-
-                    goldPlacement = highestTally(ctrTallies);
                 }
             }
         } catch(Exception e) {
             e.printStackTrace();
             telemetry.addData("Exception", e.getMessage());
         }
+
+        int highest = highestTally(ctrTallies);
+
+        if(highest == leftTally) {
+            goldPlacement = _GoldPlacement.LEFT;
+        } else if(highest == centerTally) {
+            goldPlacement = _GoldPlacement.CENTER;
+        } else {
+            goldPlacement = _GoldPlacement.RIGHT;
+        }
+
         telemetry.addData("Left tally", leftTally);
         telemetry.addData("Center tally", centerTally);
         telemetry.addData("Right tally", rightTally);
+        telemetry.addData("Highest", highest);
         telemetry.addLine();
         telemetry.addData("Gold Placement", goldPlacement);
         telemetry.update();
