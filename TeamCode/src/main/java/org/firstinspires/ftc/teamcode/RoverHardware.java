@@ -55,31 +55,31 @@ public class RoverHardware {
     public static final int PIV_DEGREE_OFFSET = 10;
 
 
-//    // Rear pivot position variables
-//    public static final int PIV_STOWED_REAR = 0;                                                            // Always start at 0
-//    public static final int PIV_OMNI_REAR   = -COUNTS_PER_DEGREE_HD_REAR * (90 + PIV_DEGREE_OFFSET);        // 90 degrees out from start
-//    public static final int PIV_KNEEL_REAR  = -COUNTS_PER_DEGREE_HD_REAR * (135 + PIV_DEGREE_OFFSET);       // 135 for both wheels on the ground
-//    public static final int PIV_STD_REAR    = -COUNTS_PER_DEGREE_HD_REAR * (180 + PIV_DEGREE_OFFSET);       // 180 for standard wheel on the ground
-//    public static final int PIV_MINE_REAR   = -1450;                                                        // Exact degrees TBD
+    // Rear pivot position variables
+    public static final int PIV_STOWED_REAR = 0;                                                            // Always start at 0
+    public static final int PIV_OMNI_REAR   = -COUNTS_PER_DEGREE_HD_REAR * (90 + PIV_DEGREE_OFFSET);        // 90 degrees out from start
+    public static final int PIV_KNEEL_REAR  = -COUNTS_PER_DEGREE_HD_REAR * (135 + PIV_DEGREE_OFFSET);       // 135 for both wheels on the ground
+    public static final int PIV_STD_REAR    = -COUNTS_PER_DEGREE_HD_REAR * (180 + PIV_DEGREE_OFFSET);       // 180 for standard wheel on the ground
+    public static final int PIV_MINE_REAR   = -1450;                                                        // Exact degrees TBD
+
+    // Front pivot position variables
+    public static final int PIV_STOWED_FRONT    = 0;                                                        // Always start at 0
+    public static final int PIV_OMNI_FRONT      = -COUNTS_PER_DEGREE_HD_FRONT * (90 + PIV_DEGREE_OFFSET);   // 90 degrees out from start
+    public static final int PIV_KNEEL_FRONT     = -COUNTS_PER_DEGREE_HD_FRONT * (135 + PIV_DEGREE_OFFSET);  // 135 for both wheels on the ground
+    public static final int PIV_STD_FRONT       = -COUNTS_PER_DEGREE_HD_FRONT * (180 + PIV_DEGREE_OFFSET);  // 180 for standard wheel on the ground
+    public static final int PIV_MINE_FRONT      = (int)(-600 * GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT);                                                     // Exact degrees TBD
+
+//    public static final int PIV_STOWED_REAR = 0;
+//    public static final int PIV_OMNI_REAR   = -700;
+//    public static final int PIV_KNEEL_REAR  = -900;
+//    public static final int PIV_STD_REAR    = -1400;
+//    public static final int PIV_MINE_REAR   = -1;
 //
-//    // Front pivot position variables
-//    public static final int PIV_STOWED_FRONT    = 0;                                                        // Always start at 0
-//    public static final int PIV_OMNI_FRONT      = -COUNTS_PER_DEGREE_HD_FRONT * (90 + PIV_DEGREE_OFFSET);   // 90 degrees out from start
-//    public static final int PIV_KNEEL_FRONT     = -COUNTS_PER_DEGREE_HD_FRONT * (135 + PIV_DEGREE_OFFSET);  // 135 for both wheels on the ground
-//    public static final int PIV_STD_FRONT       = -COUNTS_PER_DEGREE_HD_FRONT * (180 + PIV_DEGREE_OFFSET);  // 180 for standard wheel on the ground
-//    public static final int PIV_MINE_FRONT      = (int)(-600 * GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT);                                                     // Exact degrees TBD
-
-    public static final int PIV_STOWED_REAR = 0;
-    public static final int PIV_OMNI_REAR   = -700;
-    public static final int PIV_KNEEL_REAR  = -900;
-    public static final int PIV_STD_REAR    = -1400;
-    public static final int PIV_MINE_REAR   = -1;
-
-    public static final int PIV_STOWED_FRONT    = 0;
-    public static final int PIV_OMNI_FRONT      = -700;
-    public static final int PIV_KNEEL_FRONT     = -900;
-    public static final int PIV_STD_FRONT       = -1400;
-    public static final int PIV_MINE_FRONT      = -1;
+//    public static final int PIV_STOWED_FRONT    = 0;
+//    public static final int PIV_OMNI_FRONT      = -700;
+//    public static final int PIV_KNEEL_FRONT     = -900;
+//    public static final int PIV_STD_FRONT       = -1400;
+//    public static final int PIV_MINE_FRONT      = -1;
 
 
     // Pivot state variables
