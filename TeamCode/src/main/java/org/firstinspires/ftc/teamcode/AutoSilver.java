@@ -17,8 +17,8 @@ import org.opencv.imgproc.Imgproc;
 
 import java.util.List;
 
+import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_LEFT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
-import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_RIGHT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_FRONT;
@@ -105,7 +105,7 @@ public class AutoSilver extends OpMode {
         hardware.init(hardwareMap);
 
 
-        hardware.latch.setPosition(LATCH_RIGHT);
+        hardware.latch.setPosition(LATCH_LEFT);
         hardware.ramp.setPosition(RAMP_STOWED);
 //        hardware.george.setPosition(GEORGE_STOWED);
         hardware.setLockPosition(LOCK_LOCKED);
@@ -325,6 +325,9 @@ public class AutoSilver extends OpMode {
 
 
     public void start() {
+
+        hardware.latch.setPosition(LATCH_LEFT);
+
         // Open lock
         hardware.setLockPosition(LOCK_OPEN);
 
