@@ -41,7 +41,7 @@ public class AutoSilver extends OpMode {
     Orientation angles;
 
 
-    public final int DROP_TIME          = 1500; // Milliseconds
+    public final double DROP_TIME       = 3.0; // Seconds
 
     public final double DRIVE_DIST      = 4.0;  // Inches
     public final double SAMPLE_DIST     = 26.0;  // Inches
