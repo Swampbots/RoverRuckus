@@ -58,25 +58,25 @@ public class GoldContourPipeline extends OpenCVPipeline {
         boolean findContoursExternalOnly = false;
         findContours(findContoursInput, findContoursExternalOnly, findContoursOutput);
 
-//        // Step Filter_Contours0:
-//        ArrayList<MatOfPoint> filterContoursContours = findContoursOutput;
-//        double filterContoursMinArea = 1000.0;
-//        double filterContoursMinPerimeter = 0;
-//        double filterContoursMinWidth = 0;
-//        double filterContoursMaxWidth = 1000;
-//        double filterContoursMinHeight = 0;
-//        double filterContoursMaxHeight = 1000;
-//        double[] filterContoursSolidity = {0, 100};
-//        double filterContoursMaxVertices = 1000000;
-//        double filterContoursMinVertices = 0;
-//        double filterContoursMinRatio = 0;
-//        double filterContoursMaxRatio = 1000;
-//        filterContours(filterContoursContours, filterContoursMinArea, filterContoursMinPerimeter, filterContoursMinWidth, filterContoursMaxWidth, filterContoursMinHeight, filterContoursMaxHeight, filterContoursSolidity, filterContoursMaxVertices, filterContoursMinVertices, filterContoursMinRatio, filterContoursMaxRatio, filterContoursOutput);
+        // Step Filter_Contours0:
+        ArrayList<MatOfPoint> filterContoursContours = findContoursOutput;
+        double filterContoursMinArea = 1000.0;
+        double filterContoursMinPerimeter = 0;
+        double filterContoursMinWidth = 0;
+        double filterContoursMaxWidth = 1000;
+        double filterContoursMinHeight = 0;
+        double filterContoursMaxHeight = 1000;
+        double[] filterContoursSolidity = {0, 100};
+        double filterContoursMaxVertices = 1000000;
+        double filterContoursMinVertices = 0;
+        double filterContoursMinRatio = 0;
+        double filterContoursMaxRatio = 1000;
+        filterContours(filterContoursContours, filterContoursMinArea, filterContoursMinPerimeter, filterContoursMinWidth, filterContoursMaxWidth, filterContoursMinHeight, filterContoursMaxHeight, filterContoursSolidity, filterContoursMaxVertices, filterContoursMinVertices, filterContoursMinRatio, filterContoursMaxRatio, filterContoursOutput);
 
         if (showContours) {
             // this draws the outlines of the blue contours over our original image.
             // they are highlighted in green.
-            Imgproc.drawContours(hsvThresholdOutput, findContoursOutput, -1, new Scalar(0, 255, 0), 2, 8);
+            Imgproc.drawContours(hsvThresholdOutput, filterContoursOutput, -1, new Scalar(0, 255, 0), 2, 8);
         }
 
         return hsvThresholdOutput;
