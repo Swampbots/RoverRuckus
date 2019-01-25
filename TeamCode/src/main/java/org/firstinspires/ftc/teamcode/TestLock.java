@@ -35,35 +35,6 @@ public class TestLock extends OpMode {
 
     public void loop() {
 
-        if(gamepad2.a)      hardware.setLockPosition(0.0);
-        else if(gamepad2.b) hardware.setLockPosition(1.0);
-
-        // Drive motor controls
-        hardware.setLeftPower   (-gamepad1.left_stick_y);
-        hardware.setRightPower  (-gamepad1.right_stick_y);
-
-        // Set pivot target, run mode, and speed
-        if(Math.abs(gamepad2.right_stick_y) < 0.05) {
-            hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            hardware.frontPivot.setPower(PIV_SPEED_FRONT);
-        } else {
-            hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            hardware.frontPivot.setPower(-gamepad2.right_stick_y * PIV_SPEED_SCALER_FRONT);
-            frontTarget = hardware.frontPivot.getCurrentPosition();
-        }
-
-        if(Math.abs(gamepad2.left_stick_y) < 0.05) {
-            hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            hardware.rearPivot.setPower(PIV_SPEED_REAR);
-        } else {
-            hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            hardware.rearPivot.setPower(-gamepad2.left_stick_y * PIV_SPEED_SCALER_REAR);
-            rearTarget = hardware.rearPivot.getCurrentPosition();
-        }
-
-        // Set pivot targets
-        hardware.frontPivot.setTargetPosition(frontTarget);
-        hardware.rearPivot.setTargetPosition(rearTarget);
 
 
         // Latch servo controls
