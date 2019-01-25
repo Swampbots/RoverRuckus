@@ -8,7 +8,11 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
+import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_CLOSED;
+import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
+import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_DOWN;
+import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_UP;
 
 //@Disabled
 @TeleOp(name = "Lock Test", group ="Testing")
@@ -35,7 +39,11 @@ public class TestLock extends OpMode {
 
     public void loop() {
 
+        if(gamepad2.a)      hardware.setLockPosition(LOCK_OPEN);
+        else if(gamepad2.b) hardware.setLockPosition(LOCK_CLOSED);
 
+        if(gamepad2.x) hardware.ramp.setPosition(RAMP_UP);
+        else hardware.ramp.setPosition(RAMP_DOWN);
 
         // Latch servo controls
         hardware.latch.setPosition(gamepad2.right_trigger * LATCH_OPEN);   // This will scale with the latch settings
