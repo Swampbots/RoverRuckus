@@ -80,14 +80,6 @@ public class TestPivot extends OpMode {
         // END TARGET CONTROLS
 
 
-        // Snorfler
-        if(gamepad1.left_trigger > gamepad1.right_trigger) hardware.flipper.setPower(-gamepad1.left_trigger);
-        else if(gamepad1.left_trigger < gamepad1.right_trigger) hardware.flipper.setPower(gamepad1.right_trigger);
-        else hardware.flipper.setPower(0);
-
-        // Latch position
-        hardware.latch.setPosition(gamepad1.right_trigger * LATCH_OPEN);
-
 
 
         // TELEMETRY
