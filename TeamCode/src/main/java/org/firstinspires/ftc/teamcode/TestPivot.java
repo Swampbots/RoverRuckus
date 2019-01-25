@@ -31,11 +31,6 @@ public class TestPivot extends OpMode {
 
 
 
-//    private final int PIV_TARGET_ERROR = 20;
-//    private boolean targetReachedFront = false;
-//    private boolean targetReachedRear = false;
-
-
     public void init() {
         hardware.init(hardwareMap);
     }
@@ -47,11 +42,6 @@ public class TestPivot extends OpMode {
         hardware.setLeftPower   (-gamepad1.left_stick_y);
         hardware.setRightPower  (-gamepad1.right_stick_y);
 
-
-
-//        // Set pivot powers
-//        hardware.rearPivot.setPower (gamepad2.left_stick_y);
-//        hardware.frontPivot.setPower(gamepad2.right_stick_y);
 
         // Handle pivot targets
         if(gamepad1.a) {
@@ -87,11 +77,6 @@ public class TestPivot extends OpMode {
         hardware.rearPivot.setPower(PIV_SPEED_REAR);
 
 
-        // Check to see if the pivot target was reached (within error)
-//        targetReachedFront = Math.abs(hardware.frontPivot.getCurrentPosition() - frontTarget) < PIV_TARGET_ERROR;
-//        targetReachedRear = Math.abs(hardware.rearPivot.getCurrentPosition() - rearTarget) < PIV_TARGET_ERROR;
-
-
         // END TARGET CONTROLS
 
 
@@ -109,8 +94,6 @@ public class TestPivot extends OpMode {
         telemetry.addData("Front Target",   frontTarget);
         telemetry.addData("Rear Target",    rearTarget);
         telemetry.addLine();
-//        telemetry.addData("Front target reached", targetReachedFront);
-//        telemetry.addData("Rear target reached", targetReachedRear);
         telemetry.update();
     }
 
