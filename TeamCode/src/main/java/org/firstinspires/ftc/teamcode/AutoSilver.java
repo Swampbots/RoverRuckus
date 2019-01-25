@@ -116,20 +116,20 @@ public class AutoSilver extends OpMode {
         vision.enable();
 
 
-        // IMU
-        imu = hardwareMap.get(BNO055IMU.class, "imu");
-
-        BNO055IMU.Parameters IMUParameters = new BNO055IMU.Parameters();
-        IMUParameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
-        IMUParameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
-        IMUParameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
-        IMUParameters.loggingEnabled      = true;
-        IMUParameters.loggingTag          = "IMU";
-        IMUParameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
-
-        imu.initialize(IMUParameters);
-
-        angles   = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+//        // IMU
+//        imu = hardwareMap.get(BNO055IMU.class, "imu");
+//
+//        BNO055IMU.Parameters IMUParameters = new BNO055IMU.Parameters();
+//        IMUParameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
+//        IMUParameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+//        IMUParameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
+//        IMUParameters.loggingEnabled      = true;
+//        IMUParameters.loggingTag          = "IMU";
+//        IMUParameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+//
+//        imu.initialize(IMUParameters);
+//
+//        angles   = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
     }
 
     //----------------------------------------------------------------------------------------------
@@ -348,65 +348,65 @@ public class AutoSilver extends OpMode {
         // Drive away from lander
 //        hardware.driveInches(DRIVE_DISTANCE);
 
-        // Turn towards gold sample
-        switch(goldPlacement) {
-            case LEFT:
-                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
-                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
-
-                try {
-                    turnToHeadingPID(SAMPLE_LEFT);
-                } catch(InterruptedException e) {
-                    telemetry.addLine("PID turn interrupted");
-                    telemetry.update();
-
-                    stop();
-                }
-
-                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
-                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
-
-                hardware.snorfler.setPower(-1.0);
-
-                //hardware.driveInches(SAMPLE_DIST);
-
-                break;
-
-            case RIGHT:
-                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
-                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
-
-                try {
-                    turnToHeadingPID(SAMPLE_LEFT);
-                } catch(InterruptedException e) {
-                    telemetry.addLine("PID turn interrupted");
-                    telemetry.update();
-
-                    stop();
-                }
-
-                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
-                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
-
-                hardware.snorfler.setPower(-1.0);
-
-                //hardware.driveInches(SAMPLE_DIST);
-
-                break;
-
-            default:    // Center and unknown are considered default
-                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
-                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
-
-                hardware.snorfler.setPower(-1.0);
-
-                //hardware.driveInches(SAMPLE_DIST);
-
-                break;
-        }
-
-        // Drive to crater
-        //hardware.driveInches(CRATER_DIST);
+//        // Turn towards gold sample
+//        switch(goldPlacement) {
+//            case LEFT:
+//                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
+//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+//
+//                try {
+//                    turnToHeadingPID(SAMPLE_LEFT);
+//                } catch(InterruptedException e) {
+//                    telemetry.addLine("PID turn interrupted");
+//                    telemetry.update();
+//
+//                    stop();
+//                }
+//
+//                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+//
+//                hardware.snorfler.setPower(-1.0);
+//
+//                //hardware.driveInches(SAMPLE_DIST);
+//
+//                break;
+//
+//            case RIGHT:
+//                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
+//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+//
+//                try {
+//                    turnToHeadingPID(SAMPLE_LEFT);
+//                } catch(InterruptedException e) {
+//                    telemetry.addLine("PID turn interrupted");
+//                    telemetry.update();
+//
+//                    stop();
+//                }
+//
+//                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+//
+//                hardware.snorfler.setPower(-1.0);
+//
+//                //hardware.driveInches(SAMPLE_DIST);
+//
+//                break;
+//
+//            default:    // Center and unknown are considered default
+//                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+//
+//                hardware.snorfler.setPower(-1.0);
+//
+//                //hardware.driveInches(SAMPLE_DIST);
+//
+//                break;
+//        }
+//
+//        // Drive to crater
+//        //hardware.driveInches(CRATER_DIST);
 
     }
 
