@@ -112,11 +112,14 @@ public class RoverHardware {
 
 
     // Servo position variables
-    public static final double STOP_OPEN    = 0.7;
-    public static final double STOP_CLOSED  = 1.0;
+    public static final double LOCK_OPEN    = 1.0;
+    public static final double LOCK_CLOSED  = 0.0;
 
-    public static final double LATCH_LEFT   = 0.0;
+    public static final double LATCH_CLOSED = 0.0;
     public static final double LATCH_OPEN   = 0.6;
+
+    public static final double RAMP_UP   = 1.0;
+    public static final double RAMP_DOWN = 0.0;
 
 
     // Autonomous PID variables
