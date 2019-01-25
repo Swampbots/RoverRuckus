@@ -343,9 +343,13 @@ public class AutoSilver extends OpMode {
 
         // Wait to drop
         double runtime = getRuntime();
-        while(getRuntime() - runtime < DROP_TIME);
+        while(getRuntime() - runtime < DROP_TIME) {
+            telemetry.addLine("Waiting...");
+            telemetry.addData("Elapsed Time", getRuntime() - runtime);
+            telemetry.update();
+        }
 
-        // Close lock
+        // Lock lock
         hardware.setLockPosition(LOCK_LOCKED);
 
         // Deploy the wheels
