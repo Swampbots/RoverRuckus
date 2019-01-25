@@ -437,15 +437,14 @@ public class AutoSilver extends OpMode {
 
 
 
-    private _GoldPlacement highestTally(int[] tallies) {
+    private int highestTally(int[] tallies) {
         int highest;
 
-        highest = (tallies[0] > tallies[1] ? tallies[0] : tallies[1]);
-        highest = (highest > tallies[2] ? highest : tallies[2]);
+        if(tallies[0] > tallies[1] && tallies[0] > tallies[2]) highest = tallies[0];
+        else if(tallies[1] > tallies[2]) highest = tallies[1];
+        else highest = tallies[2];
 
-        if(highest == tallies[0])       return _GoldPlacement.LEFT;
-        else if(highest == tallies[1])  return _GoldPlacement.CENTER;
-        else                            return _GoldPlacement.RIGHT;
+        return highest;
     }
 
 
