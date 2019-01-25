@@ -41,7 +41,7 @@ public class RoverHardware {
 
 
     // Encoder variables (Drive motors)
-    public static final double  GEAR_REDUCTION_DRIVE_REAR = (15.0 / 20.0);
+    public static final double  GEAR_REDUCTION_DRIVE_REAR = (20.0 / 15.0);
     public static final double  GEAR_REDUCTION_DRIVE_FRONT = 1.0;
 
     public static final int     COUNTS_PER_INCH_DRIVE_REAR     = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_DRIVE_REAR) / WHEEL_CIRCUMFERENCE);
