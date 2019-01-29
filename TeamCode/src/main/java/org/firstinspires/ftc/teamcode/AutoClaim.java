@@ -50,7 +50,7 @@ public class AutoClaim extends LinearOpMode {
         hardware.ramp.setPosition(RAMP_DOWN);
 
         // Drive through center sample to crater
-        hardware.driveInches(24.0, 0.8);
+        hardware.driveInches(48.0, 0.8);
 
         // Snorfle out
         hardware.snorfler.setPower(1.0);
