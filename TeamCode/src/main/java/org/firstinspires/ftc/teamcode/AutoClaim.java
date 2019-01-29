@@ -1,12 +1,15 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_DOWN;
 
+@Autonomous(name = "Gold", group = "Autonomous")
 public class AutoClaim extends LinearOpMode {
 
 
@@ -14,6 +17,8 @@ public class AutoClaim extends LinearOpMode {
         RoverHardware hardware = new RoverHardware();
 
         hardware.init(hardwareMap);
+
+
 
 
         waitForStart();
