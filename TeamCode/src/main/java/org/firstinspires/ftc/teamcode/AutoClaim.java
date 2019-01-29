@@ -4,10 +4,13 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
+import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_DOWN;
+import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_UP;
 
 @Autonomous(name = "Gold", group = "Autonomous")
 public class AutoClaim extends LinearOpMode {
@@ -25,7 +28,7 @@ public class AutoClaim extends LinearOpMode {
 
         // Descend from lander
         hardware.setLockPosition(RoverHardware.LOCK_OPEN);
-        sleep(1500);
+        sleep(4500);
         hardware.setLockPosition(RoverHardware.LOCK_CLOSED);
 
         // Deploy wheels
