@@ -15,6 +15,16 @@ public class RoverTeleOp extends OpMode {
     RoverHardware hardware = new RoverHardware();
 
 
+    public final double SLOW = 0.4;
+    public final double NORMAL = 0.6;
+    public final double FAST = 0.9;
+
+    public double flipperSpeedModifier;
+
+
+
+
+
     private int frontTarget = PIV_STOWED[0];
     private int rearTarget = PIV_STOWED[1];
 
@@ -30,10 +40,24 @@ public class RoverTeleOp extends OpMode {
 
 
     public void init() {
+        flipperSpeedModifier = NORMAL;
         hardware.init(hardwareMap);
     }
 
     public void loop() {
+
+
+        // Speed modifier
+        if(gamepad2.left_bumper) {
+            flipperSpeedModifier = FAST;
+        } else if(gamepad2.right_bumper) {
+            flipperSpeedModifier = SLOW;
+        } else {
+            flipperSpeedModifier = NORMAL;
+        }
+
+
+
 
         // Drive motor controls
         hardware.setLeftPower   (-gamepad1.left_stick_y);
@@ -67,8 +91,8 @@ public class RoverTeleOp extends OpMode {
 
 
         // Flipper controls
-        if(gamepad2.dpad_up)        hardware.flipper.setPower(0.7);
-        else if(gamepad2.dpad_down) hardware.flipper.setPower(-0.7);
+        if(gamepad2.dpad_up)        hardware.flipper.setPower(flipperSpeedModifier);
+        else if(gamepad2.dpad_down) hardware.flipper.setPower(-flipperSpeedModifier);
         else hardware.flipper.setPower(0.0);
 
         // Snorfler controls
@@ -95,6 +119,7 @@ public class RoverTeleOp extends OpMode {
         telemetry.addData("Rear Pivot", hardware.rearPivot.getCurrentPosition());
         telemetry.addLine();
         telemetry.addData("Flipper Position", hardware.snorfler.getCurrentPosition());
+        telemetry.addData("Flipper speed mod", flipperSpeedModifier);
         telemetry.addLine();
 //        telemetry.addData("Flipper Scalar", flipperScalar);
         telemetry.update();
