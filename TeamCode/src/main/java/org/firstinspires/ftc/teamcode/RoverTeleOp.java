@@ -14,19 +14,14 @@ public class RoverTeleOp extends OpMode {
 
     RoverHardware hardware = new RoverHardware();
 
-
-    public final double SLOW = 0.4;
-    public final double NORMAL = 0.6;
-    public final double FAST = 0.9;
-
     public double flipperSpeedModifier;
-
-
 
 
 
     private int frontTarget = PIV_STOWED[0];
     private int rearTarget = PIV_STOWED[1];
+
+
 
     private final double PIV_SPEED_BASE = 1.0;
     private final double PIV_SPEED_FRONT = PIV_SPEED_BASE;
@@ -34,6 +29,7 @@ public class RoverTeleOp extends OpMode {
 
     private final double PIV_SPEED_SCALER_FRONT = 1.0;
     private final double PIV_SPEED_SCALER_REAR = PIV_SPEED_SCALER_FRONT * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT);
+
 
 
     public void init() {
