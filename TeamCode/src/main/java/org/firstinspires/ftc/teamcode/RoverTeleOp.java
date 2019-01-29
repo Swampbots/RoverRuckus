@@ -41,26 +41,6 @@ public class RoverTeleOp extends OpMode {
 
 
 
-        // Pivot motor controls
-
-//        // Handle pivot targets
-//        if(gamepad2.a) {
-//            frontTarget = PIV_KNEEL[0];
-//            rearTarget = PIV_KNEEL[1];
-//        } else if(gamepad2.b) {
-//            frontTarget = PIV_STOWED[0];
-//            rearTarget = PIV_STOWED[1];
-//        } else if(gamepad2.x) {
-//            frontTarget = PIV_STD[0];
-//            rearTarget = PIV_OMNI[1];
-//        } else if(gamepad2.y) {
-//            frontTarget = PIV_OMNI[0];
-//            rearTarget = PIV_STD[1];
-//        } else if(gamepad2.dpad_left) {
-//            frontTarget = PIV_MINE[0];
-//            rearTarget = PIV_MINE[1];
-//        }
-
 
         // Set pivot target, run mode, and speed
         if(Math.abs(gamepad2.right_stick_y) < 0.05) {
@@ -95,15 +75,6 @@ public class RoverTeleOp extends OpMode {
         if(gamepad2.left_trigger > gamepad2.right_trigger) hardware.snorfler.setPower(-gamepad2.left_trigger);
         else if(gamepad2.left_trigger < gamepad2.right_trigger) hardware.snorfler.setPower(gamepad2.right_trigger);
         else hardware.snorfler.setPower(0);
-
-//        // Encoder reset controls
-//        if(gamepad2.left_bumper && gamepad2.dpad_right) {
-//            hardware.frontPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-//            hardware.rearPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-//
-//            hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-//            hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-//        }
 
 
 
