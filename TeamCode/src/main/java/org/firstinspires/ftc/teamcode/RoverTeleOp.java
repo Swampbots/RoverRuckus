@@ -28,14 +28,14 @@ public class RoverTeleOp extends OpMode {
     private int frontTarget = PIV_STOWED[0];
     private int rearTarget = PIV_STOWED[1];
 
-    private final double PIV_SPEED_BASE = 0.7;
+    private final double PIV_SPEED_BASE = 1.0;
     private final double PIV_SPEED_FRONT = PIV_SPEED_BASE;
     private final double PIV_SPEED_REAR = PIV_SPEED_FRONT * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT);
 
     private final int GAMEPAD_SENSITIVITY = 20;
 
 
-    private final double PIV_SPEED_SCALER_FRONT = 0.6;
+    private final double PIV_SPEED_SCALER_FRONT = 1.0;
     private final double PIV_SPEED_SCALER_REAR = PIV_SPEED_SCALER_FRONT * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT);
 
 

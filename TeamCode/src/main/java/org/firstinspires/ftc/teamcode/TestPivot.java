@@ -23,7 +23,7 @@ public class TestPivot extends OpMode {
     private int frontTarget = PIV_STOWED[0];
     private int rearTarget = PIV_STOWED[1];
 
-    private final double PIV_SPEED_FRONT = 0.7;
+    private final double PIV_SPEED_FRONT = 1.0;
     private final double PIV_SPEED_REAR = PIV_SPEED_FRONT * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT);
 
     private final int GAMEPAD_SENSITIVITY = 20;
