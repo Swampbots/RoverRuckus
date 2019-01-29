@@ -31,7 +31,16 @@ public class AutoPark extends LinearOpMode {
 
         // Deploy wheels
         hardware.frontPivot.setTargetPosition(PIV_KNEEL_FRONT);
-        hardware.frontPivot.setTargetPosition(PIV_KNEEL_REAR);
+        hardware.rearPivot.setTargetPosition(PIV_KNEEL_REAR);
+
+        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        hardware.frontPivot.setPower(1.0);
+        hardware.rearPivot.setPower(1.0);
+
+
+        sleep(1000);
 
         // Release latch
         hardware.latch.setPosition(LATCH_OPEN);
