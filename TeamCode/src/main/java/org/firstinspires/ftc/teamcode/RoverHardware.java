@@ -223,10 +223,12 @@ public class RoverHardware {
         lockLeft = hwMap.servo.get("lock_left");
         lockRight = hwMap.servo.get("lock_right");
 
-        ramp.setPosition(0.0);
-
         lockLeft.scaleRange(0.25, 0.75);
         lockRight.scaleRange(0.25, 0.75);
+
+        latch.setPosition(LATCH_CLOSED);
+        setLockPosition(LOCK_CLOSED);
+        ramp.setPosition(RAMP_UP);
     }
 
 
