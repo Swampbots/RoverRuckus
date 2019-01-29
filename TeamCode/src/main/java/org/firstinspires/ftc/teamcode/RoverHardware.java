@@ -17,9 +17,9 @@ public class RoverHardware {
 
 
     // Speed modifier variables
-    public final double SLOW = 0.4;
-    public final double NORMAL = 0.6;
-    public final double FAST = 0.9;
+    public static final double SLOW = 0.4;
+    public static final double NORMAL = 0.6;
+    public static final double FAST = 0.9;
 
 
     // Encoder variables (REV Core Hex Motors)

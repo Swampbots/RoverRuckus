@@ -4,10 +4,13 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import static org.firstinspires.ftc.teamcode.RoverHardware.FAST;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
+import static org.firstinspires.ftc.teamcode.RoverHardware.NORMAL;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
+import static org.firstinspires.ftc.teamcode.RoverHardware.SLOW;
 
 @TeleOp(name = "Driver Control", group = "TeleOp")
 public class RoverTeleOp extends OpMode {
