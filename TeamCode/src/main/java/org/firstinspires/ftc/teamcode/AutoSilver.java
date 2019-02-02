@@ -91,6 +91,8 @@ public class AutoSilver extends OpMode {
     private final int CTR_LEFT  = (int) ((CTR_MAX_Y + CTR_MIN_Y) / 3.0);        // 1/3 of the width to bound the left third     [ |  ]
     private final int CTR_RIGHT = (int) ((CTR_MAX_Y + CTR_MIN_Y) * 2.0 / 3.0);  // 2/3 of the width to bound the center third   [  | ]
 
+    private double ctrXThreshold = CTR_MAX_Y;
+
     // Variable for thresholding LT and RT inputs, e.g. if(gamepad1.left_trigger > TRIGGER_THRESHOLD)
     public final double TRIGGER_THRESHOLD = 0.7;
 
@@ -260,6 +262,7 @@ public class AutoSilver extends OpMode {
         List<MatOfPoint> contours = vision.findContoursOutput();
 
         int contourHeightMid;
+        int contourX;
 
         // Tally of contourPlacements for all visible contours this cycle
         // (Set all to 0 so they start over each cycle)
@@ -286,16 +289,18 @@ public class AutoSilver extends OpMode {
                 if(contours.size() > 0) {
                     for(int i = 0; i < contours.size(); i++) {
                         Rect boundingRect = Imgproc.boundingRect(contours.get(i));
+                        contourX = (boundingRect.x + boundingRect.width) / 2;
                         contourHeightMid = (boundingRect.y + boundingRect.height) / 2;
 
-                        if(contourHeightMid < CTR_LEFT) {
-                            leftTally ++;
-                        }
-                        else if(contourHeightMid < CTR_RIGHT) {
-                            centerTally ++;
-                        }
-                        else {
-                            rightTally ++;
+                        if( contourX > ctrXThreshold){ // Make sure the contour isn't from gold in the crater
+
+                            if (contourHeightMid < CTR_LEFT) {
+                                leftTally++;
+                            } else if (contourHeightMid < CTR_RIGHT) {
+                                centerTally++;
+                            } else {
+                                rightTally++;
+                            }
                         }
                     }
                 }
