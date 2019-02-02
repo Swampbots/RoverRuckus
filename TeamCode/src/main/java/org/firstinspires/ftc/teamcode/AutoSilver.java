@@ -345,6 +345,8 @@ public class AutoSilver extends OpMode {
             goldPlacement = _GoldPlacement.RIGHT;
         }
 
+        telemetry.addData("Contour X threshold", ctrXThreshold);
+        telemetry.addLine();
         telemetry.addData("Left tally", ctrTallies[0]);
         telemetry.addData("Center tally", ctrTallies[1]);
         telemetry.addData("Right tally", ctrTallies[2]);
