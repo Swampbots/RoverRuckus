@@ -38,6 +38,11 @@ public class RoverTeleOp extends OpMode {
     public void init() {
         flipperSpeedModifier = NORMAL;
         hardware.init(hardwareMap);
+
+        hardware.frontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hardware.frontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hardware.rearLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hardware.rearRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
     public void loop() {
@@ -106,8 +111,6 @@ public class RoverTeleOp extends OpMode {
 
         // Lifter servo
         hardware.lifter.setPosition(gamepad2.b ? 0.0 : 1.0);
-
-
 
 
         // Telemetry
