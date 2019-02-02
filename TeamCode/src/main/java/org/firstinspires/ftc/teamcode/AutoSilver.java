@@ -88,13 +88,15 @@ public class AutoSilver extends OpMode {
     ButtonCooldown rightStickB = new ButtonCooldown();
 
     private final double CTR_MAX_Y = 192.0;
+    private final double CTR_MAX_X = 144.0;
 
     private final double CTR_MIN_Y = 0.0;
+    private final double CTR_MIN_X = 0.0;
 
     private final int CTR_LEFT  = (int) ((CTR_MAX_Y + CTR_MIN_Y) / 3.0);        // 1/3 of the width to bound the left third     [ |  ]
     private final int CTR_RIGHT = (int) ((CTR_MAX_Y + CTR_MIN_Y) * 2.0 / 3.0);  // 2/3 of the width to bound the center third   [  | ]
 
-    private double ctrXThreshold = CTR_MAX_Y;
+    private double ctrXThreshold = CTR_MAX_X;
 
     // Variable for thresholding LT and RT inputs, e.g. if(gamepad1.left_trigger > TRIGGER_THRESHOLD)
     public final double TRIGGER_THRESHOLD = 0.7;
