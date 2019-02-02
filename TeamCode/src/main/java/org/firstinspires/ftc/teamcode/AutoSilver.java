@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.corningrobotics.enderbots.endercv.CameraViewDisplay;
@@ -18,7 +18,6 @@ import java.util.List;
 
 import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MAX_X;
 import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MAX_Y;
-import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MIN_X;
 import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MIN_X;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
@@ -101,9 +100,9 @@ public class AutoSilver extends LinearOpMode {
     // Variable for thresholding LT and RT inputs, e.g. if(gamepad1.left_trigger > TRIGGER_THRESHOLD)
     public final double TRIGGER_THRESHOLD = 0.7;
 
-    //----------------------------------------------------------------------------------------------
 
-    public void init() {
+    public void runOpMode() {
+        // Init
 
         // Hardware and servos
         hardware.init(hardwareMap);
@@ -134,14 +133,14 @@ public class AutoSilver extends LinearOpMode {
 //        imu.initialize(IMUParameters);
 //
 //        angles   = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-    }
 
-    //----------------------------------------------------------------------------------------------
 
-    public void init_loop() {
-        //-----------------------------------------------------------------------------------
-        // START HSV THRESHOLD CONTROLS
-        //-----------------------------------------------------------------------------------
+
+        // Init_loop
+        while(!opModeIsActive() && !isStopRequested()) {
+            //-----------------------------------------------------------------------------------
+            // START HSV THRESHOLD CONTROLS
+            //-----------------------------------------------------------------------------------
 
             /*
                 CONTROLS: (increase, decrease)
@@ -156,110 +155,110 @@ public class AutoSilver extends LinearOpMode {
                 Val max: gp1.rb,    gp1.rt
              */
 
-        // Modify threshold variables if the buttons are pressed and thresholds are within outer limits 0 & 255
+            // Modify threshold variables if the buttons are pressed and thresholds are within outer limits 0 & 255
 
-        // Update runtime once every cycle
-        double runtime = getRuntime();
+            // Update runtime once every cycle
+            double runtime = getRuntime();
 
-        // HUE MINIMUM
-        if(gamepad1.dpad_down && dpDown.ready(runtime)) {
-            if (hsvHue[0] > HSV_MIN)   hsvHue[0] -= THRESHOLD_STEP;
-            else                        hsvHue[0] = HSV_MIN;
-            dpDown.updateSnapshot(runtime);
-        }
+            // HUE MINIMUM
+            if(gamepad1.dpad_down && dpDown.ready(runtime)) {
+                if (hsvHue[0] > HSV_MIN)   hsvHue[0] -= THRESHOLD_STEP;
+                else                        hsvHue[0] = HSV_MIN;
+                dpDown.updateSnapshot(runtime);
+            }
 
-        if(gamepad1.dpad_up && dpUp.ready(runtime)) {
-            if(hsvHue[0] < hsvHue[1])  hsvHue[0] += THRESHOLD_STEP;
-            else                        hsvHue[0] = hsvHue[1];
-            dpUp.updateSnapshot(runtime);
-        }
-
-
-        // HUE MAXIMUM
-        if(gamepad1.y && y.ready(runtime)) {
-            if (hsvHue[1] < HSV_MAX)   hsvHue[1] += THRESHOLD_STEP;
-            else                        hsvHue[1] = HSV_MAX;
-            y.updateSnapshot(runtime);
-        }
-
-        if(gamepad1.a && a.ready(runtime)) {
-            if(hsvHue[1] > hsvHue[0])  hsvHue[1] -= THRESHOLD_STEP;
-            else                        hsvHue[1] = hsvHue[0];
-            a.updateSnapshot(runtime);
-        }
+            if(gamepad1.dpad_up && dpUp.ready(runtime)) {
+                if(hsvHue[0] < hsvHue[1])  hsvHue[0] += THRESHOLD_STEP;
+                else                        hsvHue[0] = hsvHue[1];
+                dpUp.updateSnapshot(runtime);
+            }
 
 
+            // HUE MAXIMUM
+            if(gamepad1.y && y.ready(runtime)) {
+                if (hsvHue[1] < HSV_MAX)   hsvHue[1] += THRESHOLD_STEP;
+                else                        hsvHue[1] = HSV_MAX;
+                y.updateSnapshot(runtime);
+            }
 
-
-        // SAT MINIMUM
-        if(gamepad1.dpad_left && dpLeft.ready(runtime)) {
-            if (hsvSat[0] > HSV_MIN)   hsvSat[0] -= THRESHOLD_STEP;
-            else                        hsvSat[0] = HSV_MIN;
-            dpLeft.updateSnapshot(runtime);
-        }
-
-        if(gamepad1.dpad_right && dpRight.ready(runtime)) {
-            if(hsvSat[0] < hsvSat[1])  hsvSat[0] += THRESHOLD_STEP;
-            else                        hsvSat[0] = hsvSat[1];
-            dpRight.updateSnapshot(runtime);
-        }
-
-
-        // SAT MAXIMUM
-        if(gamepad1.b && b.ready(runtime)) {
-            if (hsvSat[1] < HSV_MAX)   hsvSat[1] += THRESHOLD_STEP;
-            else                        hsvSat[1] = HSV_MAX;
-            b.updateSnapshot(runtime);
-        }
-
-        if(gamepad1.x && x.ready(runtime)) {
-            if(hsvSat[1] > hsvSat[0])  hsvSat[1] -= THRESHOLD_STEP;
-            else                        hsvSat[1] = hsvSat[0];
-            x.updateSnapshot(runtime);
-        }
+            if(gamepad1.a && a.ready(runtime)) {
+                if(hsvHue[1] > hsvHue[0])  hsvHue[1] -= THRESHOLD_STEP;
+                else                        hsvHue[1] = hsvHue[0];
+                a.updateSnapshot(runtime);
+            }
 
 
 
 
-        // VAL MINIMUM
-        if(gamepad1.left_trigger > TRIGGER_THRESHOLD && lt.ready(runtime)) {
-            if (hsvVal[0] > HSV_MIN)   hsvVal[0] -= THRESHOLD_STEP;
-            else                        hsvVal[0] = HSV_MIN;
-            lt.updateSnapshot(runtime);
-        }
+            // SAT MINIMUM
+            if(gamepad1.dpad_left && dpLeft.ready(runtime)) {
+                if (hsvSat[0] > HSV_MIN)   hsvSat[0] -= THRESHOLD_STEP;
+                else                        hsvSat[0] = HSV_MIN;
+                dpLeft.updateSnapshot(runtime);
+            }
 
-        if(gamepad1.left_bumper && lb.ready(runtime)) {
-            if(hsvVal[0] < hsvVal[1])  hsvVal[0] += THRESHOLD_STEP;
-            else                        hsvVal[0] = hsvVal[1];
-            lb.updateSnapshot(runtime);
-        }
+            if(gamepad1.dpad_right && dpRight.ready(runtime)) {
+                if(hsvSat[0] < hsvSat[1])  hsvSat[0] += THRESHOLD_STEP;
+                else                        hsvSat[0] = hsvSat[1];
+                dpRight.updateSnapshot(runtime);
+            }
 
 
+            // SAT MAXIMUM
+            if(gamepad1.b && b.ready(runtime)) {
+                if (hsvSat[1] < HSV_MAX)   hsvSat[1] += THRESHOLD_STEP;
+                else                        hsvSat[1] = HSV_MAX;
+                b.updateSnapshot(runtime);
+            }
 
-        // VAL MAXIMUM
-        if(gamepad1.right_trigger > TRIGGER_THRESHOLD && rt.ready(runtime)) {
-            if (hsvVal[1] > hsvVal[0])  hsvVal[1] -= THRESHOLD_STEP;
-            else                        hsvVal[1] = hsvVal[0];
-            rt.updateSnapshot(runtime);
-        }
-
-        if(gamepad1.right_bumper && rb.ready(runtime)) {
-            if(hsvVal[1] < HSV_MAX)     hsvVal[1] += THRESHOLD_STEP;
-            else                        hsvVal[1] = HSV_MAX;
-            rb.updateSnapshot(runtime);
-        }
-
-        //-----------------------------------------------------------------------------------
-        // END HSV THRESHOLD CONTROLS
-        //-----------------------------------------------------------------------------------
+            if(gamepad1.x && x.ready(runtime)) {
+                if(hsvSat[1] > hsvSat[0])  hsvSat[1] -= THRESHOLD_STEP;
+                else                        hsvSat[1] = hsvSat[0];
+                x.updateSnapshot(runtime);
+            }
 
 
 
 
-        // SET HSV THRESHOLDS
-        vision.setHsvHue(hsvHue);
-        vision.setHsvSat(hsvSat);
-        vision.setHsvVal(hsvVal);
+            // VAL MINIMUM
+            if(gamepad1.left_trigger > TRIGGER_THRESHOLD && lt.ready(runtime)) {
+                if (hsvVal[0] > HSV_MIN)   hsvVal[0] -= THRESHOLD_STEP;
+                else                        hsvVal[0] = HSV_MIN;
+                lt.updateSnapshot(runtime);
+            }
+
+            if(gamepad1.left_bumper && lb.ready(runtime)) {
+                if(hsvVal[0] < hsvVal[1])  hsvVal[0] += THRESHOLD_STEP;
+                else                        hsvVal[0] = hsvVal[1];
+                lb.updateSnapshot(runtime);
+            }
+
+
+
+            // VAL MAXIMUM
+            if(gamepad1.right_trigger > TRIGGER_THRESHOLD && rt.ready(runtime)) {
+                if (hsvVal[1] > hsvVal[0])  hsvVal[1] -= THRESHOLD_STEP;
+                else                        hsvVal[1] = hsvVal[0];
+                rt.updateSnapshot(runtime);
+            }
+
+            if(gamepad1.right_bumper && rb.ready(runtime)) {
+                if(hsvVal[1] < HSV_MAX)     hsvVal[1] += THRESHOLD_STEP;
+                else                        hsvVal[1] = HSV_MAX;
+                rb.updateSnapshot(runtime);
+            }
+
+            //-----------------------------------------------------------------------------------
+            // END HSV THRESHOLD CONTROLS
+            //-----------------------------------------------------------------------------------
+
+
+
+
+            // SET HSV THRESHOLDS
+            vision.setHsvHue(hsvHue);
+            vision.setHsvSat(hsvSat);
+            vision.setHsvVal(hsvVal);
 
 
 
@@ -269,100 +268,102 @@ public class AutoSilver extends LinearOpMode {
             X ctr threshold: gp1.lStickButton, gp2.rStickButton
          */
 
-        // X COUNTOUR THRESHOLD
-        if(gamepad1.left_stick_button && leftStickB.ready(runtime)) {
-            if (ctrXThreshold > CTR_MIN_X)  ctrXThreshold -= THRESHOLD_STEP * 2.0;
-            else                            ctrXThreshold = CTR_MIN_X;
-            leftStickB.updateSnapshot(runtime);
-        }
+            // X COUNTOUR THRESHOLD
+            if(gamepad1.left_stick_button && leftStickB.ready(runtime)) {
+                if (ctrXThreshold > CTR_MIN_X)  ctrXThreshold -= THRESHOLD_STEP * 2.0;
+                else                            ctrXThreshold = CTR_MIN_X;
+                leftStickB.updateSnapshot(runtime);
+            }
 
-        if(gamepad1.right_stick_button && rightStickB.ready(runtime)) {
-            if(ctrXThreshold < CTR_MAX_X)   ctrXThreshold += THRESHOLD_STEP * 2.0;
-            else                            ctrXThreshold = CTR_MAX_X;
-            rightStickB.updateSnapshot(runtime);
-        }
+            if(gamepad1.right_stick_button && rightStickB.ready(runtime)) {
+                if(ctrXThreshold < CTR_MAX_X)   ctrXThreshold += THRESHOLD_STEP * 2.0;
+                else                            ctrXThreshold = CTR_MAX_X;
+                rightStickB.updateSnapshot(runtime);
+            }
 
-        vision.setCtrXTreshold(ctrXThreshold);
-
-
-
-        // Contour array
-        List<MatOfPoint> contours = vision.findContoursOutput();
-
-        int contourHeightMid;
-        int contourX;
-
-        // Tally of contourPlacements for all visible contours this cycle
-        // (Set all to 0 so they start over each cycle)
-        int[] ctrTallies = {0, 0, 0};
+            vision.setCtrXTreshold(ctrXThreshold);
 
 
-        // TELEMETRY
-        telemetry.addData("Hue min", hsvHue[0]);
-        telemetry.addData("Hue max", hsvHue[1]);
-        telemetry.addLine();
-        telemetry.addData("Sat min", hsvSat[0]);
-        telemetry.addData("Sat max", hsvSat[1]);
-        telemetry.addLine();
-        telemetry.addData("Val min", hsvVal[0]);
-        telemetry.addData("Val max", hsvVal[1]);
-        telemetry.addLine();
-        telemetry.addLine();
-        try {
-            if(contours != null) {
-                if(contours.size() > 0) {
-                    for(int i = 0; i < contours.size(); i++) {
-                        Rect boundingRect = Imgproc.boundingRect(contours.get(i));
-                        contourX = (boundingRect.x + boundingRect.width) / 2;
-                        contourHeightMid = (boundingRect.y + boundingRect.height) / 2;
 
-                        if( contourX > ctrXThreshold / 2){ // Make sure the contour isn't from gold in the crater
+            // Contour array
+            List<MatOfPoint> contours = vision.findContoursOutput();
 
-                            if (contourHeightMid < CTR_LEFT) {
-                                ctrTallies[0]++;
-                            } else if (contourHeightMid < CTR_RIGHT) {
-                                ctrTallies[1]++;
-                            } else {
-                                ctrTallies[2]++;
+            int contourHeightMid;
+            int contourX;
+
+            // Tally of contourPlacements for all visible contours this cycle
+            // (Set all to 0 so they start over each cycle)
+            int[] ctrTallies = {0, 0, 0};
+
+
+            // TELEMETRY
+            telemetry.addData("Hue min", hsvHue[0]);
+            telemetry.addData("Hue max", hsvHue[1]);
+            telemetry.addLine();
+            telemetry.addData("Sat min", hsvSat[0]);
+            telemetry.addData("Sat max", hsvSat[1]);
+            telemetry.addLine();
+            telemetry.addData("Val min", hsvVal[0]);
+            telemetry.addData("Val max", hsvVal[1]);
+            telemetry.addLine();
+            telemetry.addLine();
+            try {
+                if(contours != null) {
+                    if(contours.size() > 0) {
+                        for(int i = 0; i < contours.size(); i++) {
+                            Rect boundingRect = Imgproc.boundingRect(contours.get(i));
+                            contourX = (boundingRect.x + boundingRect.width) / 2;
+                            contourHeightMid = (boundingRect.y + boundingRect.height) / 2;
+
+                            if( contourX > ctrXThreshold / 2){ // Make sure the contour isn't from gold in the crater
+
+                                if (contourHeightMid < CTR_LEFT) {
+                                    ctrTallies[0]++;
+                                } else if (contourHeightMid < CTR_RIGHT) {
+                                    ctrTallies[1]++;
+                                } else {
+                                    ctrTallies[2]++;
+                                }
                             }
                         }
                     }
                 }
+            } catch(Exception e) {
+                e.printStackTrace();
+                telemetry.addData("Exception", e.getMessage());
             }
-        } catch(Exception e) {
-            e.printStackTrace();
-            telemetry.addData("Exception", e.getMessage());
+
+
+            int highest = highestTally(ctrTallies);
+
+            if(highest == ctrTallies[0]) {
+                goldPlacement = _GoldPlacement.LEFT;
+            } else if(highest == ctrTallies[1]) {
+                goldPlacement = _GoldPlacement.CENTER;
+            } else {
+                goldPlacement = _GoldPlacement.RIGHT;
+            }
+
+            telemetry.addData("Contour X threshold", ctrXThreshold);
+            telemetry.addLine();
+            telemetry.addData("Left tally", ctrTallies[0]);
+            telemetry.addData("Center tally", ctrTallies[1]);
+            telemetry.addData("Right tally", ctrTallies[2]);
+            telemetry.addData("Highest", highest);
+            telemetry.addLine();
+            telemetry.addData("Gold Placement", goldPlacement);
+            telemetry.update();
         }
 
 
-        int highest = highestTally(ctrTallies);
-
-        if(highest == ctrTallies[0]) {
-            goldPlacement = _GoldPlacement.LEFT;
-        } else if(highest == ctrTallies[1]) {
-            goldPlacement = _GoldPlacement.CENTER;
-        } else {
-            goldPlacement = _GoldPlacement.RIGHT;
-        }
-
-        telemetry.addData("Contour X threshold", ctrXThreshold);
-        telemetry.addLine();
-        telemetry.addData("Left tally", ctrTallies[0]);
-        telemetry.addData("Center tally", ctrTallies[1]);
-        telemetry.addData("Right tally", ctrTallies[2]);
-        telemetry.addData("Highest", highest);
-        telemetry.addLine();
-        telemetry.addData("Gold Placement", goldPlacement);
-        telemetry.update();
-    }
 
 
 
-    //----------------------------------------------------------------------------------------------
 
 
 
-    public void start() {
+
+        // start
 
         hardware.latch.setPosition(LATCH_CLOSED);
 
@@ -370,12 +371,7 @@ public class AutoSilver extends LinearOpMode {
         hardware.setLockPosition(LOCK_OPEN);
 
         // Wait to drop
-        double runtime = getRuntime();
-        while(getRuntime() - runtime < DROP_TIME) {
-            telemetry.addLine("Waiting...");
-            telemetry.addData("Elapsed Time", getRuntime() - runtime);
-            telemetry.update();
-        }
+        sleep(3000);
 
         // Lock lock
         hardware.setLockPosition(LOCK_LOCKED);
@@ -450,22 +446,16 @@ public class AutoSilver extends LinearOpMode {
 //        // Drive to crater
 //        //hardware.driveInches(CRATER_DIST);
 
-    }
+        while(opModeIsActive()) {
+            telemetry.addData("Runtime", getRuntime());
+            telemetry.addLine();
+            telemetry.addData("Gold position", goldPlacement.toString());
+            telemetry.update();
+        }
 
-
-
-    //----------------------------------------------------------------------------------------------
-
-
-
-    public void loop() {
-
-    }
-
-    public void stop() {
+        // stop
         vision.disable();
     }
-
 
 
 
