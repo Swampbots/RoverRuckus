@@ -96,7 +96,7 @@ public class AutoSilver extends OpMode {
     private final int CTR_LEFT  = (int) ((CTR_MAX_Y + hardware.CTR_MIN_Y) / 3.0);        // 1/3 of the width to bound the left third     [ |  ]
     private final int CTR_RIGHT = (int) ((CTR_MAX_Y + hardware.CTR_MIN_Y) * 2.0 / 3.0);  // 2/3 of the width to bound the center third   [  | ]
 
-    private double ctrXThreshold = CTR_MAX_X;
+    private double ctrXThreshold = 170.0;
 
     // Variable for thresholding LT and RT inputs, e.g. if(gamepad1.left_trigger > TRIGGER_THRESHOLD)
     public final double TRIGGER_THRESHOLD = 0.7;
@@ -271,16 +271,18 @@ public class AutoSilver extends OpMode {
 
         // X COUNTOUR THRESHOLD
         if(gamepad1.left_stick_button && leftStickB.ready(runtime)) {
-            if (ctrXThreshold > CTR_MIN_X)  ctrXThreshold -= THRESHOLD_STEP;
+            if (ctrXThreshold > CTR_MIN_X)  ctrXThreshold -= THRESHOLD_STEP * 2.0;
             else                            ctrXThreshold = CTR_MIN_X;
             leftStickB.updateSnapshot(runtime);
         }
 
         if(gamepad1.right_stick_button && rightStickB.ready(runtime)) {
-            if(ctrXThreshold < CTR_MAX_X)   ctrXThreshold += THRESHOLD_STEP;
+            if(ctrXThreshold < CTR_MAX_X)   ctrXThreshold += THRESHOLD_STEP * 2.0;
             else                            ctrXThreshold = CTR_MAX_X;
             rightStickB.updateSnapshot(runtime);
         }
+
+        vision.setCtrXTreshold(ctrXThreshold);
 
 
 
