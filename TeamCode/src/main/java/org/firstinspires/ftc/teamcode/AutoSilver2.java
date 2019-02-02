@@ -25,9 +25,9 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_REAR;
 
-
+@Disabled
 @Autonomous(name = "Silver_CV", group = "Autonomous")
-public class AutoSilver extends LinearOpMode {
+public class AutoSilver2 extends OpMode {
 
     RoverHardware hardware = new RoverHardware();
 
