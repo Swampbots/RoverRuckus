@@ -267,7 +267,6 @@ public class AutoSilver extends OpMode {
         int centerTally = 0;
         int rightTally = 0;
 
-        int[] ctrTallies = {leftTally, centerTally, rightTally};
 
 
 
@@ -305,6 +304,9 @@ public class AutoSilver extends OpMode {
             e.printStackTrace();
             telemetry.addData("Exception", e.getMessage());
         }
+
+
+        int[] ctrTallies = {leftTally, centerTally, rightTally};
 
         int highest = highestTally(ctrTallies);
 
