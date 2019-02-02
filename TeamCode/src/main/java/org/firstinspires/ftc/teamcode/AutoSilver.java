@@ -323,9 +323,9 @@ public class AutoSilver extends OpMode {
             goldPlacement = _GoldPlacement.RIGHT;
         }
 
-        telemetry.addData("Left tally", leftTally);
-        telemetry.addData("Center tally", centerTally);
-        telemetry.addData("Right tally", rightTally);
+        telemetry.addData("Left tally", ctrTallies[0]);
+        telemetry.addData("Center tally", ctrTallies[1]);
+        telemetry.addData("Right tally", ctrTallies[2]);
         telemetry.addData("Highest", highest);
         telemetry.addLine();
         telemetry.addData("Gold Placement", goldPlacement);
