@@ -84,6 +84,9 @@ public class AutoSilver extends OpMode {
     ButtonCooldown lt   = new ButtonCooldown();
     ButtonCooldown rt   = new ButtonCooldown();
 
+    ButtonCooldown leftStickB = new ButtonCooldown();
+    ButtonCooldown rightStickB = new ButtonCooldown();
+
     private final double CTR_MAX_Y = 192.0;
 
     private final double CTR_MIN_Y = 0.0;
@@ -255,6 +258,27 @@ public class AutoSilver extends OpMode {
         vision.setHsvHue(hsvHue);
         vision.setHsvSat(hsvSat);
         vision.setHsvVal(hsvVal);
+
+
+
+
+
+        /* CONTROLS (Increase, Decrease):
+            X ctr threshold: gp1.lStickButton, gp2.rStickButton
+         */
+
+        // X COUNTOUR THRESHOLD
+        if(gamepad1.left_stick_button && leftStickB.ready(runtime)) {
+            if (ctrXThreshold > CTR_MIN_X)  ctrXThreshold -= THRESHOLD_STEP;
+            else                            ctrXThreshold = CTR_MIN_X;
+            leftStickB.updateSnapshot(runtime);
+        }
+
+        if(gamepad1.right_stick_button && rightStickB.ready(runtime)) {
+            if(ctrXThreshold < CTR_MAX_X)   ctrXThreshold += THRESHOLD_STEP;
+            else                            ctrXThreshold = CTR_MAX_X;
+            rightStickB.updateSnapshot(runtime);
+        }
 
 
 
