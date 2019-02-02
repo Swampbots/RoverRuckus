@@ -7,6 +7,7 @@ import org.opencv.core.Mat;
 import org.opencv.core.MatOfInt;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.MatOfPoint2f;
+import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
@@ -61,6 +62,11 @@ public class GoldContourPipeline extends OpenCVPipeline {
         boolean findContoursExternalOnly = false;
         findContours(findContoursInput, findContoursExternalOnly, findContoursOutput);
 
+        Mat previewImage = hsvThresholdOutput.clone();
+        Point pt1 = new Point(contourXThresh, RoverHardware.CTR_MIN_Y+1);
+        Point pt2 = new Point(contourXThresh, RoverHardware.CTR_MAX_Y-2);
+        Imgproc.line(previewImage, pt1, pt2, new Scalar(255,255,255), 5);
+
         // Step Filter_Contours0:
         ArrayList<MatOfPoint> filterContoursContours = findContoursOutput;
         double filterContoursMinArea = 1000.0;
@@ -82,7 +88,9 @@ public class GoldContourPipeline extends OpenCVPipeline {
             Imgproc.drawContours(hsvThresholdOutput, filterContoursOutput, -1, new Scalar(0, 255, 0), 2, 8);
         }
 
-        return hsvThresholdOutput;
+        hsvThresholdOutput.release();
+
+        return previewImage;
     }
 
     /**
