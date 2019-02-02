@@ -1,9 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.motors.NeveRest60Gearmotor;
+import com.qualcomm.hardware.motors.RevRobotics40HdHexMotor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
 public class RoverHardware {
 
@@ -205,6 +208,10 @@ public class RoverHardware {
         snorfler.setZeroPowerBehavior      (DcMotor.ZeroPowerBehavior.BRAKE);
 
         flipper.setZeroPowerBehavior    (DcMotor.ZeroPowerBehavior.BRAKE);
+
+
+        frontPivot.setMotorType(MotorConfigurationType.getMotorType(NeveRest60Gearmotor.class));
+
 
 
         // Reset all encoders
