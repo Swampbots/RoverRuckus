@@ -95,6 +95,15 @@ public class RoverHardware {
 
 
 
+    public static final double CTR_MAX_Y = 192.0;
+    public static final double CTR_MAX_X = 288.0;
+
+    public static final double CTR_MIN_Y = 0.0;
+    public static final double CTR_MIN_X = 0.0;
+
+
+
+
     // Flipper state variables
 
     public static final int FLIPPER_STOW = 0;
