@@ -64,7 +64,7 @@ public class AutoSilver extends OpMode {
     private final double HSV_MAX = 255.0;
     private final double HSV_MIN = 0.0;
 
-    private double[] hsvHue = new double[]{106.0, 118.0};
+    private double[] hsvHue = new double[]{100.0, 120.0};
     private double[] hsvSat = new double[]{0.0, 255.0};
     private double[] hsvVal = new double[]{0.0, 255.0};
 
