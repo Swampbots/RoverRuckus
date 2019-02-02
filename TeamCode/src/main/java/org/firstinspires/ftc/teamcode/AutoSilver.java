@@ -16,6 +16,10 @@ import org.opencv.imgproc.Imgproc;
 
 import java.util.List;
 
+import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MAX_X;
+import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MAX_Y;
+import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MIN_X;
+import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MIN_X;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_FRONT;
@@ -87,14 +91,10 @@ public class AutoSilver extends OpMode {
     ButtonCooldown leftStickB = new ButtonCooldown();
     ButtonCooldown rightStickB = new ButtonCooldown();
 
-    private final double CTR_MAX_Y = 192.0;
-    private final double CTR_MAX_X = 144.0;
 
-    private final double CTR_MIN_Y = 0.0;
-    private final double CTR_MIN_X = 0.0;
 
-    private final int CTR_LEFT  = (int) ((CTR_MAX_Y + CTR_MIN_Y) / 3.0);        // 1/3 of the width to bound the left third     [ |  ]
-    private final int CTR_RIGHT = (int) ((CTR_MAX_Y + CTR_MIN_Y) * 2.0 / 3.0);  // 2/3 of the width to bound the center third   [  | ]
+    private final int CTR_LEFT  = (int) ((CTR_MAX_Y + hardware.CTR_MIN_Y) / 3.0);        // 1/3 of the width to bound the left third     [ |  ]
+    private final int CTR_RIGHT = (int) ((CTR_MAX_Y + hardware.CTR_MIN_Y) * 2.0 / 3.0);  // 2/3 of the width to bound the center third   [  | ]
 
     private double ctrXThreshold = CTR_MAX_X;
 
