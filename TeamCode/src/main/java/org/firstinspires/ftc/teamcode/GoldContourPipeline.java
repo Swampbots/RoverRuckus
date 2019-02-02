@@ -37,6 +37,9 @@ public class GoldContourPipeline extends OpenCVPipeline {
 
     boolean showContours = false;
 
+    public double contourXThresh = 0.0;
+    public void setCtrXTreshold(double thresh) { contourXThresh = thresh;}
+
     public synchronized void setShowCountours(boolean enabled) {
         showContours = enabled;
     }
