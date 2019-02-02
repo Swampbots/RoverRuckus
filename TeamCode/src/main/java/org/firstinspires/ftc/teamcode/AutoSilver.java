@@ -294,11 +294,7 @@ public class AutoSilver extends OpMode {
 
         // Tally of contourPlacements for all visible contours this cycle
         // (Set all to 0 so they start over each cycle)
-        int leftTally = 0;
-        int centerTally = 0;
-        int rightTally = 0;
-
-
+        int[] ctrTallies = {0, 0, 0};
 
 
         // TELEMETRY
@@ -320,14 +316,14 @@ public class AutoSilver extends OpMode {
                         contourX = (boundingRect.x + boundingRect.width) / 2;
                         contourHeightMid = (boundingRect.y + boundingRect.height) / 2;
 
-                        if( contourX > ctrXThreshold){ // Make sure the contour isn't from gold in the crater
+                        if( contourX > ctrXThreshold / 2){ // Make sure the contour isn't from gold in the crater
 
                             if (contourHeightMid < CTR_LEFT) {
-                                leftTally++;
+                                ctrTallies[0]++;
                             } else if (contourHeightMid < CTR_RIGHT) {
-                                centerTally++;
+                                ctrTallies[1]++;
                             } else {
-                                rightTally++;
+                                ctrTallies[2]++;
                             }
                         }
                     }
@@ -339,13 +335,11 @@ public class AutoSilver extends OpMode {
         }
 
 
-        int[] ctrTallies = {leftTally, centerTally, rightTally};
-
         int highest = highestTally(ctrTallies);
 
-        if(highest == leftTally) {
+        if(highest == ctrTallies[0]) {
             goldPlacement = _GoldPlacement.LEFT;
-        } else if(highest == centerTally) {
+        } else if(highest == ctrTallies[1]) {
             goldPlacement = _GoldPlacement.CENTER;
         } else {
             goldPlacement = _GoldPlacement.RIGHT;
