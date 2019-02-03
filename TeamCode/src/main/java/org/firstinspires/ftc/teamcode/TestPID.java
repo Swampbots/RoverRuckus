@@ -154,8 +154,6 @@ public class TestPID extends LinearOpMode {
             // END PID COEFFICIENT CONTROLS
             //--------------------------------------------------------------------------------------
 
-            angles = heading();
-
             // Set PID coefficients
             hardware.pid.setPID(kP, kI, kD);
 
@@ -210,9 +208,7 @@ public class TestPID extends LinearOpMode {
             telemetry.addData("kD", hardware.pid.getD());
             telemetry.addLine();
             telemetry.addLine("Headings:");
-            telemetry.addData("X", angles.thirdAngle);
-            telemetry.addData("Y", angles.secondAngle);
-            telemetry.addData("Z", angles.firstAngle);
+            telemetry.addData("Heading", heading());
             telemetry.update();
         }
 
@@ -233,7 +229,7 @@ public class TestPID extends LinearOpMode {
         hardware.pid.setDeadband(hardware.TOLERANCE);                           // Set how far off you can safely be from your target
 
         while (opModeIsActive()) {
-            double error = normalize180(target - heading().firstAngle);
+            double error = normalize180(target - heading());
             double power = hardware.pid.calculateGivenError(error);
 
             hardware.setLeftPower(power);
@@ -260,7 +256,7 @@ public class TestPID extends LinearOpMode {
         return angle;
     }
 
-    public Orientation heading() {
-        return imu.getAngularOrientation(AxesReference.EXTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+    public double heading() {
+        return imu.getAngularOrientation(AxesReference.EXTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).secondAngle;
     }
 }
