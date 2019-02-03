@@ -154,6 +154,8 @@ public class TestPID extends LinearOpMode {
             // END PID COEFFICIENT CONTROLS
             //--------------------------------------------------------------------------------------
 
+            angles = heading();
+
             // Set PID coefficients
             hardware.pid.setPID(kP, kI, kD);
 
