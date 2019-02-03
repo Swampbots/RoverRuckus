@@ -372,7 +372,7 @@ public class AutoSilver extends LinearOpMode {
 
             RoverHardware.getDoubleSetting("xval", 100);
 
-            if(gamepad1.) {
+            if(gamepad2.dpad_up) {
                 RoverHardware.setDoubleSetting("xval", ctrXThreshold);
                 ReadWriteFile.writeFile(AppUtil.getInstance().getSettingsFile("Settings.json"), RoverHardware.settings.toJSONString());
             }
