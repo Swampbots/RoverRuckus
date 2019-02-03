@@ -38,6 +38,9 @@ public class GoldContourPipeline extends OpenCVPipeline {
 
     boolean showContours = false;
 
+    double filterContoursMinArea = 0.0;
+    public void setFilterContoursMinArea(double minArea) {filterContoursMinArea = minArea;}
+
     public double contourXThresh = 0.0;
     public void setCtrXTreshold(double thresh) { contourXThresh = thresh;}
 
@@ -69,7 +72,6 @@ public class GoldContourPipeline extends OpenCVPipeline {
 
         // Step Filter_Contours0:
         ArrayList<MatOfPoint> filterContoursContours = findContoursOutput;
-        double filterContoursMinArea = 1000.0;
         double filterContoursMinPerimeter = 0;
         double filterContoursMinWidth = 0;
         double filterContoursMaxWidth = 1000;
