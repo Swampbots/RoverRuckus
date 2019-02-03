@@ -208,7 +208,10 @@ public class TestPID extends LinearOpMode {
             telemetry.addData("kI", hardware.pid.getI());
             telemetry.addData("kD", hardware.pid.getD());
             telemetry.addLine();
-            telemetry.addData("Heading", heading());
+            telemetry.addLine("Headings:");
+            telemetry.addData("X", angles.thirdAngle);
+            telemetry.addData("Y", angles.secondAngle);
+            telemetry.addData("Z", angles.firstAngle);
             telemetry.update();
         }
 
@@ -229,7 +232,7 @@ public class TestPID extends LinearOpMode {
         hardware.pid.setDeadband(hardware.TOLERANCE);                           // Set how far off you can safely be from your target
 
         while (opModeIsActive()) {
-            double error = normalize180(target - heading());
+            double error = normalize180(target - heading().firstAngle);
             double power = hardware.pid.calculateGivenError(error);
 
             hardware.setLeftPower(power);
@@ -256,7 +259,7 @@ public class TestPID extends LinearOpMode {
         return angle;
     }
 
-    public double heading() {
-        return imu.getAngularOrientation(AxesReference.EXTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle;
+    public Orientation heading() {
+        return imu.getAngularOrientation(AxesReference.EXTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
     }
 }
