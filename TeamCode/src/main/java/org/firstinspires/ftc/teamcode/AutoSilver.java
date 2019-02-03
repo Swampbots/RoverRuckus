@@ -92,10 +92,17 @@ public class AutoSilver extends LinearOpMode {
 
 
 
+    ButtonCooldown gp2_a    = new ButtonCooldown();
+    ButtonCooldown gp2_b    = new ButtonCooldown();
+
+
+
+
     private final int CTR_LEFT  = (int) ((CTR_MAX_Y + hardware.CTR_MIN_Y) / 3.0);        // 1/3 of the width to bound the left third     [ |  ]
     private final int CTR_RIGHT = (int) ((CTR_MAX_Y + hardware.CTR_MIN_Y) * 2.0 / 3.0);  // 2/3 of the width to bound the center third   [  | ]
 
-    private double ctrXThreshold = 170.0;
+    private double ctrXThreshold = 206.0;
+    private double ctrMinArea   = 0.0;
 
     // Variable for thresholding LT and RT inputs, e.g. if(gamepad1.left_trigger > TRIGGER_THRESHOLD)
     public final double TRIGGER_THRESHOLD = 0.7;
@@ -285,6 +292,23 @@ public class AutoSilver extends LinearOpMode {
 
 
 
+            // CONTOUR MIN AREA
+            if(gamepad2.a && gp2_a.ready(runtime)) {
+                if (ctrMinArea < 1000.0)    ctrMinArea += THRESHOLD_STEP * 2.0;
+                else                        ctrMinArea = 1000.0;
+                gp2_a.updateSnapshot(runtime);
+            }
+
+            if(gamepad2.b && gp2_b.ready(runtime)) {
+                if (ctrMinArea > 0.0)   ctrMinArea -= THRESHOLD_STEP * 2.0;
+                else                    ctrMinArea = 0.0;
+                gp2_b.updateSnapshot(runtime);
+            }
+
+            vision.setFilterContoursMinArea(ctrMinArea);
+
+
+
             // Contour array
             List<MatOfPoint> contours = vision.findContoursOutput();
 
@@ -346,9 +370,12 @@ public class AutoSilver extends LinearOpMode {
 
             telemetry.addData("Contour X threshold", ctrXThreshold);
             telemetry.addLine();
+            telemetry.addData("Contour Min Area", ctrMinArea);
+            telemetry.addLine();
             telemetry.addData("Left tally", ctrTallies[0]);
             telemetry.addData("Center tally", ctrTallies[1]);
             telemetry.addData("Right tally", ctrTallies[2]);
+            telemetry.addLine();
             telemetry.addData("Highest", highest);
             telemetry.addLine();
             telemetry.addData("Gold Placement", goldPlacement);
