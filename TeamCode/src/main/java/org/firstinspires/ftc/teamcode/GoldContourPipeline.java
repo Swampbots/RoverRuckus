@@ -38,7 +38,7 @@ public class GoldContourPipeline extends OpenCVPipeline {
 
     boolean showContours = false;
 
-    double filterContoursMinArea = 0.0;
+    double filterContoursMinArea = 2.0;
     public void setFilterContoursMinArea(double minArea) {filterContoursMinArea = minArea;}
 
     public double contourXThresh = 0.0;
