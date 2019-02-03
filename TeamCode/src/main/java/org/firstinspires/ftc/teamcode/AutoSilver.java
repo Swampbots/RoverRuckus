@@ -310,7 +310,7 @@ public class AutoSilver extends LinearOpMode {
 
 
             // Contour array
-            List<MatOfPoint> contours = vision.findContoursOutput();
+            List<MatOfPoint> contours = vision.filterContoursOutput();
 
             int contourHeightMid;
             int contourX;
