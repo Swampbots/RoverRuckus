@@ -100,8 +100,8 @@ public class AutoSilver extends LinearOpMode {
 
 
 
-    private final int CTR_LEFT  = (int) ((CTR_MAX_Y + hardware.CTR_MIN_Y) / 3.0);        // 1/3 of the width to bound the left third     [ |  ]
-    private final int CTR_RIGHT = (int) ((CTR_MAX_Y + hardware.CTR_MIN_Y) * 2.0 / 3.0);  // 2/3 of the width to bound the center third   [  | ]
+    private final int CTR_RIGHT  = (int) ((CTR_MAX_Y + hardware.CTR_MIN_Y) / 3.0);        // 1/3 of the width to bound the left third     [ |  ]
+    private final int CTR_LEFT = (int) ((CTR_MAX_Y + hardware.CTR_MIN_Y) * 2.0 / 3.0);  // 2/3 of the width to bound the center third   [  | ]
 
     private double ctrXThreshold = 206.0;
     private double ctrMinArea   = 0.0;
@@ -341,11 +341,11 @@ public class AutoSilver extends LinearOpMode {
                             contourX = (boundingRect.x + boundingRect.width) / 2;
                             contourHeightMid = (boundingRect.y + boundingRect.height) / 2;
 
-                            if( contourX > ctrXThreshold / 2){ // Make sure the contour isn't from gold in the crater
+                            if( contourX > ctrXThreshold / 2){ // Make sure the contour is below the cutoff
 
-                                if (contourHeightMid < CTR_LEFT) {
+                                if (contourHeightMid > CTR_LEFT) {
                                     ctrTallies[0]++;
-                                } else if (contourHeightMid < CTR_RIGHT) {
+                                } else if (contourHeightMid > CTR_RIGHT) {
                                     ctrTallies[1]++;
                                 } else {
                                     ctrTallies[2]++;
@@ -370,12 +370,12 @@ public class AutoSilver extends LinearOpMode {
                 goldPlacement = _GoldPlacement.RIGHT;
             }
 
-            RoverHardware.getDoubleSetting("xval", 100);
-
-            if(gamepad2.dpad_up) {
-                RoverHardware.setDoubleSetting("xval", ctrXThreshold);
-                ReadWriteFile.writeFile(AppUtil.getInstance().getSettingsFile("Settings.json"), RoverHardware.settings.toJSONString());
-            }
+//            RoverHardware.getDoubleSetting("xval", 100);
+//
+//            if(gamepad2.dpad_up) {
+//                RoverHardware.setDoubleSetting("xval", ctrXThreshold);
+//                ReadWriteFile.writeFile(AppUtil.getInstance().getSettingsFile("Settings.json"), RoverHardware.settings.toJSONString());
+//            }
 
 
 
