@@ -34,7 +34,7 @@ public class AutoSilver extends LinearOpMode {
 
     GoldContourPipeline vision = new GoldContourPipeline();
 
-    _GoldPlacement goldPlacement = _GoldPlacement.UNKNOWN;
+    _GoldPlacement goldPlacement = _GoldPlacement.CENTER;
 
 
     // IMU object
