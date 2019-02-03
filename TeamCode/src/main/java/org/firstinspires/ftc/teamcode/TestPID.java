@@ -60,7 +60,7 @@ public class TestPID extends LinearOpMode {
 
     private int frontTarget = PIV_STOWED[0];
     private int rearTarget = PIV_STOWED[1];
-    
+
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -170,8 +170,6 @@ public class TestPID extends LinearOpMode {
             if(gamepad1.y) turnToHeadingPID(0);
             else if(gamepad1.b) turnToHeadingPID(45);
             else if(gamepad1.x) turnToHeadingPID(90);
-            else if(gamepad1.a) turnToHeadingPID(180);
-
 
 
             // Drive motor and pivot motor controls
