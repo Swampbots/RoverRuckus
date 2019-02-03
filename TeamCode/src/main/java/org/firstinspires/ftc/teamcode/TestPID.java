@@ -4,11 +4,16 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+
+import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_REAR;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
 
 /**
  * Created by SwampbotsAdmin on 10/22/2017.
@@ -44,13 +49,23 @@ public class TestPID extends LinearOpMode {
 
 
 
+    private final double PIV_SPEED_BASE = 1.0;
+    private final double PIV_SPEED_FRONT = PIV_SPEED_BASE;
+    private final double PIV_SPEED_REAR = PIV_SPEED_FRONT * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT);
+
+    private final double PIV_SPEED_SCALER_FRONT = 1.0;
+    private final double PIV_SPEED_SCALER_REAR = PIV_SPEED_SCALER_FRONT * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT);
 
 
+
+    private int frontTarget = PIV_STOWED[0];
+    private int rearTarget = PIV_STOWED[1];
+    
 
     @Override
     public void runOpMode() throws InterruptedException {
 
-        telemetry.addLine("Initializing hardware.");
+        telemetry.addLine("Gyro initializing! Do not touch the robot!");
         telemetry.update();
 
         hardware.init(hardwareMap);
@@ -156,6 +171,39 @@ public class TestPID extends LinearOpMode {
             else if(gamepad1.b) turnToHeadingPID(45);
             else if(gamepad1.x) turnToHeadingPID(90);
             else if(gamepad1.a) turnToHeadingPID(180);
+
+
+
+            // Drive motor and pivot motor controls
+            // Drive motor controls
+            hardware.setLeftPower   (-gamepad1.left_stick_y);
+            hardware.setRightPower  (-gamepad1.right_stick_y);
+
+
+
+
+            // Set pivot target, run mode, and speed
+            if(Math.abs(gamepad2.right_stick_y) < 0.05) {
+                hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                hardware.frontPivot.setPower(PIV_SPEED_FRONT);
+            } else {
+                hardware.frontPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                hardware.frontPivot.setPower(-gamepad2.right_stick_y * PIV_SPEED_SCALER_FRONT);
+                frontTarget = hardware.frontPivot.getCurrentPosition();
+            }
+
+            if(Math.abs(gamepad2.left_stick_y) < 0.05) {
+                hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                hardware.rearPivot.setPower(PIV_SPEED_REAR);
+            } else {
+                hardware.rearPivot.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                hardware.rearPivot.setPower(-gamepad2.left_stick_y * PIV_SPEED_SCALER_REAR);
+                rearTarget = hardware.rearPivot.getCurrentPosition();
+            }
+
+            // Set pivot targets
+            hardware.frontPivot.setTargetPosition(frontTarget);
+            hardware.rearPivot.setTargetPosition(rearTarget);
 
 
             telemetry.addData("kP", hardware.pid.getP());
