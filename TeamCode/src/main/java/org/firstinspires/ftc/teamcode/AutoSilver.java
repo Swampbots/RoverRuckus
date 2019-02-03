@@ -106,6 +106,9 @@ public class AutoSilver extends LinearOpMode {
     private double ctrXThreshold = 206.0;
     private double ctrMinArea   = 0.0;
 
+
+    int highest = 0;
+
     // Variable for thresholding LT and RT inputs, e.g. if(gamepad1.left_trigger > TRIGGER_THRESHOLD)
     public final double TRIGGER_THRESHOLD = 0.7;
 
@@ -360,9 +363,10 @@ public class AutoSilver extends LinearOpMode {
             }
 
 
-            int highest = highestTally(ctrTallies);
+            highest = highestTally(ctrTallies);
 
-            if(highest == ctrTallies[0]) {
+            if(highest == -1);
+            else if(highest == ctrTallies[0]) {
                 goldPlacement = _GoldPlacement.LEFT;
             } else if(highest == ctrTallies[1]) {
                 goldPlacement = _GoldPlacement.CENTER;
@@ -502,6 +506,8 @@ public class AutoSilver extends LinearOpMode {
 
     private int highestTally(int[] tallies) {
         int highest;
+
+        if(tallies[0] == tallies[1] && tallies[0] == tallies[2]) return -1; // Default to previous goldPlacement if all are equal
 
         if(tallies[0] > tallies[1] && tallies[0] > tallies[2]) highest = tallies[0];
         else if(tallies[1] > tallies[2]) highest = tallies[1];
