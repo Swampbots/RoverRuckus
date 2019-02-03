@@ -7,6 +7,12 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
+import com.qualcomm.robotcore.util.ReadWriteFile;
+
+import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
+import org.json.JSONException;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 public class RoverHardware {
 
@@ -102,6 +108,22 @@ public class RoverHardware {
     public static final double CTR_MIN_X = 0.0;
 
 
+    public static JSONObject settings;
+
+    public static double getDoubleSetting(String key, double def) {
+            Object o = settings.get(key);
+            if(o != null) {
+                return (Double) o;
+            }
+            return def;
+    }
+
+    public static void setDoubleSetting(String key, double value) {
+
+            settings.put(key, value);
+    }
+
+
 
 
     // Flipper state variables
@@ -173,6 +195,18 @@ public class RoverHardware {
 
     public void init(HardwareMap ahwMap) {
         hwMap = ahwMap;
+
+
+        try {
+            settings = (JSONObject) new JSONParser().parse(
+                    ReadWriteFile.readFile(
+                            AppUtil.getInstance().getSettingsFile("Settings.json")
+                    )
+            );
+        } catch(Exception ex) {
+            ex.printStackTrace();
+            settings = new JSONObject();
+        }
 
 
         // Initialize motors

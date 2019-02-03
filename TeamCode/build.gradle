@@ -10,7 +10,14 @@
 
 
 // Custom definitions may go here
-
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+repositories {
+    mavenCentral()
+}
 // Include common definitions from above.
 apply from: '../build.common.gradle'
 dependencies {

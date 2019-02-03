@@ -4,12 +4,14 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.util.ReadWriteFile;
 
 import org.corningrobotics.enderbots.endercv.CameraViewDisplay;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
@@ -367,6 +369,15 @@ public class AutoSilver extends LinearOpMode {
             } else {
                 goldPlacement = _GoldPlacement.RIGHT;
             }
+
+            RoverHardware.getDoubleSetting("xval", 100);
+
+            if(gamepad1.) {
+                RoverHardware.setDoubleSetting("xval", ctrXThreshold);
+                ReadWriteFile.writeFile(AppUtil.getInstance().getSettingsFile("Settings.json"), RoverHardware.settings.toJSONString());
+            }
+
+
 
             telemetry.addData("Contour X threshold", ctrXThreshold);
             telemetry.addLine();
