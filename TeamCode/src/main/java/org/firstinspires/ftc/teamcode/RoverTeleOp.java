@@ -33,6 +33,8 @@ public class RoverTeleOp extends OpMode {
     private final double PIV_SPEED_SCALER_FRONT = 1.0;
     private final double PIV_SPEED_SCALER_REAR = PIV_SPEED_SCALER_FRONT * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT);
 
+    ButtonCooldown gp2_b = new ButtonCooldown();
+
 
 
     public void init() {
@@ -43,6 +45,8 @@ public class RoverTeleOp extends OpMode {
         hardware.frontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         hardware.rearLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         hardware.rearRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        gp2_b.setCooldown(0.175);
     }
 
     public void loop() {
@@ -107,7 +111,9 @@ public class RoverTeleOp extends OpMode {
         hardware.latch.setPosition(gamepad1.right_trigger * LATCH_OPEN);   // This will scale with the latch settings
 
         // Ramp servo
-        hardware.ramp.setPosition(gamepad2.a ? 0.0 : 1.0);
+        if(gamepad2.b && gp2_b.ready(getRuntime())) {
+            hardware.ramp.setPosition(Math.abs(hardware.ramp.getPosition() - 1.0));
+        }
 
         // Lifter servo
         hardware.lifter.setPosition(gamepad2.b ? 0.0 : 1.0);
