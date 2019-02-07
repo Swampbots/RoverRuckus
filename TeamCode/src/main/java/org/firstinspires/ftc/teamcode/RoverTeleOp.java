@@ -113,6 +113,7 @@ public class RoverTeleOp extends OpMode {
         // Ramp servo
         if(gamepad2.b && gp2_b.ready(getRuntime())) {
             hardware.ramp.setPosition(Math.abs(hardware.ramp.getPosition() - 1.0));
+            gp2_b.updateSnapshot(getRuntime());
         }
 
         // Lifter servo
