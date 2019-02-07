@@ -124,9 +124,8 @@ public class RoverTeleOp extends OpMode {
         telemetry.addData("Front Pivot", hardware.frontPivot.getCurrentPosition());
         telemetry.addData("Rear Pivot", hardware.rearPivot.getCurrentPosition());
         telemetry.addLine();
-        telemetry.addData("Flipper Position", hardware.snorfler.getCurrentPosition());
+        telemetry.addData("Flipper Position", hardware.flipper.getCurrentPosition());
         telemetry.addData("Flipper speed mod", flipperSpeedModifier);
-        telemetry.addLine();
         telemetry.update();
     }
 
