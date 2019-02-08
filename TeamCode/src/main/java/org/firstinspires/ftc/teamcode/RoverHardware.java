@@ -155,6 +155,9 @@ public class RoverHardware {
     public static final double RAMP_UP   = 1.0;
     public static final double RAMP_DOWN = 0.0;
 
+    public static final double BUCKET_RETRACT   = 0.0;
+    public static final double BUCKET_EXTEND    = 0.0;
+
 
     // Autonomous PID variables
     public final double MAX_SPEED = 0.4;
@@ -190,6 +193,8 @@ public class RoverHardware {
 
     public Servo lockLeft;
     public Servo lockRight;
+
+    public Servo bucket;
 
 
 
@@ -273,12 +278,17 @@ public class RoverHardware {
         lockLeft = hwMap.servo.get("lock_left");
         lockRight = hwMap.servo.get("lock_right");
 
+        bucket = hwMap.servo.get("bucket");
+
         lockLeft.scaleRange(0.25, 0.75);
         lockRight.scaleRange(0.25, 0.75);
+
+        bucket.scaleRange(0.25, 0.75);
 
         latch.setPosition(LATCH_CLOSED);
         setLockPosition(LOCK_CLOSED);
         ramp.setPosition(RAMP_UP);
+        bucket.setPosition(BUCKET_RETRACT);
     }
 
 
