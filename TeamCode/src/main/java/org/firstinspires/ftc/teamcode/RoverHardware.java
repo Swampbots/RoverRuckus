@@ -152,8 +152,8 @@ public class RoverHardware {
     public static final double LATCH_CLOSED = 0.0;
     public static final double LATCH_OPEN   = 0.6;
 
-    public static final double RAMP_UP   = 1.0;
-    public static final double RAMP_DOWN = 0.0;
+    public static final double RAMP_UP      = 1.0;
+    public static final double RAMP_DOWN    = 0.0;
 
     public static final double BUCKET_RETRACT   = 0.0;
     public static final double BUCKET_EXTEND    = 0.0;
