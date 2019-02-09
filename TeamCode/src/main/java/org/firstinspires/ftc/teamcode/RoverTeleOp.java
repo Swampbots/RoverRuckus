@@ -24,6 +24,8 @@ public class RoverTeleOp extends OpMode {
     private int frontTarget = PIV_STOWED[0];
     private int rearTarget = PIV_STOWED[1];
 
+    private int flipperTarget = 0;
+
 
 
     private final double PIV_SPEED_BASE = 1.0;
@@ -46,6 +48,8 @@ public class RoverTeleOp extends OpMode {
         hardware.frontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         hardware.rearLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         hardware.rearRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        hardware.flipper.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         gp2_b.setCooldown(0.175);
     }
@@ -97,9 +101,21 @@ public class RoverTeleOp extends OpMode {
 
 
         // Flipper controls
-        if(gamepad2.dpad_up)        hardware.flipper.setPower(flipperSpeedModifier);
-        else if(gamepad2.dpad_down) hardware.flipper.setPower(-flipperSpeedModifier);
-        else hardware.flipper.setPower(0.0);
+        if(gamepad2.dpad_up) {
+            hardware.flipper.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            hardware.flipper.setPower(flipperSpeedModifier);
+            flipperTarget = hardware.flipper.getCurrentPosition();
+        } else if(gamepad2.dpad_down) {
+            hardware.flipper.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            hardware.flipper.setPower(-flipperSpeedModifier);
+            flipperTarget = hardware.flipper.getCurrentPosition();
+        } else {
+            hardware.flipper.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            hardware.flipper.setPower(flipperSpeedModifier);
+        }
+//        if(gamepad2.dpad_up)        hardware.flipper.setPower(flipperSpeedModifier);
+//        else if(gamepad2.dpad_down) hardware.flipper.setPower(-flipperSpeedModifier);
+//        else hardware.flipper.setPower(0.0);
 
         // Snorfler controls
         if(gamepad2.left_trigger > gamepad2.right_trigger) hardware.snorfler.setPower(-gamepad2.left_trigger);
