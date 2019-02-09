@@ -116,8 +116,6 @@ public class RoverTeleOp extends OpMode {
             gp2_b.updateSnapshot(getRuntime());
         }
 
-        // Lifter servo
-        hardware.lifter.setPosition(gamepad2.b ? 0.0 : 1.0);
 
 
         // Telemetry
