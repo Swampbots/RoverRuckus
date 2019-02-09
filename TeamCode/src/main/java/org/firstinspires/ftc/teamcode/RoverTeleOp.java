@@ -114,9 +114,9 @@ public class RoverTeleOp extends OpMode {
 
         double runtime = getRuntime();
         // Ramp servo
-        if(gamepad2.b && gp2_b.ready(getRuntime())) {
+        if(gamepad2.b && gp2_b.ready(runtime)) {
             hardware.ramp.setPosition(Math.abs(hardware.ramp.getPosition() - 1.0));
-            gp2_b.updateSnapshot(getRuntime());
+            gp2_b.updateSnapshot(runtime);
         }
 
         // Bucket servo
