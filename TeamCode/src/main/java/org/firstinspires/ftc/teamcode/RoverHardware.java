@@ -253,7 +253,7 @@ public class RoverHardware {
         rearPivot.setZeroPowerBehavior  (DcMotor.ZeroPowerBehavior.BRAKE);
         frontPivot.setZeroPowerBehavior (DcMotor.ZeroPowerBehavior.BRAKE);
 
-        snorfler.setZeroPowerBehavior      (DcMotor.ZeroPowerBehavior.BRAKE);
+        snorfler.setZeroPowerBehavior   (DcMotor.ZeroPowerBehavior.BRAKE);
 
         flipper.setZeroPowerBehavior    (DcMotor.ZeroPowerBehavior.BRAKE);
 
