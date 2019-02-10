@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -8,6 +9,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_FRO
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
 
+@Disabled
 @TeleOp(name = "Test Battery", group = "Testing")
 public class TestBattery extends OpMode {
 
