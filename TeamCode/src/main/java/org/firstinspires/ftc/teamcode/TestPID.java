@@ -171,12 +171,6 @@ public class TestPID extends LinearOpMode {
             else if(gamepad1.x) turnToHeadingPID(90);
 
 
-            // Drive motor and pivot motor controls
-            // Drive motor controls
-            hardware.setLeftPower   (-gamepad1.left_stick_y);
-            hardware.setRightPower  (-gamepad1.right_stick_y);
-
-
 
 
             // Set pivot target, run mode, and speed
