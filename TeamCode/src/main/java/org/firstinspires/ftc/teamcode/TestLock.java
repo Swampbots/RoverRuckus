@@ -14,7 +14,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_DOWN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_UP;
 
-//@Disabled
+@Disabled
 @TeleOp(name = "Lock Test", group ="Testing")
 public class TestLock extends OpMode {
 
