@@ -113,6 +113,8 @@ public class RoverTeleOp extends OpMode {
             hardware.flipper.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             hardware.flipper.setPower(flipperSpeedModifier);
         }
+
+        hardware.flipper.setTargetPosition(flipperTarget);
 //        if(gamepad2.dpad_up)        hardware.flipper.setPower(flipperSpeedModifier);
 //        else if(gamepad2.dpad_down) hardware.flipper.setPower(-flipperSpeedModifier);
 //        else hardware.flipper.setPower(0.0);
