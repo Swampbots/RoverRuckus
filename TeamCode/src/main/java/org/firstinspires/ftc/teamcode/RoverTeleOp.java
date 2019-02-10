@@ -101,23 +101,9 @@ public class RoverTeleOp extends OpMode {
 
 
         // Flipper controls
-        if(gamepad2.dpad_up) {
-            hardware.flipper.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            hardware.flipper.setPower(flipperSpeedModifier);
-            flipperTarget = hardware.flipper.getCurrentPosition();
-        } else if(gamepad2.dpad_down) {
-            hardware.flipper.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            hardware.flipper.setPower(-flipperSpeedModifier);
-            flipperTarget = hardware.flipper.getCurrentPosition();
-        } else {
-            hardware.flipper.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            hardware.flipper.setPower(flipperSpeedModifier);
-        }
-
-        hardware.flipper.setTargetPosition(flipperTarget);
-//        if(gamepad2.dpad_up)        hardware.flipper.setPower(flipperSpeedModifier);
-//        else if(gamepad2.dpad_down) hardware.flipper.setPower(-flipperSpeedModifier);
-//        else hardware.flipper.setPower(0.0);
+        if(gamepad2.dpad_up)        hardware.flipper.setPower(flipperSpeedModifier);
+        else if(gamepad2.dpad_down) hardware.flipper.setPower(-flipperSpeedModifier);
+        else hardware.flipper.setPower(0.0);
 
         // Snorfler controls
         if(gamepad2.left_trigger > gamepad2.right_trigger) hardware.snorfler.setPower(-gamepad2.left_trigger);
