@@ -201,7 +201,6 @@ public class TestPID extends LinearOpMode {
             telemetry.addData("kI", hardware.pid.getI());
             telemetry.addData("kD", hardware.pid.getD());
             telemetry.addLine();
-            telemetry.addLine("Headings:");
             telemetry.addData("Heading", heading());
             telemetry.update();
         }
