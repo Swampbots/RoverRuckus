@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.motors.NeveRest60Gearmotor;
-import com.qualcomm.hardware.motors.RevRobotics40HdHexMotor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -51,7 +50,7 @@ public class RoverHardware {
 
     // Encoder variables (Drive motors)
     public static final double  GEAR_REDUCTION_DRIVE_REAR = (20.0 / 15.0);
-    public static final double  GEAR_REDUCTION_DRIVE_FRONT = 1.0;
+    public static final double  GEAR_REDUCTION_DRIVE_FRONT = (20.0 / 15.0);
 
     public static final int     COUNTS_PER_INCH_DRIVE_REAR     = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_DRIVE_REAR) / WHEEL_CIRCUMFERENCE);
     public static final int     COUNTS_PER_INCH_DRIVE_FRONT    = (int)((COUNTS_PER_REV_CORE * GEAR_REDUCTION_DRIVE_FRONT) / WHEEL_CIRCUMFERENCE);
