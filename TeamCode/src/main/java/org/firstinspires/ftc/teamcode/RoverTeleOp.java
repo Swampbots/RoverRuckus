@@ -49,8 +49,6 @@ public class RoverTeleOp extends OpMode {
         hardware.rearLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         hardware.rearRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        hardware.flipper.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
         gp2_b.setCooldown(0.175);
     }
 
