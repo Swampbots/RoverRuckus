@@ -238,6 +238,7 @@ public class TestPID extends LinearOpMode {
             double power = hardware.pid.calculateGivenError(error);
 
             telemetry.addData("Current error", error);
+            telemetry.addData("Current power", power);
 
             hardware.setLeftPower(power);
             hardware.setRightPower(-power);
