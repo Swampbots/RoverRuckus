@@ -267,6 +267,6 @@ public class TestPID extends LinearOpMode {
     }
 
     public double heading() {
-        return imu.getAngularOrientation(AxesReference.EXTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).secondAngle;
+        return imu.getAngularOrientation(AxesReference.EXTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle;
     }
 }
