@@ -227,8 +227,6 @@ public class TestPID extends LinearOpMode {
     public void turnToHeadingPID(int target) throws InterruptedException {
 
         telemetry.addData("Turning to target", target);
-        telemetry.update();
-        sleep(250);
         telemetry.addLine("Press Y to stop.");
 
         hardware.pid.setSetpoint(target);                                       // Set target final heading relative to current
@@ -239,6 +237,8 @@ public class TestPID extends LinearOpMode {
             double error = normalize180(target - heading());
             double power = hardware.pid.calculateGivenError(error);
 
+            telemetry.addData("Current error", error);
+
             hardware.setLeftPower(power);
             hardware.setRightPower(-power);
 
@@ -247,6 +247,8 @@ public class TestPID extends LinearOpMode {
             }
 
             Thread.sleep(1);
+
+            telemetry.update();
         }
 
         hardware.setLeftPower(0);
