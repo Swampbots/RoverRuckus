@@ -94,7 +94,7 @@ public class TestPID extends LinearOpMode {
         // Pass in the parameters
         imu.initialize(IMUParameters);
 
-        angles   = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+//        angles   = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
         telemetry.addLine("Hardware initialized.");
         telemetry.addLine("Press play to start.");
