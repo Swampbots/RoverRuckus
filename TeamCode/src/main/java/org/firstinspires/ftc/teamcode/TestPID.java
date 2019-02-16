@@ -173,6 +173,12 @@ public class TestPID extends LinearOpMode {
 
 
 
+
+            // Set drive motor power
+            hardware.setLeftPower   (-gamepad1.left_stick_y);
+            hardware.setRightPower  (-gamepad1.right_stick_y);
+
+
             // Set pivot target, run mode, and speed
             if(Math.abs(gamepad2.right_stick_y) < 0.05) {
                 hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
