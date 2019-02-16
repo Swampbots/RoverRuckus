@@ -229,6 +229,7 @@ public class TestPID extends LinearOpMode {
         telemetry.addData("Turning to target", target);
         telemetry.update();
         sleep(250);
+        telemetry.addLine("Press Y to stop.");
 
         hardware.pid.setSetpoint(target);                                       // Set target final heading relative to current
         hardware.pid.setOutputRange(-hardware.MAX_SPEED, hardware.MAX_SPEED);   // Set maximum motor power
@@ -241,7 +242,7 @@ public class TestPID extends LinearOpMode {
             hardware.setLeftPower(power);
             hardware.setRightPower(-power);
 
-            if (Math.abs(error) < hardware.TOLERANCE) {
+            if (Math.abs(error) < hardware.TOLERANCE || gamepad1.y) {
                 break;
             }
 
