@@ -45,7 +45,7 @@ public class TestPID extends LinearOpMode {
     private double kI = 0.0;
     private double kD = 0.0;
 
-    private final double K_STEP = 0.05;
+    private final double K_STEP = 0.005;
 
 
 
