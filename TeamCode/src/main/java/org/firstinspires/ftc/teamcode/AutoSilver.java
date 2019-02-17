@@ -116,14 +116,7 @@ public class AutoSilver extends LinearOpMode {
     public void runOpMode() {
         // Init
 
-        // Hardware and servos
         hardware.init(hardwareMap);
-
-
-        hardware.latch.setPosition(LATCH_CLOSED);
-        hardware.ramp.setPosition(RAMP_STOWED);
-//        hardware.george.setPosition(GEORGE_STOWED);
-        hardware.setLockPosition(LOCK_LOCKED);
 
 
         // Vision pipeline
