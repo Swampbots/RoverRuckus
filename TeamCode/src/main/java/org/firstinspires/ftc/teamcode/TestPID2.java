@@ -68,7 +68,7 @@ public class TestPID2 extends LinearOpMode {
         telemetry.addLine()
                 .addData("heading", new Func<String>() {
                     @Override public String value() {
-                        return formatAngle(angles.angleUnit, angles.firstAngle + 180.0);
+                        return formatAngle(angles.angleUnit, angles.firstAngle);
                     }
                 });
     }
