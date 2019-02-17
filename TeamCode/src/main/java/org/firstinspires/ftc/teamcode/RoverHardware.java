@@ -53,7 +53,7 @@ public class RoverHardware {
     public static final double  GEAR_REDUCTION_DRIVE_FRONT = (20.0 / 15.0);
 
     public static final int     COUNTS_PER_INCH_DRIVE_REAR     = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_DRIVE_REAR) / WHEEL_CIRCUMFERENCE);
-    public static final int     COUNTS_PER_INCH_DRIVE_FRONT    = (int)((COUNTS_PER_REV_CORE * GEAR_REDUCTION_DRIVE_FRONT) / WHEEL_CIRCUMFERENCE);
+    public static final int     COUNTS_PER_INCH_DRIVE_FRONT    = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_DRIVE_FRONT) / WHEEL_CIRCUMFERENCE);
 
 
 
