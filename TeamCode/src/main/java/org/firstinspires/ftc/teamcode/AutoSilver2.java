@@ -480,24 +480,36 @@ public class AutoSilver2 extends OpMode {
     }
 
 
-
+//----------------------------------------------------------------------------------------------
+    // PID controller methods
+    //----------------------------------------------------------------------------------------------
 
     public void turnToHeadingPID(int target) throws InterruptedException {
+
+        telemetry.addData("Turning to target", target);
+        telemetry.addLine("Press dpad_down to stop.");
 
         hardware.pid.setSetpoint(target);                                       // Set target final heading relative to current
         hardware.pid.setOutputRange(-hardware.MAX_SPEED, hardware.MAX_SPEED);   // Set maximum motor power
         hardware.pid.setDeadband(hardware.TOLERANCE);                           // Set how far off you can safely be from your target
 
-        double error = normalize180(target - heading());
-
-        while (Math.abs(error) < hardware.TOLERANCE) {
-            error = normalize180(target - heading());
+        while (opModeIsActive()) {
+            double error = normalize180(target - heading());
             double power = hardware.pid.calculateGivenError(error);
 
-            hardware.setLeftPower(power);
-            hardware.setRightPower(-power);
+            telemetry.addData("Current error", error);
+            telemetry.addData("Current power", power);
+
+            hardware.setLeftPower(-power);
+            hardware.setRightPower(power);
+
+            if (Math.abs(error) < hardware.TOLERANCE || gamepad2.dpad_down) {
+                break;
+            }
 
             Thread.sleep(1);
+
+            telemetry.update();
         }
 
         hardware.setLeftPower(0);
@@ -514,8 +526,8 @@ public class AutoSilver2 extends OpMode {
         return angle;
     }
 
-    public double heading() {
-        return imu.getAngularOrientation(AxesReference.EXTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle;
+    public float heading() {
+        return imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle;
     }
 
 }
