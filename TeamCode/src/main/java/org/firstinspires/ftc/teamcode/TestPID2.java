@@ -266,8 +266,8 @@ public class TestPID2 extends LinearOpMode {
             telemetry.addData("Current error", error);
             telemetry.addData("Current power", power);
 
-            hardware.setLeftPower(power);
-            hardware.setRightPower(-power);
+            hardware.setLeftPower(-power);
+            hardware.setRightPower(power);
 
             if (Math.abs(error) < hardware.TOLERANCE || gamepad2.dpad_down) {
                 break;
