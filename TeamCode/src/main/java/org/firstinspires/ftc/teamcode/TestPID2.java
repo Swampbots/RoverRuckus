@@ -104,4 +104,55 @@ public class TestPID2 extends LinearOpMode {
     String formatDegrees(double degrees){
         return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
+
+
+    //----------------------------------------------------------------------------------------------
+    // PID controller methods
+    //----------------------------------------------------------------------------------------------
+
+    public void turnToHeadingPID(int target) throws InterruptedException {
+
+        telemetry.addData("Turning to target", target);
+        telemetry.addLine("Press dpad_down to stop.");
+
+        hardware.pid.setSetpoint(target);                                       // Set target final heading relative to current
+        hardware.pid.setOutputRange(-hardware.MAX_SPEED, hardware.MAX_SPEED);   // Set maximum motor power
+        hardware.pid.setDeadband(hardware.TOLERANCE);                           // Set how far off you can safely be from your target
+
+        while (opModeIsActive()) {
+            double error = normalize180(target - heading());
+            double power = hardware.pid.calculateGivenError(error);
+
+            telemetry.addData("Current error", error);
+            telemetry.addData("Current power", power);
+
+            hardware.setLeftPower(power);
+            hardware.setRightPower(-power);
+
+            if (Math.abs(error) < hardware.TOLERANCE || gamepad1.dpad_down) {
+                break;
+            }
+
+            Thread.sleep(1);
+
+            telemetry.update();
+        }
+
+        hardware.setLeftPower(0);
+        hardware.setRightPower(0);
+    }
+
+    public double normalize180(double angle) {
+        while(angle > 180) {
+            angle -= 360;
+        }
+        while(angle <= -180) {
+            angle += 360;
+        }
+        return angle;
+    }
+
+    public float heading() {
+        return imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle;
+    }
 }
