@@ -10,8 +10,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-import org.firstinspires.ftc.robotcore.external.navigation.Position;
-import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 
 import java.util.Locale;
 
@@ -44,6 +42,8 @@ public class TestPID2 extends LinearOpMode {
             imu = hardwareMap.get(BNO055IMU.class, "imu");
             imu.initialize(parameters);
 
+
+
             composeTelemetry();
 
             waitForStart();
@@ -68,7 +68,7 @@ public class TestPID2 extends LinearOpMode {
         telemetry.addLine()
                 .addData("heading", new Func<String>() {
                     @Override public String value() {
-                        return formatAngle(angles.angleUnit, angles.firstAngle);
+                        return formatAngle(angles.angleUnit, angles.firstAngle + 180.0);
                     }
                 });
     }
