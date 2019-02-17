@@ -243,6 +243,24 @@ public class RoverHardware {
         flipper.setDirection    (DcMotorSimple.Direction.FORWARD);
 
 
+
+        // Set motor RunModes
+        frontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        frontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rearLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rearRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        // Deactivated because I don't want to mess something up unintentionally.
+        // I only know that the drive motor RunModes need to be set.
+//        rearPivot.setMode  (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//        frontPivot.setMode (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//
+//        snorfler.setMode      (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//
+//        flipper.setMode    (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+
+
         // Set motor zero-power behaviors
         frontLeft.setZeroPowerBehavior  (DcMotor.ZeroPowerBehavior.FLOAT);
         rearLeft.setZeroPowerBehavior   (DcMotor.ZeroPowerBehavior.FLOAT);
@@ -279,11 +297,13 @@ public class RoverHardware {
 
         bucket = hwMap.servo.get("bucket");
 
+        // Scale servo ranges
         lockLeft.scaleRange(0.25, 0.75);
         lockRight.scaleRange(0.25, 0.75);
 
         bucket.scaleRange(0.25, 0.75);
 
+        // Set starting servo positions
         latch.setPosition(LATCH_CLOSED);
         setLockPosition(LOCK_CLOSED);
         ramp.setPosition(RAMP_UP);
