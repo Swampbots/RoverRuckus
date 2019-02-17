@@ -161,8 +161,8 @@ public class RoverHardware {
     // Autonomous PID variables
     public final double MAX_SPEED = 0.6;
     public final double P = 0.045;
-    public final double I = 0.01;
-    public final double D = 0.045;
+    public final double I = 0.0;
+    public final double D = 0.0;
     public final double TOLERANCE = 2;
 
     public final SynchronousPID pid = new SynchronousPID(P, I, D);
