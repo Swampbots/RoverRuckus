@@ -90,12 +90,7 @@ public class TestPID2 extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            /*
-                    CONTROLS: (Target heading listed)
 
-                    0:      gp1.y
-                    45:     gp1.b
-                    90:     gp1.x
             //--------------------------------------------------------------------------------------
             // START PID COEFFICIENT CONTROLS
             //--------------------------------------------------------------------------------------
@@ -194,11 +189,17 @@ public class TestPID2 extends LinearOpMode {
             hardware.frontPivot.setTargetPosition(frontTarget);
             hardware.rearPivot.setTargetPosition(rearTarget);
 
-            if(gamepad1.y) turnToHeadingPID(0);
-            else if(gamepad1.b) turnToHeadingPID(45);
-            else if(gamepad1.x) turnToHeadingPID(90);
 
+            /*
+                    CONTROLS: (Target heading listed)
 
+                    0:      gp2.y
+                    45:     gp2.a
+                    90:     gp2.x
+            */
+            if(gamepad2.y) turnToHeadingPID(0);
+            else if(gamepad2.a) turnToHeadingPID(45);
+            else if(gamepad2.x) turnToHeadingPID(90);
 
             telemetry.addLine();
             telemetry.addData("kP", hardware.pid.getP());
@@ -263,7 +264,7 @@ public class TestPID2 extends LinearOpMode {
             hardware.setLeftPower(power);
             hardware.setRightPower(-power);
 
-            if (Math.abs(error) < hardware.TOLERANCE || gamepad1.dpad_down) {
+            if (Math.abs(error) < hardware.TOLERANCE || gamepad2.dpad_down) {
                 break;
             }
 
