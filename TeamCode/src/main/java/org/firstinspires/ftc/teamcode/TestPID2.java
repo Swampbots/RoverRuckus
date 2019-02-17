@@ -62,6 +62,9 @@ public class TestPID2 extends LinearOpMode {
 
     @Override public void runOpMode() throws InterruptedException {
 
+        telemetry.addLine("Initializing hardware...");
+        telemetry.update();
+
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
         parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
@@ -82,6 +85,9 @@ public class TestPID2 extends LinearOpMode {
 
 
 
+        telemetry.addLine("Hardware initialized.");
+        telemetry.addLine("Press play to start.");
+        telemetry.update();
         waitForStart();
 
 
