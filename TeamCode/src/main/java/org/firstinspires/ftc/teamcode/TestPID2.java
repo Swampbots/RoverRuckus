@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.Func;
-import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
@@ -27,7 +26,6 @@ public class TestPID2 extends LinearOpMode {
 
         // State used for updating telemetry
         Orientation angles;
-        Acceleration gravity;
 
         //----------------------------------------------------------------------------------------------
         // Main logic
@@ -60,7 +58,6 @@ public class TestPID2 extends LinearOpMode {
             waitForStart();
 
             // Start the logging of measured acceleration
-            imu.startAccelerationIntegration(new Position(), new Velocity(), 1000);
 
             // Loop and update the dashboard
             while (opModeIsActive()) {
@@ -82,7 +79,6 @@ public class TestPID2 extends LinearOpMode {
             // to do that in each of the three items that need that info, as that's
             // three times the necessary expense.
             angles   = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-            gravity  = imu.getGravity();
         }
         });
 
@@ -112,21 +108,6 @@ public class TestPID2 extends LinearOpMode {
                 .addData("pitch", new Func<String>() {
                     @Override public String value() {
                         return formatAngle(angles.angleUnit, angles.thirdAngle);
-                    }
-                });
-
-        telemetry.addLine()
-                .addData("grvty", new Func<String>() {
-                    @Override public String value() {
-                        return gravity.toString();
-                    }
-                })
-                .addData("mag", new Func<String>() {
-                    @Override public String value() {
-                        return String.format(Locale.getDefault(), "%.3f",
-                                Math.sqrt(gravity.xAccel*gravity.xAccel
-                                        + gravity.yAccel*gravity.yAccel
-                                        + gravity.zAccel*gravity.zAccel));
                     }
                 });
     }
