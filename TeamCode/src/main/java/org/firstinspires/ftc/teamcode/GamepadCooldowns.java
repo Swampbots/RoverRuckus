@@ -20,6 +20,9 @@ public class GamepadCooldowns {
     ButtonCooldown lt   = new ButtonCooldown();
     ButtonCooldown rt   = new ButtonCooldown();
 
+    ButtonCooldown lStickB = new ButtonCooldown();
+    ButtonCooldown rStickB = new ButtonCooldown();
+
     List<ButtonCooldown> buttonCooldowns = new LinkedList<>();
 
     public GamepadCooldowns() {
@@ -37,6 +40,9 @@ public class GamepadCooldowns {
         buttonCooldowns.add(rb);
         buttonCooldowns.add(lt);
         buttonCooldowns.add(rt);
+
+        buttonCooldowns.add(lStickB);
+        buttonCooldowns.add(rStickB);
     }
 
     public void setCooldown(double cooldown) {
