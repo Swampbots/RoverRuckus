@@ -76,8 +76,6 @@ public class AutoSilver extends LinearOpMode {
 
     GamepadCooldowns cooldowns = new GamepadCooldowns();
 
-
-
     ButtonCooldown gp2_a    = new ButtonCooldown();
     ButtonCooldown gp2_b    = new ButtonCooldown();
 
