@@ -25,8 +25,7 @@ public class TestPivot extends OpMode {
     private final double PIV_SPEED_FRONT = 1.0;
     private final double PIV_SPEED_REAR = PIV_SPEED_FRONT * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT);
 
-    private final int GAMEPAD_SENSITIVITY = 20;
-
+    
 
 
     public void init() {
@@ -44,7 +43,7 @@ public class TestPivot extends OpMode {
         hardware.setRightPower  (-gamepad1.right_stick_y);
 
 
-        // Handle pivot targets
+        // Handle pivot states
         if(gamepad1.a) {
             frontTarget = PIV_STOWED[0];
             rearTarget = PIV_STOWED[1];
@@ -62,21 +61,27 @@ public class TestPivot extends OpMode {
             rearTarget = PIV_MINE[1];
         }
 
-        frontTarget += (gamepad2.left_stick_y * GAMEPAD_SENSITIVITY);
-        rearTarget += (gamepad2.right_stick_y * GAMEPAD_SENSITIVITY * (GEAR_REDUCTION_HD_REAR / GEAR_REDUCTION_HD_FRONT));
+        if(Math.abs(gamepad2.right_stick_y) < 0.05) {
+            hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            hardware.frontPivot.setPower(PIV_SPEED_FRONT);
+        } else {
+            hardware.frontPivot.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            hardware.frontPivot.setPower(-gamepad2.right_stick_y * PIV_SPEED_SCALER_FRONT);
+            frontTarget = hardware.frontPivot.getCurrentPosition();
+        }
+
+        if(Math.abs(gamepad2.left_stick_y) < 0.05) {
+            hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            hardware.rearPivot.setPower(PIV_SPEED_REAR);
+        } else {
+            hardware.rearPivot.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            hardware.rearPivot.setPower(-gamepad2.left_stick_y * PIV_SPEED_SCALER_REAR);
+            rearTarget = hardware.rearPivot.getCurrentPosition();
+        }
 
         // Set pivot targets
         hardware.frontPivot.setTargetPosition(frontTarget);
         hardware.rearPivot.setTargetPosition(rearTarget);
-
-        // Set speed
-        hardware.frontPivot.setPower(PIV_SPEED_FRONT);
-        hardware.rearPivot.setPower(PIV_SPEED_REAR);
-
-
-        // END TARGET CONTROLS
-
-
 
 
         // TELEMETRY
