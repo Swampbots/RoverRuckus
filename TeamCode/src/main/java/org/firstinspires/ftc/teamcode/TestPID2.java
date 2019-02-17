@@ -197,9 +197,13 @@ public class TestPID2 extends LinearOpMode {
             else if(gamepad2.a) turnToHeadingPID(45);
             else if(gamepad2.x) turnToHeadingPID(90);
 
+
             telemetry.addData("kP", hardware.pid.getP());
             telemetry.addData("kI", hardware.pid.getI());
             telemetry.addData("kD", hardware.pid.getD());
+            telemetry.addLine();
+            telemetry.addData("Heading", heading());
+            telemetry.update();
         }
     }
 
