@@ -32,6 +32,9 @@ public class TestPivot extends OpMode {
 
     public void init() {
         hardware.init(hardwareMap);
+
+        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
 
@@ -66,10 +69,6 @@ public class TestPivot extends OpMode {
         // Set pivot targets
         hardware.frontPivot.setTargetPosition(frontTarget);
         hardware.rearPivot.setTargetPosition(rearTarget);
-
-        // Set run mode
-        hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         // Set speed
         hardware.frontPivot.setPower(PIV_SPEED_FRONT);
