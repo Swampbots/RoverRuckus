@@ -34,8 +34,23 @@ public class TestPID2 extends LinearOpMode {
     private int frontTarget = PIV_STOWED[0];
     private int rearTarget = PIV_STOWED[1];
 
+
+
+    // Button cooldowns
+    GamepadCooldowns cooldowns = new GamepadCooldowns();
+
+    public final double TRIGGER_THRESHOLD = 0.7;
+
+    private double runtime;
+
     RoverHardware hardware = new RoverHardware();
 
+    // PID coefficients (start with val in hardware)
+    private double kP = hardware.P;
+    private double kI = hardware.I;
+    private double kD = hardware.D;
+
+    private final double K_STEP = 0.005;
 
     //----------------------------------------------------------------------------------------------
     // State
@@ -74,7 +89,6 @@ public class TestPID2 extends LinearOpMode {
 
 
         while (opModeIsActive()) {
-            telemetry.update(); // Also updates angles variable
 
             /*
                     CONTROLS: (Target heading listed)
@@ -82,7 +96,72 @@ public class TestPID2 extends LinearOpMode {
                     0:      gp1.y
                     45:     gp1.b
                     90:     gp1.x
+            //--------------------------------------------------------------------------------------
+            // START PID COEFFICIENT CONTROLS
+            //--------------------------------------------------------------------------------------
+
+                /*
+                    CONTROLS: (increase, decrease)
+
+                    P: gp1.up,      gp1.down
+                    I: gp1.right,   gp1.left
+                    D: gp1.lb,      gp1.lt
                 */
+
+            runtime = getRuntime();
+
+
+            // Proportional coefficient-------------------------------------------------------------
+            if(gamepad1.dpad_up && cooldowns.dpUp.ready(runtime)) {
+                kP += K_STEP;
+                cooldowns.dpUp.updateSnapshot(runtime);
+            }
+
+            if(gamepad1.dpad_down && cooldowns.dpDown.ready(runtime)) {
+                if(kP < K_STEP) kP = 0.0;
+                else            kP -= K_STEP;
+                cooldowns.dpDown.updateSnapshot(runtime);
+            }
+
+
+            // Integral coefficient-----------------------------------------------------------------
+            if(gamepad1.dpad_right && cooldowns.dpRight.ready(runtime)) {
+                kI += K_STEP;
+                cooldowns.dpRight.updateSnapshot(runtime);
+            }
+
+            if(gamepad1.dpad_left && cooldowns.dpLeft.ready(runtime)) {
+                if(kI < K_STEP) kI = 0.0;
+                else            kI -= K_STEP;
+                cooldowns.dpLeft.updateSnapshot(runtime);
+            }
+
+
+            // Derivative coefficient---------------------------------------------------------------
+            if(gamepad1.left_bumper && cooldowns.lb.ready(runtime)) {
+                kD += K_STEP;
+                cooldowns.lb.updateSnapshot(runtime);
+            }
+
+            if(gamepad1.left_trigger > TRIGGER_THRESHOLD && cooldowns.lt.ready(runtime)) {
+                if(kD < K_STEP) kD = 0.0;
+                else            kD -= K_STEP;
+                cooldowns.lt.updateSnapshot(runtime);
+            }
+
+            //--------------------------------------------------------------------------------------
+            // END PID COEFFICIENT CONTROLS
+            //--------------------------------------------------------------------------------------
+
+            // Set PID coefficients
+            hardware.pid.setPID(kP, kI, kD);
+
+
+
+
+
+
+            telemetry.update(); // Also updates angles variable
 
 
 
@@ -120,6 +199,11 @@ public class TestPID2 extends LinearOpMode {
             else if(gamepad1.x) turnToHeadingPID(90);
 
 
+
+            telemetry.addLine();
+            telemetry.addData("kP", hardware.pid.getP());
+            telemetry.addData("kI", hardware.pid.getI());
+            telemetry.addData("kD", hardware.pid.getD());
         }
     }
 
