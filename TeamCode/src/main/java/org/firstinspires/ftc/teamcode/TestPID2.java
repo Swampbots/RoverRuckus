@@ -59,12 +59,6 @@ public class TestPID2 extends LinearOpMode {
     // The IMU sensor object
     BNO055IMU imu;
 
-    // State used for updating telemetry
-    Orientation angles;
-
-    //----------------------------------------------------------------------------------------------
-    // Main logic
-    //----------------------------------------------------------------------------------------------
 
     @Override public void runOpMode() throws InterruptedException {
 
@@ -85,8 +79,6 @@ public class TestPID2 extends LinearOpMode {
         hardware.frontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         hardware.rearLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         hardware.rearRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
-        composeTelemetry();
 
 
 
@@ -158,13 +150,6 @@ public class TestPID2 extends LinearOpMode {
 
 
 
-
-
-
-            telemetry.update(); // Also updates angles variable
-
-
-
             // Controls
             // Set drive motor power
             hardware.setLeftPower   (-gamepad1.left_stick_y);
@@ -206,43 +191,10 @@ public class TestPID2 extends LinearOpMode {
             else if(gamepad2.a) turnToHeadingPID(45);
             else if(gamepad2.x) turnToHeadingPID(90);
 
-            telemetry.addLine();
             telemetry.addData("kP", hardware.pid.getP());
             telemetry.addData("kI", hardware.pid.getI());
             telemetry.addData("kD", hardware.pid.getD());
         }
-    }
-
-    //----------------------------------------------------------------------------------------------
-    // Telemetry Configuration
-    //----------------------------------------------------------------------------------------------
-
-    void composeTelemetry() {
-
-        telemetry.addAction(new Runnable() { @Override public void run()
-        {
-            angles   = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-        }
-        });
-
-        telemetry.addLine()
-                .addData("heading", new Func<String>() {
-                    @Override public String value() {
-                        return formatAngle(angles.angleUnit, angles.firstAngle);
-                    }
-                });
-    }
-
-    //----------------------------------------------------------------------------------------------
-    // Formatting
-    //----------------------------------------------------------------------------------------------
-
-    String formatAngle(AngleUnit angleUnit, double angle) {
-        return formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle));
-    }
-
-    String formatDegrees(double degrees){
-        return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
 
 
