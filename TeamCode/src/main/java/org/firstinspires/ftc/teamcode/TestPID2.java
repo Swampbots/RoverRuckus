@@ -15,49 +15,64 @@ import java.util.Locale;
 
 @Autonomous(name = "PID Test (2)", group = "Testing")
 public class TestPID2 extends LinearOpMode {
-        //----------------------------------------------------------------------------------------------
-        // State
-        //----------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
+    // State
+    //----------------------------------------------------------------------------------------------
 
-        // The IMU sensor object
-        BNO055IMU imu;
+    // The IMU sensor object
+    BNO055IMU imu;
 
-        // State used for updating telemetry
-        Orientation angles;
+    // State used for updating telemetry
+    Orientation angles;
 
-        //----------------------------------------------------------------------------------------------
-        // Main logic
-        //----------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
+    // Main logic
+    //----------------------------------------------------------------------------------------------
 
-        @Override public void runOpMode() {
+    @Override public void runOpMode() throws InterruptedException {
 
-            BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
-            parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
-            parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
-            parameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
-            parameters.loggingEnabled      = true;
-            parameters.loggingTag          = "IMU";
-            parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+        BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+        parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
+        parameters.accelUnit           = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+        parameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
+        parameters.loggingEnabled      = true;
+        parameters.loggingTag          = "IMU";
+        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
 
-            imu = hardwareMap.get(BNO055IMU.class, "imu");
-            imu.initialize(parameters);
+        imu = hardwareMap.get(BNO055IMU.class, "imu");
+        imu.initialize(parameters);
+
+
+        composeTelemetry();
 
 
 
-            composeTelemetry();
+        waitForStart();
 
-            waitForStart();
+        while (opModeIsActive()) {
+            telemetry.update(); // Also updates angles variable
 
-            while (opModeIsActive()) {
-                telemetry.update();
+            /*
+                    CONTROLS: (Target heading listed)
+
+                    0:      gp1.y
+                    45:     gp1.b
+                    90:     gp1.x
+                */
+
+            if(gamepad1.y) turnToHeadingPID(0);
+            else if(gamepad1.b) turnToHeadingPID(45);
+            else if(gamepad1.x) turnToHeadingPID(90);
+
+
         }
     }
 
-        //----------------------------------------------------------------------------------------------
-        // Telemetry Configuration
-        //----------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
+    // Telemetry Configuration
+    //----------------------------------------------------------------------------------------------
 
-        void composeTelemetry() {
+    void composeTelemetry() {
 
         telemetry.addAction(new Runnable() { @Override public void run()
         {
@@ -73,15 +88,15 @@ public class TestPID2 extends LinearOpMode {
                 });
     }
 
-        //----------------------------------------------------------------------------------------------
-        // Formatting
-        //----------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
+    // Formatting
+    //----------------------------------------------------------------------------------------------
 
-        String formatAngle(AngleUnit angleUnit, double angle) {
+    String formatAngle(AngleUnit angleUnit, double angle) {
         return formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle));
     }
 
-        String formatDegrees(double degrees){
+    String formatDegrees(double degrees){
         return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
 }
