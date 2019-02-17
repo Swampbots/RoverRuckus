@@ -15,6 +15,10 @@ import java.util.Locale;
 
 @Autonomous(name = "PID Test (2)", group = "Testing")
 public class TestPID2 extends LinearOpMode {
+
+    RoverHardware hardware = new RoverHardware();
+
+
     //----------------------------------------------------------------------------------------------
     // State
     //----------------------------------------------------------------------------------------------
@@ -42,6 +46,7 @@ public class TestPID2 extends LinearOpMode {
         imu = hardwareMap.get(BNO055IMU.class, "imu");
         imu.initialize(parameters);
 
+        hardware.init(hardwareMap);
 
         composeTelemetry();
 
