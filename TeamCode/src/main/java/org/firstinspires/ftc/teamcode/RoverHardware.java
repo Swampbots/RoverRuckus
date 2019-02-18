@@ -38,8 +38,8 @@ public class RoverHardware {
     // Encoder variables (Pivot motors)
     public static final int     COUNTS_PER_REV_HD   = 1120;
 
-    public static final double  GEAR_REDUCTION_HD_REAR      = (24.0 / 16.0) * (26.0 / 15.0); // 16-t (output shaft) -> 24-t (transfer shaft) -- 15-t (same shaft) -> 26-t (pivot shaft)
-    public static final double  GEAR_REDUCTION_HD_FRONT     = (24.0 / 16.0) * (26.0 / 15.0); // 16-t (output shaft) -> 24-t (transfer shaft) -- 15-t (same shaft) -> 26-t (pivot shaft)
+    public static final double  GEAR_REDUCTION_HD_REAR      = (24.0 / 16.0) * (26.0 / 16.0); // 16-t (output shaft) -> 24-t (transfer shaft) -- 15-t (same shaft) -> 26-t (pivot shaft)
+    public static final double  GEAR_REDUCTION_HD_FRONT     = (24.0 / 16.0) * (26.0 / 16.0); // 16-t (output shaft) -> 24-t (transfer shaft) -- 15-t (same shaft) -> 26-t (pivot shaft)
 
 
     public static final int     COUNTS_PER_DEGREE_HD_REAR   = (int)((COUNTS_PER_REV_HD * GEAR_REDUCTION_HD_REAR) / 360);
