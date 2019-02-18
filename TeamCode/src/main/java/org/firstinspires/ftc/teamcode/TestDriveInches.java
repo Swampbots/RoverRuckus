@@ -23,9 +23,9 @@ public class TestDriveInches extends OpMode {
 
         telemetry.addLine("Encoders:");
         telemetry.addData("Front left", hardware.frontLeft.getCurrentPosition());
-        telemetry.addData("Front right", hardware.frontLeft.getCurrentPosition());
-        telemetry.addData("Rear left", hardware.frontLeft.getCurrentPosition());
-        telemetry.addData("Rear right.", hardware.frontLeft.getCurrentPosition());
+        telemetry.addData("Front right", hardware.frontRight.getCurrentPosition());
+        telemetry.addData("Rear left", hardware.rearLeft.getCurrentPosition());
+        telemetry.addData("Rear right.", hardware.rearRight.getCurrentPosition());
         telemetry.update();
     }
 }
