@@ -370,12 +370,14 @@ public class RoverHardware {
 
 
     public void driveCounts(int frontTarget, int rearTarget, double speed) {
+        frontLeft.setTargetPosition    (frontLeft.getCurrentPosition()    + (int)(frontTarget * GEAR_REDUCTION_DRIVE_FRONT));
         rearLeft.setTargetPosition     (rearLeft.getCurrentPosition()     + (int)(rearTarget * GEAR_REDUCTION_DRIVE_REAR));
+        frontRight.setTargetPosition   (frontRight.getCurrentPosition()   + (int)(frontTarget * GEAR_REDUCTION_DRIVE_FRONT));
         rearRight.setTargetPosition    (rearRight.getCurrentPosition()    + (int)(rearTarget * GEAR_REDUCTION_DRIVE_REAR));
 
-        frontLeft.setMode  (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        frontLeft.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
         rearLeft.setMode   (DcMotor.RunMode.RUN_TO_POSITION);
-        frontRight.setMode (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        frontRight.setMode (DcMotor.RunMode.RUN_TO_POSITION);
         rearRight.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
 
         frontLeft.setPower (speed);
@@ -383,7 +385,9 @@ public class RoverHardware {
         frontRight.setPower(speed);
         rearRight.setPower (speed);
 
-        while(  rearLeft   .isBusy() &&
+        while(  frontLeft  .isBusy() &&
+                rearLeft   .isBusy() &&
+                frontRight .isBusy() &&
                 rearRight  .isBusy());
 
         frontLeft  .setPower(0);
