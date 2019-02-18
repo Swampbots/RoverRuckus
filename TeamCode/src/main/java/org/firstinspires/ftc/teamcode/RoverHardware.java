@@ -382,8 +382,8 @@ public class RoverHardware {
 
         frontLeft.setPower (speed);
         rearLeft.setPower  (speed);
-        frontRight.setPower(-speed);
-        rearRight.setPower (-speed);
+        frontRight.setPower(speed);
+        rearRight.setPower (speed);
 
         while(  frontLeft  .isBusy() &&
                 rearLeft   .isBusy() &&
