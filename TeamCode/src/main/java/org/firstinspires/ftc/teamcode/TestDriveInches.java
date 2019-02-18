@@ -5,6 +5,11 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_INCH_DRIVE_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_INCH_DRIVE_REAR;
+import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_DRIVE_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_DRIVE_REAR;
+
 @TeleOp(name = "Test Drive Inches", group = "Testing")
 public class TestDriveInches extends OpMode {
 
@@ -25,7 +30,15 @@ public class TestDriveInches extends OpMode {
         telemetry.addData("Front left", hardware.frontLeft.getCurrentPosition());
         telemetry.addData("Front right", hardware.frontRight.getCurrentPosition());
         telemetry.addData("Rear left", hardware.rearLeft.getCurrentPosition());
-        telemetry.addData("Rear right.", hardware.rearRight.getCurrentPosition());
+        telemetry.addData("Rear right", hardware.rearRight.getCurrentPosition());
+        telemetry.addLine();
+        telemetry.addData("CPI-Front", COUNTS_PER_INCH_DRIVE_FRONT);
+        telemetry.addData("CPI-Rear", COUNTS_PER_INCH_DRIVE_REAR);
+        telemetry.addLine();
+        telemetry.addData("GRD-Front", GEAR_REDUCTION_DRIVE_FRONT);
+        telemetry.addData("GRD-Rear", GEAR_REDUCTION_DRIVE_REAR);
+        telemetry.addLine();
+
         telemetry.update();
     }
 }
