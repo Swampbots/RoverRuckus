@@ -30,10 +30,10 @@ public class RoverHardware {
     public static final double FAST = 0.9;
 
 
-    // Encoder variables (REV Core Hex Motors)
-    public static final int     COUNTS_PER_REV_CORE  = 288;
-    public static final double  GEAR_REDUCTION_CORE  = 1.0; // No reduction on drive motors currently
-    public static final int     COUNTS_PER_INCH_CORE = (int)((COUNTS_PER_REV_CORE * GEAR_REDUCTION_CORE) / WHEEL_CIRCUMFERENCE);
+//    // Encoder variables (REV Core Hex Motors)
+//    public static final int     COUNTS_PER_REV_CORE  = 288;
+//    public static final double  GEAR_REDUCTION_CORE  = 1.0; // No reduction on drive motors currently
+//    public static final int     COUNTS_PER_INCH_CORE = (int)((COUNTS_PER_REV_CORE * GEAR_REDUCTION_CORE) / WHEEL_CIRCUMFERENCE);
 
     // Encoder variables (Pivot motors)
     public static final int     COUNTS_PER_REV_HD   = 1120;
