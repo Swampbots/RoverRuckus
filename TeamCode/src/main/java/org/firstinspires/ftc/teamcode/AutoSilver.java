@@ -385,23 +385,23 @@ public class AutoSilver extends LinearOpMode {
         telemetry.addLine("I'm going " + goldPlacement.toString() + "!");
         telemetry.update();
 
-//        hardware.latch.setPosition(LATCH_CLOSED);
-//
-//        // Open lock
-//        hardware.setLockPosition(LOCK_OPEN);
-//
-//        // Wait to drop
-//        sleep(3000);
-//
-//        // Lock lock
-//        hardware.setLockPosition(LOCK_LOCKED);
-//
-//        // Deploy the wheels
-//        hardware.frontPivot.setTargetPosition(PIV_KNEEL_FRONT);
-//        hardware.rearPivot.setTargetPosition(PIV_KNEEL_REAR);
-//
-//        // Open latch
-//        hardware.latch.setPosition(LATCH_OPEN);
+        hardware.latch.setPosition(LATCH_CLOSED);
+
+        // Open lock
+        hardware.setLockPosition(LOCK_OPEN);
+
+        // Wait to drop
+        sleep(3000);
+
+        // Lock lock
+        hardware.setLockPosition(LOCK_LOCKED);
+
+        // Deploy the wheels
+        hardware.frontPivot.setTargetPosition(PIV_KNEEL_FRONT);
+        hardware.rearPivot.setTargetPosition(PIV_KNEEL_REAR);
+
+        // Open latch
+        hardware.latch.setPosition(LATCH_OPEN);
 
         // Drive away from lander
 //        hardware.driveInches(DRIVE_DISTANCE);
