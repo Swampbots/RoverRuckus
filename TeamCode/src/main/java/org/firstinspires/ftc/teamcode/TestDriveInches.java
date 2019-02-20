@@ -57,5 +57,41 @@ public class TestDriveInches extends LinearOpMode {
         );
     }
 
+    public void driveCounts(int frontTarget, int rearTarget, double speed) {
+        hardware.frontLeft.setTargetPosition    (hardware.frontLeft.getCurrentPosition()    + (int)(frontTarget * GEAR_REDUCTION_DRIVE_FRONT));
+        hardware.rearLeft.setTargetPosition     (hardware.rearLeft.getCurrentPosition()     + (int)(rearTarget * GEAR_REDUCTION_DRIVE_REAR));
+        hardware.frontRight.setTargetPosition   (hardware.frontRight.getCurrentPosition()   + (int)(frontTarget * GEAR_REDUCTION_DRIVE_FRONT));
+        hardware.rearRight.setTargetPosition    (hardware.rearRight.getCurrentPosition()    + (int)(rearTarget * GEAR_REDUCTION_DRIVE_REAR));
+
+        hardware.frontLeft.setMode  (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hardware.rearLeft.setMode   (DcMotor.RunMode.RUN_TO_POSITION);
+        hardware.frontRight.setMode (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hardware.rearRight.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
+
+        hardware.frontLeft.setPower (speed);
+        hardware.rearLeft.setPower  (speed);
+        hardware.frontRight.setPower(speed);
+        hardware.rearRight.setPower (speed);
+
+        while(  opModeIsActive() &&
+                hardware.rearLeft   .isBusy() &&
+                hardware.rearRight  .isBusy()) {
+            telemetry.addData("rl encoder", hardware.rearLeft.getCurrentPosition());
+            telemetry.addData("rr encoder", hardware.rearRight.getCurrentPosition());
+            telemetry.addLine();
+            telemetry.addData("rl target", hardware.rearLeft.getTargetPosition());
+            telemetry.addData("rr target", hardware.rearRight.getTargetPosition());
+            telemetry.update();
+        }
+
+        hardware.frontLeft  .setPower(0);
+        hardware.rearLeft   .setPower(0);
+        hardware.frontRight .setPower(0);
+        hardware.rearRight  .setPower(0);
+
+        hardware.frontLeft.setMode  (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hardware.rearLeft.setMode   (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hardware.frontRight.setMode (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hardware.rearRight.setMode  (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 }
