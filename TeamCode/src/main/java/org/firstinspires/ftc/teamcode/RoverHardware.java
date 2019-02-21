@@ -352,58 +352,21 @@ public class RoverHardware {
     }
 
     public void stopAllMotors() {
-        frontLeft.setPower  (0);
-        rearLeft.setPower   (0);
-        frontRight.setPower (0);
-        rearRight.setPower  (0);
+        frontLeft.setPower(0);
+        rearLeft.setPower(0);
+        frontRight.setPower(0);
+        rearRight.setPower(0);
 
-        rearPivot.setPower  (0);
-        frontPivot.setPower (0);
+        rearPivot.setPower(0);
+        frontPivot.setPower(0);
 
-        snorfler.setPower   (0);
+        snorfler.setPower(0);
 
-        flipper.setPower    (0);
+        flipper.setPower(0);
     }
 
 
-
-    public void driveInches(double inches, double speed) {
-        driveCounts(
-                (int) (inches * COUNTS_PER_INCH_DRIVE_FRONT),
-                (int) (inches * COUNTS_PER_INCH_DRIVE_REAR),
-                speed
-        );
-    }
-
-    public void driveCounts(int frontTarget, int rearTarget, double speed) {
-        frontLeft.setTargetPosition    (frontLeft.getCurrentPosition()    + (int)(frontTarget * GEAR_REDUCTION_DRIVE_FRONT));
-        rearLeft.setTargetPosition     (rearLeft.getCurrentPosition()     + (int)(rearTarget * GEAR_REDUCTION_DRIVE_REAR));
-        frontRight.setTargetPosition   (frontRight.getCurrentPosition()   + (int)(frontTarget * GEAR_REDUCTION_DRIVE_FRONT));
-        rearRight.setTargetPosition    (rearRight.getCurrentPosition()    + (int)(rearTarget * GEAR_REDUCTION_DRIVE_REAR));
-
-        frontLeft.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
-        rearLeft.setMode   (DcMotor.RunMode.RUN_TO_POSITION);
-        frontRight.setMode (DcMotor.RunMode.RUN_TO_POSITION);
-        rearRight.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
-
-        frontLeft.setPower (speed);
-        rearLeft.setPower  (speed);
-        frontRight.setPower(speed);
-        rearRight.setPower (speed);
-
-        while(  frontLeft   .isBusy() &&
-                frontRight  .isBusy());
-
-        frontLeft  .setPower(0);
-        rearLeft   .setPower(0);
-        frontRight .setPower(0);
-        rearRight  .setPower(0);
-
-        frontLeft.setMode  (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rearLeft.setMode   (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        frontRight.setMode (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rearRight.setMode  (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-    }
+    
 
 
 
