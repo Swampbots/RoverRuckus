@@ -416,7 +416,7 @@ public class AutoSilver extends LinearOpMode {
         hardware.latch.setPosition(LATCH_OPEN);
 
         // Drive away from lander
-        driveInches(DRIVE_DIST, );
+        driveInches(DRIVE_DIST, DRIVE_SPEED);
 
 //        // Turn towards gold sample
 //        switch(goldPlacement) {
