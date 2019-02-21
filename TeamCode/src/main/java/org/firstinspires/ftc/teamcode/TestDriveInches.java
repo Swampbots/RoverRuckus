@@ -63,9 +63,9 @@ public class TestDriveInches extends LinearOpMode {
         hardware.frontRight.setTargetPosition   (hardware.frontRight.getCurrentPosition()   + (int)(frontTarget * GEAR_REDUCTION_DRIVE_FRONT));
         hardware.rearRight.setTargetPosition    (hardware.rearRight.getCurrentPosition()    + (int)(rearTarget * GEAR_REDUCTION_DRIVE_REAR));
 
-        hardware.frontLeft.setMode  (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hardware.frontLeft.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
         hardware.rearLeft.setMode   (DcMotor.RunMode.RUN_TO_POSITION);
-        hardware.frontRight.setMode (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hardware.frontRight.setMode (DcMotor.RunMode.RUN_TO_POSITION);
         hardware.rearRight.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
 
         hardware.frontLeft.setPower (speed);
