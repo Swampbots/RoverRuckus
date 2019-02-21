@@ -250,11 +250,9 @@ public class RoverHardware {
         rearLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rearRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        // Deactivated because I don't want to mess something up unintentionally.
-        // I only know that the drive motor RunModes need to be set.
-//        rearPivot.setMode  (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-//        frontPivot.setMode (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-//
+        rearPivot.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
+        frontPivot.setMode (DcMotor.RunMode.RUN_TO_POSITION);
+
 //        snorfler.setMode      (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 //
 //        flipper.setMode    (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
