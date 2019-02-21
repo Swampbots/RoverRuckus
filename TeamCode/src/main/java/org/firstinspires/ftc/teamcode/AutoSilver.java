@@ -23,6 +23,8 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MAX_Y;
 import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MIN_X;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
+import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_CLOSED;
+import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_REAR;
 
@@ -52,13 +54,7 @@ public class AutoSilver extends LinearOpMode {
     public final int SAMPLE_LEFT        = -40;  // Degrees
     public final int SAMPLE_RIGHT       = 40;  // Degrees
 
-
-
-    // Servo positions
-    public final double RAMP_STOWED = 0.0;
-
-    public final double LOCK_OPEN   = 1.0;
-    public final double LOCK_LOCKED = 0.0;
+    public final double DEPLOY_SPEED = 1.0;
 
 
 
@@ -394,7 +390,7 @@ public class AutoSilver extends LinearOpMode {
         sleep(3000);
 
         // Lock lock
-        hardware.setLockPosition(LOCK_LOCKED);
+        hardware.setLockPosition(LOCK_CLOSED);
 
         // Deploy the wheels
         hardware.frontPivot.setTargetPosition(PIV_KNEEL_FRONT);
