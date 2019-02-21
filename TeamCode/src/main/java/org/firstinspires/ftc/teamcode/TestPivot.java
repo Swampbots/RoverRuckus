@@ -36,6 +36,8 @@ public class TestPivot extends LinearOpMode {
         hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         hardware.rearPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
+        waitForStart();
+
 
         while(opModeIsActive()) {
             // Set drive motor powers
