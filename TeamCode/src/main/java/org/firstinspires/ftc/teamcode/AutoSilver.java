@@ -416,7 +416,7 @@ public class AutoSilver extends LinearOpMode {
         hardware.latch.setPosition(LATCH_OPEN);
 
         // Drive away from lander
-//        hardware.driveInches(DRIVE_DISTANCE);
+        driveInches(DRIVE_DIST, );
 
 //        // Turn towards gold sample
 //        switch(goldPlacement) {
@@ -511,6 +511,54 @@ public class AutoSilver extends LinearOpMode {
         else highest = tallies[2];
 
         return highest;
+    }
+
+
+
+    public void driveInches(double inches, double speed) {
+        driveCounts(
+                (int) (inches * COUNTS_PER_INCH_DRIVE_FRONT),
+                (int) (inches * COUNTS_PER_INCH_DRIVE_REAR),
+                speed
+        );
+    }
+
+    public void driveCounts(int frontTarget, int rearTarget, double speed) {
+        hardware.frontLeft.setTargetPosition    (hardware.frontLeft.getCurrentPosition()    + (int)(frontTarget * GEAR_REDUCTION_DRIVE_FRONT));
+        hardware.rearLeft.setTargetPosition     (hardware.rearLeft.getCurrentPosition()     + (int)(rearTarget * GEAR_REDUCTION_DRIVE_REAR));
+        hardware.frontRight.setTargetPosition   (hardware.frontRight.getCurrentPosition()   + (int)(frontTarget * GEAR_REDUCTION_DRIVE_FRONT));
+        hardware.rearRight.setTargetPosition    (hardware.rearRight.getCurrentPosition()    + (int)(rearTarget * GEAR_REDUCTION_DRIVE_REAR));
+
+        hardware.frontLeft.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
+        hardware.rearLeft.setMode   (DcMotor.RunMode.RUN_TO_POSITION);
+        hardware.frontRight.setMode (DcMotor.RunMode.RUN_TO_POSITION);
+        hardware.rearRight.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
+
+        hardware.frontLeft.setPower (speed);
+        hardware.rearLeft.setPower  (speed);
+        hardware.frontRight.setPower(speed);
+        hardware.rearRight.setPower (speed);
+
+        while(  opModeIsActive() &&
+                hardware.frontLeft   .isBusy() &&
+                hardware.frontRight  .isBusy()) {
+            telemetry.addData("rl encoder", hardware.rearLeft.getCurrentPosition());
+            telemetry.addData("rr encoder", hardware.rearRight.getCurrentPosition());
+            telemetry.addLine();
+            telemetry.addData("rl target", hardware.rearLeft.getTargetPosition());
+            telemetry.addData("rr target", hardware.rearRight.getTargetPosition());
+            telemetry.update();
+        }
+
+        hardware.frontLeft  .setPower(0);
+        hardware.rearLeft   .setPower(0);
+        hardware.frontRight .setPower(0);
+        hardware.rearRight  .setPower(0);
+
+        hardware.frontLeft.setMode  (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hardware.rearLeft.setMode   (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hardware.frontRight.setMode (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        hardware.rearRight.setMode  (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
 }
