@@ -2,10 +2,8 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_INCH_DRIVE_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_INCH_DRIVE_REAR;
@@ -74,8 +72,8 @@ public class TestDriveInches extends LinearOpMode {
         hardware.rearRight.setPower (speed);
 
         while(  opModeIsActive() &&
-                hardware.rearLeft   .isBusy() &&
-                hardware.rearRight  .isBusy()) {
+                hardware.frontLeft   .isBusy() &&
+                hardware.frontRight  .isBusy()) {
             telemetry.addData("rl encoder", hardware.rearLeft.getCurrentPosition());
             telemetry.addData("rr encoder", hardware.rearRight.getCurrentPosition());
             telemetry.addLine();
