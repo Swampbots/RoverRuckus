@@ -339,8 +339,8 @@ public class RoverHardware {
         frontPivot.setMode   (DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rearPivot.setMode    (DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        frontPivot.setMode   (DcMotor.RunMode.RUN_USING_ENCODER);
-        rearPivot.setMode    (DcMotor.RunMode.RUN_USING_ENCODER);
+        frontPivot.setMode   (DcMotor.RunMode.RUN_TO_POSITION);
+        rearPivot.setMode    (DcMotor.RunMode.RUN_TO_POSITION);
     }
 
     public void resetMotorEncoders() {
