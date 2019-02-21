@@ -401,8 +401,10 @@ public class AutoSilver extends LinearOpMode {
         hardware.frontPivot.setPower(DEPLOY_SPEED);
         hardware.rearPivot.setPower(DEPLOY_SPEED);
 
-//        // Open latch
-//        hardware.latch.setPosition(LATCH_OPEN);
+        sleep(1500);
+
+        // Open latch
+        hardware.latch.setPosition(LATCH_OPEN);
 
         // Drive away from lander
 //        hardware.driveInches(DRIVE_DISTANCE);
