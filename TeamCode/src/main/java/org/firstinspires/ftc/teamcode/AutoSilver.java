@@ -4,6 +4,7 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ReadWriteFile;
 
 import org.corningrobotics.enderbots.endercv.CameraViewDisplay;
@@ -18,9 +19,13 @@ import org.opencv.imgproc.Imgproc;
 
 import java.util.List;
 
+import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_INCH_DRIVE_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_INCH_DRIVE_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MAX_X;
 import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MAX_Y;
 import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MIN_X;
+import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_DRIVE_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_DRIVE_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_CLOSED;
@@ -50,6 +55,10 @@ public class AutoSilver extends LinearOpMode {
     public final double DRIVE_DIST      = 4.0;  // Inches
     public final double SAMPLE_DIST     = 26.0;  // Inches
     public final double CRATER_DIST     = 11.5;  // Inches
+
+    public final double DRIVE_SPEED     = 0.8; // Power
+    public final double SAMPLE_SPEED    = 0.8; // Power
+    public final double CRATER_SPEED    = 0.8; // Power
 
     public final int SAMPLE_LEFT        = -40;  // Degrees
     public final int SAMPLE_RIGHT       = 40;  // Degrees
