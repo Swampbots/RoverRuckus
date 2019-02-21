@@ -369,6 +369,14 @@ public class RoverHardware {
 
 
 
+    public void driveInches(double inches, double speed) {
+        driveCounts(
+                (int) (inches * COUNTS_PER_INCH_DRIVE_FRONT),
+                (int) (inches * COUNTS_PER_INCH_DRIVE_REAR),
+                speed
+        );
+    }
+
     public void driveCounts(int frontTarget, int rearTarget, double speed) {
         frontLeft.setTargetPosition    (frontLeft.getCurrentPosition()    + (int)(frontTarget * GEAR_REDUCTION_DRIVE_FRONT));
         rearLeft.setTargetPosition     (rearLeft.getCurrentPosition()     + (int)(rearTarget * GEAR_REDUCTION_DRIVE_REAR));
@@ -385,10 +393,8 @@ public class RoverHardware {
         frontRight.setPower(speed);
         rearRight.setPower (speed);
 
-        while(  frontLeft  .isBusy() &&
-                rearLeft   .isBusy() &&
-                frontRight .isBusy() &&
-                rearRight  .isBusy());
+        while(  frontLeft   .isBusy() &&
+                frontRight  .isBusy());
 
         frontLeft  .setPower(0);
         rearLeft   .setPower(0);
@@ -399,14 +405,6 @@ public class RoverHardware {
         rearLeft.setMode   (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontRight.setMode (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rearRight.setMode  (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-    }
-
-    public void driveInches(double inches, double speed) {
-        driveCounts(
-                (int) (inches * COUNTS_PER_INCH_DRIVE_FRONT),
-                (int) (inches * COUNTS_PER_INCH_DRIVE_REAR),
-                speed
-        );
     }
 
 
