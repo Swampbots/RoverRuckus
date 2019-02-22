@@ -391,7 +391,7 @@ public class AutoSilver extends LinearOpMode {
 
         // start
 
-        telemetry.addLine("I'm going " + goldPlacement.toString() + "!");
+        telemetry.addData("Gold Placement", goldPlacement);
         telemetry.update();
 
         hardware.latch.setPosition(LATCH_CLOSED);
