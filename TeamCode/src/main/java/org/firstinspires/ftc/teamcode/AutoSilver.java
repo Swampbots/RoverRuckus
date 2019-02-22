@@ -417,6 +417,8 @@ public class AutoSilver extends LinearOpMode {
         // Open latch
         hardware.latch.setPosition(LATCH_OPEN);
 
+        sleep(750);
+
         // Drive away from lander
         driveInches(DRIVE_DIST, DRIVE_SPEED);
 
