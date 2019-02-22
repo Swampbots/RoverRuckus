@@ -426,8 +426,8 @@ public class AutoSilver extends LinearOpMode {
 //        // Turn towards gold sample
         switch(goldPlacement) {
             case LEFT:
-                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
-                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+//                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
+//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
 
                 try {
                     turnToHeadingPID(SAMPLE_LEFT);
@@ -438,18 +438,18 @@ public class AutoSilver extends LinearOpMode {
                     stop();
                 }
 
-                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
-                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+//                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
 
-                hardware.snorfler.setPower(-1.0);
+//                hardware.snorfler.setPower(-1.0);
 
                 //hardware.driveInches(SAMPLE_DIST);
 
                 break;
 
             case RIGHT:
-                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
-                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+//                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
+//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
 
                 try {
                     turnToHeadingPID(SAMPLE_LEFT);
@@ -460,20 +460,20 @@ public class AutoSilver extends LinearOpMode {
                     stop();
                 }
 
-                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
-                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+//                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
 
-                hardware.snorfler.setPower(-1.0);
+//                hardware.snorfler.setPower(-1.0);
 
                 //hardware.driveInches(SAMPLE_DIST);
 
                 break;
 
             default:    // Center and unknown are considered default
-                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
-                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+//                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
 
-                hardware.snorfler.setPower(-1.0);
+//                hardware.snorfler.setPower(-1.0);
 
                 //hardware.driveInches(SAMPLE_DIST);
 
