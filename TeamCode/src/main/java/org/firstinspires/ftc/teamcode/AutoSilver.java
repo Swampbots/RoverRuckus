@@ -33,6 +33,9 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_REAR;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD_REAR;
 
 
 @Autonomous(name = "Silver_CV", group = "Autonomous")
@@ -421,61 +424,61 @@ public class AutoSilver extends LinearOpMode {
         driveInches(DRIVE_DIST, DRIVE_SPEED);
 
 //        // Turn towards gold sample
-//        switch(goldPlacement) {
-//            case LEFT:
-//                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
-//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
-//
-//                try {
-//                    turnToHeadingPID(SAMPLE_LEFT);
-//                } catch(InterruptedException e) {
-//                    telemetry.addLine("PID turn interrupted");
-//                    telemetry.update();
-//
-//                    stop();
-//                }
-//
-//                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
-//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
-//
-//                hardware.snorfler.setPower(-1.0);
-//
-//                //hardware.driveInches(SAMPLE_DIST);
-//
-//                break;
-//
-//            case RIGHT:
-//                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
-//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
-//
-//                try {
-//                    turnToHeadingPID(SAMPLE_LEFT);
-//                } catch(InterruptedException e) {
-//                    telemetry.addLine("PID turn interrupted");
-//                    telemetry.update();
-//
-//                    stop();
-//                }
-//
-//                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
-//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
-//
-//                hardware.snorfler.setPower(-1.0);
-//
-//                //hardware.driveInches(SAMPLE_DIST);
-//
-//                break;
-//
-//            default:    // Center and unknown are considered default
-//                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
-//                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
-//
-//                hardware.snorfler.setPower(-1.0);
-//
-//                //hardware.driveInches(SAMPLE_DIST);
-//
-//                break;
-//        }
+        switch(goldPlacement) {
+            case LEFT:
+                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
+                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+
+                try {
+                    turnToHeadingPID(SAMPLE_LEFT);
+                } catch(InterruptedException e) {
+                    telemetry.addLine("PID turn interrupted");
+                    telemetry.update();
+
+                    stop();
+                }
+
+                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+
+                hardware.snorfler.setPower(-1.0);
+
+                //hardware.driveInches(SAMPLE_DIST);
+
+                break;
+
+            case RIGHT:
+                hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
+                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+
+                try {
+                    turnToHeadingPID(SAMPLE_LEFT);
+                } catch(InterruptedException e) {
+                    telemetry.addLine("PID turn interrupted");
+                    telemetry.update();
+
+                    stop();
+                }
+
+                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+
+                hardware.snorfler.setPower(-1.0);
+
+                //hardware.driveInches(SAMPLE_DIST);
+
+                break;
+
+            default:    // Center and unknown are considered default
+                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
+                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+
+                hardware.snorfler.setPower(-1.0);
+
+                //hardware.driveInches(SAMPLE_DIST);
+
+                break;
+        }
 //
 //        // Drive to crater
 //        //hardware.driveInches(CRATER_DIST);
