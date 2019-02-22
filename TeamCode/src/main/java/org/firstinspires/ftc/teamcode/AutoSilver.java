@@ -470,7 +470,7 @@ public class AutoSilver extends LinearOpMode {
 
 //                hardware.snorfler.setPower(-1.0);
 
-                //hardware.driveInches(SAMPLE_DIST);
+                driveInches(SAMPLE_DIST, SAMPLE_SPEED);
 
                 break;
 
