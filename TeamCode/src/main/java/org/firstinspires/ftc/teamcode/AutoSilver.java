@@ -452,7 +452,7 @@ public class AutoSilver extends LinearOpMode {
 //                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
 
                 try {
-                    turnToHeadingPID(SAMPLE_LEFT);
+                    turnToHeadingPID(SAMPLE_RIGHT);
                 } catch(InterruptedException e) {
                     telemetry.addLine("PID turn interrupted");
                     telemetry.update();
