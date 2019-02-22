@@ -65,8 +65,8 @@ public class AutoSilver extends LinearOpMode {
     public final double SAMPLE_SPEED    = 0.8; // Power
     public final double CRATER_SPEED    = 0.8; // Power
 
-    public final int SAMPLE_LEFT        = -40;  // Degrees
-    public final int SAMPLE_RIGHT       = 40;  // Degrees
+    public final int SAMPLE_LEFT        = 40;  // Degrees
+    public final int SAMPLE_RIGHT       = -40; // Degrees
 
     public final double DEPLOY_SPEED = 1.0;
 
