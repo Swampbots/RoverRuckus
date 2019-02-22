@@ -65,6 +65,8 @@ public class AutoSilver extends LinearOpMode {
 
     public final double DEPLOY_SPEED = 1.0;
 
+    public final int REAR_DEPLOY_TARGET = -800; // Counts
+
 
 
 
