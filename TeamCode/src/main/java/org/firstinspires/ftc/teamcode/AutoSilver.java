@@ -484,19 +484,9 @@ public class AutoSilver extends LinearOpMode {
 //        //hardware.driveInches(CRATER_DIST);
 
         while(opModeIsActive()) {
-//            telemetry.addData("Runtime", getRuntime());
-//            telemetry.addLine();
-//            telemetry.addData("Gold position", goldPlacement.toString());
-//            telemetry.addLine();
-//            telemetry.addLine();
-            telemetry.addData("PIV_KNEEL_REAR", PIV_KNEEL_REAR);
-            telemetry.addData("PIV_KNEEL_FRONT",PIV_KNEEL_FRONT);
+            telemetry.addData("Gold position", goldPlacement.toString());
             telemetry.addLine();
-            telemetry.addData("Front target", hardware.frontPivot.getTargetPosition());
-            telemetry.addData("Rear target", hardware.rearPivot.getTargetPosition());
-            telemetry.addLine();
-            telemetry.addData("Front position", hardware.frontPivot.getCurrentPosition());
-            telemetry.addData("Rear position", hardware.rearPivot.getCurrentPosition());
+            telemetry.addData("Heading", heading());
             telemetry.update();
         }
 
