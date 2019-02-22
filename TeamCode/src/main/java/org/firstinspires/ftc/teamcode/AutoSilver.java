@@ -4,16 +4,13 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.util.ReadWriteFile;
 
 import org.corningrobotics.enderbots.endercv.CameraViewDisplay;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
@@ -31,11 +28,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_OPEN;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_FRONT;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_REAR;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI_FRONT;
-import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_DOWN;
 
 
@@ -58,7 +51,7 @@ public class AutoSilver extends LinearOpMode {
     public final double DROP_TIME       = 3.0; // Seconds
 
     public final double DRIVE_DIST      = 8.0;  // Inches
-    public final double SAMPLE_DIST     = 20.0;  // Inches
+    public final double SAMPLE_OUTSIDE_DIST = 20.0;  // Inches
     public final double CRATER_DIST     = 11.5;  // Inches
 
     public final double DRIVE_SPEED     = 0.8; // Power
@@ -446,7 +439,7 @@ public class AutoSilver extends LinearOpMode {
 
 //                hardware.snorfler.setPower(-1.0);
 
-                //hardware.driveInches(SAMPLE_DIST);
+                driveInches(SAMPLE_OUTSIDE_DIST, SAMPLE_SPEED);
 
                 break;
 
@@ -470,7 +463,7 @@ public class AutoSilver extends LinearOpMode {
 
 //                hardware.snorfler.setPower(-1.0);
 
-                driveInches(SAMPLE_DIST, SAMPLE_SPEED);
+                driveInches(SAMPLE_OUTSIDE_DIST, SAMPLE_SPEED);
 
                 break;
 
