@@ -408,7 +408,7 @@ public class AutoSilver extends LinearOpMode {
         sleep(1500);
 
         // Deploy the wheels
-        hardware.frontPivot.setTargetPosition(PIV_KNEEL_FRONT);
+        hardware.frontPivot.setTargetPosition(PIV_OMNI_FRONT);
         hardware.rearPivot.setTargetPosition(REAR_DEPLOY_TARGET);
 
         hardware.frontPivot.setPower(DEPLOY_SPEED);
