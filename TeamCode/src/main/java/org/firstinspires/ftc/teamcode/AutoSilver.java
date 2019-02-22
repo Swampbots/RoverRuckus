@@ -52,7 +52,7 @@ public class AutoSilver extends LinearOpMode {
 
     public final double DROP_TIME       = 3.0; // Seconds
 
-    public final double DRIVE_DIST      = 4.0;  // Inches
+    public final double DRIVE_DIST      = 8.0;  // Inches
     public final double SAMPLE_DIST     = 26.0;  // Inches
     public final double CRATER_DIST     = 11.5;  // Inches
 
