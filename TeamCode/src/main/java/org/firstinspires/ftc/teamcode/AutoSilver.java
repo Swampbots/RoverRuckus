@@ -52,6 +52,7 @@ public class AutoSilver extends LinearOpMode {
 
     public final double DRIVE_DIST      = 8.0;  // Inches
     public final double SAMPLE_OUTSIDE_DIST = 20.0;  // Inches
+    public final double SAMPLE_CENTER_DIST  = 17.0;  // Inches
     public final double CRATER_DIST     = 11.5;  // Inches
 
     public final double DRIVE_SPEED     = 0.8; // Power
@@ -475,7 +476,7 @@ public class AutoSilver extends LinearOpMode {
 
 //                hardware.snorfler.setPower(-1.0);
 
-                //hardware.driveInches(SAMPLE_DIST);
+                //hardware.driveInches(SAMPLE_CENTER_DIST);
 
                 break;
         }
