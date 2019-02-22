@@ -36,6 +36,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_MINE_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD_REAR;
+import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_DOWN;
 
 
 @Autonomous(name = "Silver_CV", group = "Autonomous")
@@ -438,6 +439,8 @@ public class AutoSilver extends LinearOpMode {
                     stop();
                 }
 
+                hardware.ramp.setPosition(RAMP_DOWN);
+
 //                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
 //                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
 
@@ -459,6 +462,8 @@ public class AutoSilver extends LinearOpMode {
 
                     stop();
                 }
+                hardware.ramp.setPosition(RAMP_DOWN);
+
 
 //                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
 //                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
@@ -472,6 +477,8 @@ public class AutoSilver extends LinearOpMode {
             default:    // Center and unknown are considered default
 //                hardware.frontPivot.setTargetPosition(PIV_MINE_FRONT);
 //                hardware.rearPivot.setTargetPosition(PIV_STD_REAR);
+
+                hardware.ramp.setPosition(RAMP_DOWN);
 
 //                hardware.snorfler.setPower(-1.0);
 
