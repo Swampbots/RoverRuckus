@@ -30,6 +30,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_DOWN;
+import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_UP;
 
 
 @Autonomous(name = "Silver_CV", group = "Autonomous")
@@ -53,7 +54,8 @@ public class AutoSilver extends LinearOpMode {
     public final double DRIVE_DIST      = 8.0;  // Inches
     public final double SAMPLE_OUTSIDE_DIST = 20.0;  // Inches
     public final double SAMPLE_CENTER_DIST  = 17.0;  // Inches
-    public final double CRATER_DIST     = 11.5;  // Inches
+    public final double CRATER_OUTSIDE_DIST = 11.0;  // Inches
+    public final double CRATER_CENTER_DIST  = 4.0; // Inches
 
     public final double DRIVE_SPEED     = 0.8; // Power
     public final double SAMPLE_SPEED    = 0.8; // Power
@@ -442,6 +444,12 @@ public class AutoSilver extends LinearOpMode {
 
                 driveInches(SAMPLE_OUTSIDE_DIST, SAMPLE_SPEED);
 
+                hardware.ramp.setPosition(RAMP_UP);
+
+
+                driveInches(CRATER_OUTSIDE_DIST, CRATER_SPEED);
+
+
                 break;
 
             case RIGHT:
@@ -466,6 +474,10 @@ public class AutoSilver extends LinearOpMode {
 
                 driveInches(SAMPLE_OUTSIDE_DIST, SAMPLE_SPEED);
 
+                hardware.ramp.setPosition(RAMP_UP);
+
+                driveInches(CRATER_OUTSIDE_DIST, CRATER_SPEED);
+
                 break;
 
             default:    // Center and unknown are considered default
@@ -476,13 +488,17 @@ public class AutoSilver extends LinearOpMode {
 
 //                hardware.snorfler.setPower(-1.0);
 
-                //hardware.driveInches(SAMPLE_CENTER_DIST);
+                driveInches(SAMPLE_CENTER_DIST, SAMPLE_SPEED);
+
+                hardware.ramp.setPosition(RAMP_UP);
+
+                driveInches(CRATER_CENTER_DIST, CRATER_SPEED);
 
                 break;
         }
 //
 //        // Drive to crater
-//        //hardware.driveInches(CRATER_DIST);
+//        //hardware.driveInches(CRATER_OUTSIDE_DIST);
 
         while(opModeIsActive()) {
             telemetry.addData("Gold position", goldPlacement.toString());
