@@ -474,6 +474,8 @@ public class AutoGold extends LinearOpMode {
 
                 hardware.george.setPosition(GEORGE_DEPLOY);
 
+                driveInches(-5.0, 0.8);
+
 
                 break;
 
@@ -515,6 +517,8 @@ public class AutoGold extends LinearOpMode {
                 driveInches(20.0, CRATER_SPEED);
 
                 hardware.george.setPosition(GEORGE_DEPLOY);
+
+                driveInches(-5.0, 0.8);
 
                 break;
 
