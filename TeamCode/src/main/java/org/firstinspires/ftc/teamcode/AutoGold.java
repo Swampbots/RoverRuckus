@@ -528,7 +528,32 @@ public class AutoGold extends LinearOpMode {
 
                 driveInches(DEPOT_CENTER_DIST, CRATER_SPEED);
 
+
+                try {
+                    turnToHeadingPID(45);
+                } catch (InterruptedException e) {
+                    telemetry.addLine("PID turn interrupted");
+                    telemetry.update();
+
+                    stop();
+                }
+
+
                 hardware.george.setPosition(GEORGE_DEPLOY);
+
+
+
+                try {
+                    turnToHeadingPID(0);
+                } catch (InterruptedException e) {
+                    telemetry.addLine("PID turn interrupted");
+                    telemetry.update();
+
+                    stop();
+                }
+
+
+                driveInches(-12.0, 1.0);
 
                 break;
         }
