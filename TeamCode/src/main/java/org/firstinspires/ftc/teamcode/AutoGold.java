@@ -25,6 +25,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.CTR_MIN_X;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_DRIVE_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_DRIVE_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEORGE_DEPLOY;
+import static org.firstinspires.ftc.teamcode.RoverHardware.GEORGE_STOW;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_CLOSED;
