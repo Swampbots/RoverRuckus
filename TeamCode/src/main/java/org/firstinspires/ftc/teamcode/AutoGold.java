@@ -429,6 +429,9 @@ public class AutoGold extends LinearOpMode {
         // Drive away from lander
         driveInches(DRIVE_DIST, DRIVE_SPEED);
 
+
+        hardware.rearPivot.setTargetPosition(-1000);
+
         // Turn towards gold sample
         switch(goldPlacement) {
             case LEFT:
