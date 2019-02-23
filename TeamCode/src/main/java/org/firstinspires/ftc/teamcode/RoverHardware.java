@@ -157,7 +157,7 @@ public class RoverHardware {
     public static final double BUCKET_RETRACT   = 0.0;
     public static final double BUCKET_EXTEND    = 0.0;
 
-    public static final double GEORGE_STOW  = 1.0;
+    public static final double GEORGE_STOW  = 0.5;
     public static final double GEORGE_DEPLOY = 0.0;
 
 
@@ -309,7 +309,7 @@ public class RoverHardware {
         setLockPosition     (LOCK_CLOSED);
         ramp.setPosition    (RAMP_UP);
         bucket.setPosition  (BUCKET_RETRACT);
-        george.setPosition  (0.5);
+        george.setPosition  (GEORGE_STOW);
 
     }
 
