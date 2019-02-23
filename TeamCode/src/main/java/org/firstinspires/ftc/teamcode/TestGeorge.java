@@ -1,11 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEORGE_DEPLOY;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEORGE_STOW;
 
+@Disabled
 @Autonomous(name = "George Test", group = "Testing")
 public class TestGeorge extends LinearOpMode {
 
