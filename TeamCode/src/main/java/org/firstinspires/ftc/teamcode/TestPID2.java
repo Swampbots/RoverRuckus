@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
@@ -18,6 +19,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_FRO
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
 
+@Disabled
 @Autonomous(name = "PID Test (2)", group = "Testing")
 public class TestPID2 extends LinearOpMode {
 

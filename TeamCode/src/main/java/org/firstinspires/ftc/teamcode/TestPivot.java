@@ -15,6 +15,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI;
 
+@Disabled
 @TeleOp(name = "Pivot Test", group = "Testing")
 public class TestPivot extends LinearOpMode {
 

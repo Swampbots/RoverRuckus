@@ -10,6 +10,7 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.COUNTS_PER_INCH_DRIVE
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_DRIVE_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_DRIVE_REAR;
 
+@Disabled
 @TeleOp(name = "Test Drive Inches", group = "Testing")
 public class TestDriveInches extends LinearOpMode {
 
