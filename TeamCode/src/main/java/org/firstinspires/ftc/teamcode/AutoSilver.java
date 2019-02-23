@@ -497,6 +497,19 @@ public class AutoSilver extends LinearOpMode {
 
                 driveInches(CRATER_OUTSIDE_DIST + 5.0, CRATER_SPEED);
 
+                try {
+                    turnToHeadingPID(SAMPLE_RIGHT);
+                } catch(InterruptedException e) {
+                    telemetry.addLine("PID turn interrupted");
+                    telemetry.update();
+
+                    stop();
+                }
+
+                hardware.frontPivot.setTargetPosition(PIV_STOWED_FRONT);
+                hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                hardware.frontPivot.setPower(0.2);
+
                 break;
 
             default:    // Center and unknown are considered default
