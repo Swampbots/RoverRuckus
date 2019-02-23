@@ -458,7 +458,7 @@ public class AutoGold extends LinearOpMode {
                 driveInches(CRATER_OUTSIDE_DIST, CRATER_SPEED);
 
                 try {
-                    turnToHeadingPID(45);
+                    turnToHeadingPID(-45);
                 } catch (InterruptedException e) {
                     telemetry.addLine("PID turn interrupted");
                     telemetry.update();
@@ -498,7 +498,7 @@ public class AutoGold extends LinearOpMode {
                 driveInches(CRATER_OUTSIDE_DIST + 5.0, CRATER_SPEED);
 
                 try {
-                    turnToHeadingPID(-45);
+                    turnToHeadingPID(45);
                 } catch (InterruptedException e) {
                     telemetry.addLine("PID turn interrupted");
                     telemetry.update();
