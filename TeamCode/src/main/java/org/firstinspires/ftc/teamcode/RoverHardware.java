@@ -157,6 +157,9 @@ public class RoverHardware {
     public static final double BUCKET_RETRACT   = 0.0;
     public static final double BUCKET_EXTEND    = 0.0;
 
+    public static final double GEORGE_STOW  = 1.0;
+    public static final double GEORGE_DEPLOY = 0.0;
+
 
     // Autonomous PID variables
     public final double MAX_SPEED = 0.6;
@@ -194,6 +197,8 @@ public class RoverHardware {
     public Servo lockRight;
 
     public Servo bucket;
+
+    public Servo george;
 
 
 
@@ -289,6 +294,7 @@ public class RoverHardware {
 
         bucket  = hwMap.servo.get("bucket");
 
+        george  = hwMap.servo.get("george");
 
         // Scale servo ranges
         lockLeft.scaleRange (0.25, 0.75);
@@ -303,6 +309,7 @@ public class RoverHardware {
         setLockPosition     (LOCK_CLOSED);
         ramp.setPosition    (RAMP_UP);
         bucket.setPosition  (BUCKET_RETRACT);
+        george.setPosition  (0.5);
 
     }
 
