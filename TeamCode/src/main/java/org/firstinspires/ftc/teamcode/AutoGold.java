@@ -63,7 +63,7 @@ public class AutoGold extends LinearOpMode {
     public final double CRATER_SPEED    = 0.8; // Power
 
     public final int SAMPLE_LEFT        = 40;  // Degrees
-    public final int SAMPLE_RIGHT       = -40; // Degrees
+    public final int SAMPLE_RIGHT       = -37; // Degrees
 
     public final double DEPLOY_SPEED = 1.0;
 
