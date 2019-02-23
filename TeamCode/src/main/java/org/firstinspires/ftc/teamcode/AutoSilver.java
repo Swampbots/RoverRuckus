@@ -526,6 +526,10 @@ public class AutoSilver extends LinearOpMode {
 
                 driveInches(CRATER_CENTER_DIST, CRATER_SPEED);
 
+                hardware.frontPivot.setTargetPosition(PIV_STOWED_FRONT);
+                hardware.frontPivot.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                hardware.frontPivot.setPower(0.2);
+
                 break;
         }
 //
