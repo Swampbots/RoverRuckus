@@ -97,7 +97,7 @@ public class AutoSilver extends LinearOpMode {
     private double ctrMinArea   = 0.0;
 
 
-    int highest = 0;
+    int highestArea = 0;
 
     // Variable for thresholding LT and RT inputs, e.g. if(gamepad1.left_trigger > TRIGGER_THRESHOLD)
     public final double TRIGGER_THRESHOLD = 0.7;
@@ -300,9 +300,9 @@ public class AutoSilver extends LinearOpMode {
             int contourHeightMid;
             int contourX;
 
-            // Tally of contourPlacements for all visible contours this cycle
+            // Tally of contours in each third by area for all visible contours this cycle
             // (Set all to 0 so they start over each cycle)
-            int[] ctrTallies = {0, 0, 0};
+            int[] ctrAreaTallies = {0, 0, 0};
 
 
             // TELEMETRY
@@ -327,11 +327,11 @@ public class AutoSilver extends LinearOpMode {
                             if( contourX > ctrXThreshold / 2){ // Make sure the contour is below the cutoff
 
                                 if (contourHeightMid > CTR_LEFT) {
-                                    ctrTallies[0]++;
+                                    ctrAreaTallies[0] += (contours.get(i).height() * contours.get(i).width());
                                 } else if (contourHeightMid > CTR_RIGHT) {
-                                    ctrTallies[1]++;
+                                    ctrAreaTallies[1] += (contours.get(i).height() * contours.get(i).width());
                                 } else {
-                                    ctrTallies[2]++;
+                                    ctrAreaTallies[2] += (contours.get(i).height() * contours.get(i).width());
                                 }
                             }
                         }
@@ -343,12 +343,13 @@ public class AutoSilver extends LinearOpMode {
             }
 
 
-            highest = highestTally(ctrTallies);
+//            highest = highestTally(ctrTallies);
+            highestArea = highestTally(ctrAreaTallies);
 
-            if(highest == -1);
-            else if(highest == ctrTallies[0]) {
+            if(highestArea == -1);
+            else if(highestArea == ctrAreaTallies[0]) {
                 goldPlacement = _GoldPlacement.LEFT;
-            } else if(highest == ctrTallies[1]) {
+            } else if(highestArea == ctrAreaTallies[1]) {
                 goldPlacement = _GoldPlacement.CENTER;
             } else {
                 goldPlacement = _GoldPlacement.RIGHT;
@@ -367,11 +368,11 @@ public class AutoSilver extends LinearOpMode {
             telemetry.addLine();
             telemetry.addData("Contour Min Area", ctrMinArea);
             telemetry.addLine();
-            telemetry.addData("Left tally", ctrTallies[0]);
-            telemetry.addData("Center tally", ctrTallies[1]);
-            telemetry.addData("Right tally", ctrTallies[2]);
+            telemetry.addData("Left area tally", ctrAreaTallies[0]);
+            telemetry.addData("Center area tally", ctrAreaTallies[1]);
+            telemetry.addData("Right area tally", ctrAreaTallies[2]);
             telemetry.addLine();
-            telemetry.addData("Highest", highest);
+            telemetry.addData("Highest", highestArea);
             telemetry.addLine();
             telemetry.addData("Gold Placement", goldPlacement);
             telemetry.update();
