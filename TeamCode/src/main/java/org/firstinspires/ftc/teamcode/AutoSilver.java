@@ -477,7 +477,7 @@ public class AutoSilver extends LinearOpMode {
 
                 hardware.ramp.setPosition(RAMP_UP);
 
-                driveInches(CRATER_OUTSIDE_DIST, CRATER_SPEED);
+                driveInches(CRATER_OUTSIDE_DIST + 5.0, CRATER_SPEED);
 
                 break;
 
