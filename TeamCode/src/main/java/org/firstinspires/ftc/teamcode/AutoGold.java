@@ -466,7 +466,8 @@ public class AutoGold extends LinearOpMode {
                     stop();
                 }
 
-                driveInches(30.0, CRATER_SPEED);
+                driveInches(20.0, CRATER_SPEED);
+
 
 
                 break;
@@ -506,7 +507,8 @@ public class AutoGold extends LinearOpMode {
                     stop();
                 }
 
-                driveInches(30.0, CRATER_SPEED);
+                driveInches(20.0, CRATER_SPEED);
+
 
                 break;
 
