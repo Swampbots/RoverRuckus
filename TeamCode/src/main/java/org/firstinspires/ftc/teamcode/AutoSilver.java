@@ -29,6 +29,9 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_CLOSED;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LOCK_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_OMNI_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD_REAR;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED_FRONT;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_DOWN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_UP;
 
@@ -59,7 +62,7 @@ public class AutoSilver extends LinearOpMode {
 
     public final double DRIVE_SPEED     = 0.8; // Power
     public final double SAMPLE_SPEED    = 0.8; // Power
-    public final double CRATER_SPEED    = 0.8; // Power
+    public final double CRATER_SPEED    = 0.4; // Power
 
     public final int SAMPLE_LEFT        = 40;  // Degrees
     public final int SAMPLE_RIGHT       = -40; // Degrees
