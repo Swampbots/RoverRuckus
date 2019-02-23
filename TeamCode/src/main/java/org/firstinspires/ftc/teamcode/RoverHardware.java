@@ -223,10 +223,9 @@ public class RoverHardware {
         rearPivot   = hwMap.dcMotor.get("rear_pivot");
         frontPivot  = hwMap.dcMotor.get("front_pivot");
 
-        snorfler = hwMap.dcMotor.get("snorfler");
+        snorfler    = hwMap.dcMotor.get("snorfler");
 
-        flipper = hwMap.dcMotor.get("flipper");
-
+        flipper     = hwMap.dcMotor.get("flipper");
 
 
         // Set motor directions
@@ -238,25 +237,23 @@ public class RoverHardware {
         rearPivot.setDirection  (DcMotorSimple.Direction.REVERSE);
         frontPivot.setDirection (DcMotorSimple.Direction.REVERSE);
 
-        snorfler.setDirection      (DcMotorSimple.Direction.FORWARD);
+        snorfler.setDirection   (DcMotorSimple.Direction.FORWARD);
 
         flipper.setDirection    (DcMotorSimple.Direction.FORWARD);
 
 
-
         // Set motor RunModes
-        frontLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        frontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rearLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rearRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        frontLeft.setMode   (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        frontRight.setMode  (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rearLeft.setMode    (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rearRight.setMode   (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        rearPivot.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
-        frontPivot.setMode (DcMotor.RunMode.RUN_TO_POSITION);
+        rearPivot.setMode   (DcMotor.RunMode.RUN_TO_POSITION);
+        frontPivot.setMode  (DcMotor.RunMode.RUN_TO_POSITION);
 
 //        snorfler.setMode      (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 //
 //        flipper.setMode    (DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
 
 
         // Set motor zero-power behaviors
@@ -276,40 +273,38 @@ public class RoverHardware {
         frontPivot.setMotorType(MotorConfigurationType.getMotorType(NeveRest60Gearmotor.class));
 
 
-
         // Reset all encoders
         resetMotorEncoders();
 
 
-
-
         // Initialize servos
         latch   = hwMap.servo.get("latch");
-        stop = hwMap.servo.get("stop");
+        stop    = hwMap.servo.get("stop");
 
-        lifter = hwMap.servo.get("lifter");
-        ramp = hwMap.servo.get("ramp");
+        lifter  = hwMap.servo.get("lifter");
+        ramp    = hwMap.servo.get("ramp");
 
-        lockLeft = hwMap.servo.get("lock_left");
-        lockRight = hwMap.servo.get("lock_right");
+        lockLeft    = hwMap.servo.get("lock_left");
+        lockRight   = hwMap.servo.get("lock_right");
 
-        bucket = hwMap.servo.get("bucket");
+        bucket  = hwMap.servo.get("bucket");
+
 
         // Scale servo ranges
-        lockLeft.scaleRange(0.25, 0.75);
+        lockLeft.scaleRange (0.25, 0.75);
         lockRight.scaleRange(0.25, 0.75);
 
-        bucket.scaleRange(0.25, 0.75);
+        bucket.scaleRange   (0.25, 0.75);
+
+        george.scaleRange   (0.25, 0.75);
 
         // Set starting servo positions
-        latch.setPosition(LATCH_CLOSED);
-        setLockPosition(LOCK_CLOSED);
-        ramp.setPosition(RAMP_UP);
-        bucket.setPosition(BUCKET_RETRACT);
+        latch.setPosition   (LATCH_CLOSED);
+        setLockPosition     (LOCK_CLOSED);
+        ramp.setPosition    (RAMP_UP);
+        bucket.setPosition  (BUCKET_RETRACT);
+
     }
-
-
-
 
     // Motor methods
 
