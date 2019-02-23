@@ -55,8 +55,8 @@ public class AutoGold extends LinearOpMode {
     public final double DRIVE_DIST      = 8.0;  // Inches
     public final double SAMPLE_OUTSIDE_DIST = 20.0;  // Inches
     public final double SAMPLE_CENTER_DIST  = 17.0;  // Inches
-    public final double CRATER_OUTSIDE_DIST = 6.0;  // Inches
-    public final double CRATER_CENTER_DIST  = 4.0; // Inches
+    public final double DEPOT_OUTSIDE_DIST  = 6.0;  // Inches
+    public final double DEPOT_CENTER_DIST   = 25.0; // Inches
 
     public final double DRIVE_SPEED     = 0.8; // Power
     public final double SAMPLE_SPEED    = 0.8; // Power
@@ -455,7 +455,7 @@ public class AutoGold extends LinearOpMode {
                 hardware.ramp.setPosition(RAMP_UP);
 
 
-                driveInches(CRATER_OUTSIDE_DIST, CRATER_SPEED);
+                driveInches(DEPOT_OUTSIDE_DIST, CRATER_SPEED);
 
                 try {
                     turnToHeadingPID(-45);
@@ -495,7 +495,7 @@ public class AutoGold extends LinearOpMode {
 
                 hardware.ramp.setPosition(RAMP_UP);
 
-                driveInches(CRATER_OUTSIDE_DIST + 5.0, CRATER_SPEED);
+                driveInches(DEPOT_OUTSIDE_DIST + 5.0, CRATER_SPEED);
 
                 try {
                     turnToHeadingPID(45);
@@ -522,7 +522,7 @@ public class AutoGold extends LinearOpMode {
 
                 hardware.ramp.setPosition(RAMP_UP);
 
-                driveInches(CRATER_CENTER_DIST + 30.0, CRATER_SPEED);
+                driveInches(DEPOT_CENTER_DIST, CRATER_SPEED);
 
                 hardware.george.setPosition(GEORGE_DEPLOY);
 
