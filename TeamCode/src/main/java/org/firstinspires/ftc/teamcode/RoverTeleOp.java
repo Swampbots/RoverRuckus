@@ -4,12 +4,16 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import static org.firstinspires.ftc.teamcode.RoverHardware.BUCKET_EXTEND;
 import static org.firstinspires.ftc.teamcode.RoverHardware.FAST;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.GEAR_REDUCTION_HD_REAR;
 import static org.firstinspires.ftc.teamcode.RoverHardware.LATCH_OPEN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.NORMAL;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_KNEEL_REAR;
+import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STD_FRONT;
 import static org.firstinspires.ftc.teamcode.RoverHardware.PIV_STOWED;
+import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_UP;
 import static org.firstinspires.ftc.teamcode.RoverHardware.SLOW;
 
 @TeleOp(name = "Driver Control", group = "TeleOp")
@@ -70,6 +74,12 @@ public class RoverTeleOp extends OpMode {
         // Drive motor controls
         hardware.setLeftPower   (-gamepad1.left_stick_y);
         hardware.setRightPower  (-gamepad1.right_stick_y);
+
+
+        if(gamepad1.y) {
+            hardware.ramp.setPosition(RAMP_UP);
+            hardware.bucket.setPosition(BUCKET_EXTEND);
+        }
 
 
 
