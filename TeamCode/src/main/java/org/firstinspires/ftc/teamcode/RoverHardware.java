@@ -155,7 +155,7 @@ public class RoverHardware {
     public static final double RAMP_DOWN    = 0.0;
 
     public static final double BUCKET_RETRACT   = 0.0;
-    public static final double BUCKET_EXTEND    = 0.0;
+    public static final double BUCKET_EXTEND    = 1.0;
 
     public static final double GEORGE_STOW  = 0.5;
     public static final double GEORGE_DEPLOY = 0.0;
