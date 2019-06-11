@@ -35,21 +35,30 @@ import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_DOWN;
 import static org.firstinspires.ftc.teamcode.RoverHardware.RAMP_UP;
 
 
-@Autonomous(name = "Gold_CV", group = "Autonomous")
+/*
+    This is our autonomous program for when we are starting on the gold side of the field (nearest the depot).
+    Before pressing play, we dial in the vision software using the gamepads. The vision software makes a decision as soon as we press play.
+    Once the decision is finalized, we descend, move away from the lander, turn towards the gold mineral, displace it, move into the depot, place the marker, and move away.
+    Once finished, it displays telemetry on the starting position of the gold mineral and the current heading of the robot.
+ */
+
+@Autonomous(name = "Gold_CV", group = "Autonomous") // Register this class as an Autonomous program
 public class AutoGold extends LinearOpMode {
 
-    RoverHardware hardware = new RoverHardware();
+    RoverHardware hardware = new RoverHardware();   // Make a copy of the hardware class
 
-    GoldContourPipeline vision = new GoldContourPipeline();
+    GoldContourPipeline vision = new GoldContourPipeline(); // Make a copy of the OpenCV pipeline (for vision processing)
 
-    _GoldPlacement goldPlacement = _GoldPlacement.CENTER;
+    _GoldPlacement goldPlacement = _GoldPlacement.CENTER;   // Variable for tracking placement of the gold cube in the sample field
 
 
     // IMU object
-    BNO055IMU imu;
+    BNO055IMU imu;  // Object for accessing the gyroscope data from the IMU.
 
-    Orientation angles;
+    Orientation angles; // Outdated object for storing orientation of robot
 
+
+    // Autonomous constants
 
     public final double DROP_TIME       = 3.0; // Seconds
 
@@ -84,6 +93,7 @@ public class AutoGold extends LinearOpMode {
     private double[] hsvVal = new double[]{130.0, 255.0};
 
 
+    // Gamepad button cooldowns
     GamepadCooldowns cooldowns = new GamepadCooldowns();
 
     ButtonCooldown gp2_a    = new ButtonCooldown();
@@ -91,14 +101,15 @@ public class AutoGold extends LinearOpMode {
 
 
 
-
+    // Camera view partitions
     private final int CTR_RIGHT  = (int) ((CTR_MAX_Y + hardware.CTR_MIN_Y) / 3.0);        // 1/3 of the width to bound the left third     [ |  ]
     private final int CTR_LEFT = (int) ((CTR_MAX_Y + hardware.CTR_MIN_Y) * 2.0 / 3.0);  // 2/3 of the width to bound the center third   [  | ]
 
+    // OpenCV pipeline inputs (these will be tuned in during initialization)
     private double ctrXThreshold = 206.0;
     private double ctrMinArea   = 0.0;
 
-
+    // Tallying
     int highest = 0;
     int highestArea = 0;
 
@@ -581,7 +592,7 @@ public class AutoGold extends LinearOpMode {
     }
 
 
-
+    // highestTally() decides which of three values in an array is the largest.
     private int highestTally(int[] tallies) {
         int highest;
 
@@ -595,7 +606,7 @@ public class AutoGold extends LinearOpMode {
     }
 
 
-
+    // driveInches() converts interests into encoder counts, which are passed onto driveCounts()
     public void driveInches(double inches, double speed) {
         driveCounts(
                 (int) (inches * COUNTS_PER_INCH_DRIVE_FRONT),
@@ -604,6 +615,7 @@ public class AutoGold extends LinearOpMode {
         );
     }
 
+    // driveCounts() sets encoder targets relative to their current positions and moves to the new target positions
     public void driveCounts(int frontTarget, int rearTarget, double speed) {
         hardware.frontLeft.setTargetPosition    (hardware.frontLeft.getCurrentPosition()    + (int)(frontTarget * GEAR_REDUCTION_DRIVE_FRONT));
         hardware.rearLeft.setTargetPosition     (hardware.rearLeft.getCurrentPosition()     + (int)(rearTarget * GEAR_REDUCTION_DRIVE_REAR));
@@ -649,6 +661,7 @@ public class AutoGold extends LinearOpMode {
     // PID controller methods
     //----------------------------------------------------------------------------------------------
 
+    // turnToHeadingPID() uses the PID controller in RoverHardware.java to turn to a given heading
     public void turnToHeadingPID(int target) throws InterruptedException {
 
         telemetry.addData("Turning to target", target);
@@ -681,6 +694,7 @@ public class AutoGold extends LinearOpMode {
         hardware.setRightPower(0);
     }
 
+    // normalize180() corrects heading values in turnToHeadingPID()
     public double normalize180(double angle) {
         while(angle > 180) {
             angle -= 360;
@@ -691,6 +705,7 @@ public class AutoGold extends LinearOpMode {
         return angle;
     }
 
+    // heading() condenses the method for getting the robot's heading into one method
     public float heading() {
         return imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES).firstAngle;
     }
